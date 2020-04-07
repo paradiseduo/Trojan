@@ -7,12 +7,13 @@
 //
 
 import Foundation
-
+//当前选中的Profile
 class Profile {
     
     static let shared = Profile()
     
     var client: Client!
+    var name = "Default"
     
     var json: [String: AnyObject] {
         get {
@@ -76,6 +77,8 @@ class Profile {
         } catch let error {
             print("saveProfile: ", error)
         }
+        Profiles.shared.add(self)
+        Profiles.shared.save()
     }
     
     func loadProfile() {
@@ -85,6 +88,7 @@ class Profile {
                 if let data = manager.contents(atPath: CONFIG_PATH) {
                     let f = try JSONDecoder().decode(Client.self, from: data)
                     self.client = f
+                    self.name = Profiles.shared.getName(profile: self)
                 } else {
                     self.loadDefaultProfile()
                 }
@@ -129,5 +133,96 @@ class Profile {
     
     func arguments() -> [String] {
         return ["--log", LOG_PATH, "--config", CONFIG_PATH]
+    }
+}
+
+
+class Profiles {
+    static let shared = Profiles()
+    
+    private var profiles = [Profile]()
+    
+    func count() -> Int {
+        return profiles.count
+    }
+    
+    func getName(profile: Profile) -> String {
+        for item in profiles {
+            if item.client.remote_addr == profile.client.remote_addr && item.client.remote_port == profile.client.remote_port && item.client.password == profile.client.password {
+                return item.name
+            }
+        }
+        return "Default"
+    }
+    
+    func itemAtIndex(_ index: Int) -> Profile? {
+        if index < profiles.count {
+            return profiles[index]
+        }
+        return nil
+    }
+    
+    @discardableResult func add(_ profile: Profile) -> Bool {
+        if profiles.contains(where: { (p) -> Bool in
+            return p.name == profile.name
+        }) {
+            return false
+        } else {
+            profiles.append(profile)
+            return true
+        }
+    }
+    
+    @discardableResult func remove(_ profile: Profile) -> Bool {
+        if profiles.contains(where: { (p) -> Bool in
+            return p.name == profile.name
+        }) {
+            profiles.removeAll { (p) -> Bool in
+                return p.name == profile.name
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func remove(at index: Int) -> Profile {
+        return profiles.remove(at: index)
+    }
+    
+    func insert(_ newElement: Profile, at i: Int) {
+        profiles.insert(newElement, at: i)
+    }
+    
+    func save() {
+        var dic = [String: String]()
+        for item in profiles {
+            dic[item.name] = item.jsonString
+        }
+        UserDefaults.standard.set(dic, forKey: USERDEFAULTS_PROFILE)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func load() {
+        profiles.removeAll(keepingCapacity: true)
+        if let dic = UserDefaults.standard.object(forKey: USERDEFAULTS_PROFILE) as? [String: String] {
+            for key in dic.keys {
+                let profileString = dic[key]
+                do {
+                    if let d = profileString!.data(using: String.Encoding.utf8) {
+                        let f = try JSONDecoder().decode(Client.self, from: d)
+                        let p = Profile()
+                        p.client = f
+                        p.name = key
+                        profiles.append(p)
+                    }
+                }catch let e {
+                    print("Profiles load: ", e)
+                }
+            }
+        } else {
+            Profile.shared.loadProfile()
+            profiles.append(Profile.shared)
+        }
     }
 }

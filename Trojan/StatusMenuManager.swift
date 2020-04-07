@@ -22,6 +22,8 @@ class StatusMenuManager: NSObject {
     var toastW: ToastWindowController!
     
     override func awakeFromNib() {
+        Profiles.shared.load()
+        Profile.shared.loadProfile()
         updateMainMenu()
         NotificationCenter.default.addObserver(forName: TROJAN_START, object: nil, queue: OperationQueue.main) { (noti) in
             if !UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
