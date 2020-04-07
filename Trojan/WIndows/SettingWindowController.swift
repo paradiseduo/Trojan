@@ -13,7 +13,7 @@ let tableViewDragType: String = "trojan.server.profile.data"
 class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate {
 
     @IBOutlet weak var scroll: NSScrollView!
-    @IBOutlet var textView: NSTextView!
+    @IBOutlet var textView: EditableNSTextView!
     
     @IBOutlet weak var profilesTableView: NSTableView!
     @IBOutlet weak var copyButton: NSButton!

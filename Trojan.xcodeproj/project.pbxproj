@@ -29,6 +29,7 @@
 		BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A37243C4CB100BE8336 /* Assets.xcassets */; };
 		BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE464A39243C4CB100BE8336 /* Main.storyboard */; };
 		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +73,7 @@
 		BE464A3A243C4CB100BE8336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE464A3C243C4CB100BE8336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartAtLoginLauncher.entitlements; sourceTree = "<group>"; };
+		BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */,
 				BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */,
 				BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */,
+				BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */,
 			);
 			path = WIndows;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
+				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
