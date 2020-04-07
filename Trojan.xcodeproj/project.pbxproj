@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A02243C29CE00BE8336 /* AppDelegate.swift */; };
+		BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A04243C29CE00BE8336 /* Assets.xcassets */; };
+		BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A06243C29CE00BE8336 /* MainMenu.xib */; };
+		BE464A11243C29DA00BE8336 /* trojan in Resources */ = {isa = PBXBuildFile; fileRef = BE464A10243C29DA00BE8336 /* trojan */; };
+		BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */; };
+		BE464A15243C2A8300BE8336 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A14243C2A8300BE8336 /* Profile.swift */; };
+		BE464A17243C2A8900BE8336 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A16243C2A8900BE8336 /* Json.swift */; };
+		BE464A19243C2A9C00BE8336 /* Trojan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A18243C2A9C00BE8336 /* Trojan.swift */; };
+		BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1A243C2AA100BE8336 /* CommandLine.swift */; };
+		BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1C243C2AA500BE8336 /* Configuration.swift */; };
+		BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1E243C2AA900BE8336 /* VersionChecker.swift */; };
+		BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */; };
+		BE464A28243C2ABC00BE8336 /* LogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A22243C2ABC00BE8336 /* LogWindowController.xib */; };
+		BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */; };
+		BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A24243C2ABC00BE8336 /* LogWindowController.swift */; };
+		BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */; };
+		BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */; };
+		BE464A34243C4CB100BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A33243C4CB100BE8336 /* AppDelegate.swift */; };
+		BE464A36243C4CB100BE8336 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A35243C4CB100BE8336 /* ViewController.swift */; };
+		BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A37243C4CB100BE8336 /* Assets.xcassets */; };
+		BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE464A39243C4CB100BE8336 /* Main.storyboard */; };
+		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE464A41243C4D0700BE8336 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE4649FF243C29CE00BE8336 /* Trojan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trojan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE464A02243C29CE00BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE464A04243C29CE00BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE464A07243C29CE00BE8336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BE464A09243C29CE00BE8336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE464A0A243C29CE00BE8336 /* Trojan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trojan.entitlements; sourceTree = "<group>"; };
+		BE464A10243C29DA00BE8336 /* trojan */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = trojan; sourceTree = "<group>"; };
+		BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuManager.swift; sourceTree = "<group>"; };
+		BE464A14243C2A8300BE8336 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		BE464A16243C2A8900BE8336 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
+		BE464A18243C2A9C00BE8336 /* Trojan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trojan.swift; sourceTree = "<group>"; };
+		BE464A1A243C2AA100BE8336 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		BE464A1C243C2AA500BE8336 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BE464A1E243C2AA900BE8336 /* VersionChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
+		BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingWindowController.xib; sourceTree = "<group>"; };
+		BE464A22243C2ABC00BE8336 /* LogWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogWindowController.xib; sourceTree = "<group>"; };
+		BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastWindowController.swift; sourceTree = "<group>"; };
+		BE464A24243C2ABC00BE8336 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
+		BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingWindowController.swift; sourceTree = "<group>"; };
+		BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastWindowController.xib; sourceTree = "<group>"; };
+		BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartAtLoginLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE464A33243C4CB100BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE464A35243C4CB100BE8336 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE464A37243C4CB100BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE464A3A243C4CB100BE8336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE464A3C243C4CB100BE8336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartAtLoginLauncher.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE4649FC243C29CE00BE8336 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE464A2E243C4CB100BE8336 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE4649F6243C29CE00BE8336 = {
+			isa = PBXGroup;
+			children = (
+				BE464A01243C29CE00BE8336 /* Trojan */,
+				BE464A32243C4CB100BE8336 /* StartAtLoginLauncher */,
+				BE464A00243C29CE00BE8336 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE464A00243C29CE00BE8336 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE4649FF243C29CE00BE8336 /* Trojan.app */,
+				BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE464A01243C29CE00BE8336 /* Trojan */ = {
+			isa = PBXGroup;
+			children = (
+				BE464A10243C29DA00BE8336 /* trojan */,
+				BE464A02243C29CE00BE8336 /* AppDelegate.swift */,
+				BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */,
+				BE464A14243C2A8300BE8336 /* Profile.swift */,
+				BE464A16243C2A8900BE8336 /* Json.swift */,
+				BE464A18243C2A9C00BE8336 /* Trojan.swift */,
+				BE464A1A243C2AA100BE8336 /* CommandLine.swift */,
+				BE464A1C243C2AA500BE8336 /* Configuration.swift */,
+				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
+				BE464A20243C2AAF00BE8336 /* WIndows */,
+				BE464A04243C29CE00BE8336 /* Assets.xcassets */,
+				BE464A06243C29CE00BE8336 /* MainMenu.xib */,
+				BE464A09243C29CE00BE8336 /* Info.plist */,
+				BE464A0A243C29CE00BE8336 /* Trojan.entitlements */,
+			);
+			path = Trojan;
+			sourceTree = "<group>";
+		};
+		BE464A20243C2AAF00BE8336 /* WIndows */ = {
+			isa = PBXGroup;
+			children = (
+				BE464A24243C2ABC00BE8336 /* LogWindowController.swift */,
+				BE464A22243C2ABC00BE8336 /* LogWindowController.xib */,
+				BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */,
+				BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */,
+				BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */,
+				BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */,
+			);
+			path = WIndows;
+			sourceTree = "<group>";
+		};
+		BE464A32243C4CB100BE8336 /* StartAtLoginLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				BE464A33243C4CB100BE8336 /* AppDelegate.swift */,
+				BE464A35243C4CB100BE8336 /* ViewController.swift */,
+				BE464A37243C4CB100BE8336 /* Assets.xcassets */,
+				BE464A39243C4CB100BE8336 /* Main.storyboard */,
+				BE464A3C243C4CB100BE8336 /* Info.plist */,
+				BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */,
+			);
+			path = StartAtLoginLauncher;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE4649FE243C29CE00BE8336 /* Trojan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE464A0D243C29CE00BE8336 /* Build configuration list for PBXNativeTarget "Trojan" */;
+			buildPhases = (
+				BE4649FB243C29CE00BE8336 /* Sources */,
+				BE4649FC243C29CE00BE8336 /* Frameworks */,
+				BE4649FD243C29CE00BE8336 /* Resources */,
+				BE464A41243C4D0700BE8336 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trojan;
+			productName = Trojan;
+			productReference = BE4649FF243C29CE00BE8336 /* Trojan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE464A30243C4CB100BE8336 /* StartAtLoginLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE464A3E243C4CB100BE8336 /* Build configuration list for PBXNativeTarget "StartAtLoginLauncher" */;
+			buildPhases = (
+				BE464A2D243C4CB100BE8336 /* Sources */,
+				BE464A2E243C4CB100BE8336 /* Frameworks */,
+				BE464A2F243C4CB100BE8336 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StartAtLoginLauncher;
+			productName = StartAtLoginLauncher;
+			productReference = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE4649F7243C29CE00BE8336 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = ParadiseDuo;
+				TargetAttributes = {
+					BE4649FE243C29CE00BE8336 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					BE464A30243C4CB100BE8336 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = BE4649FA243C29CE00BE8336 /* Build configuration list for PBXProject "Trojan" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE4649F6243C29CE00BE8336;
+			productRefGroup = BE464A00243C29CE00BE8336 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE4649FE243C29CE00BE8336 /* Trojan */,
+				BE464A30243C4CB100BE8336 /* StartAtLoginLauncher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE4649FD243C29CE00BE8336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE464A11243C29DA00BE8336 /* trojan in Resources */,
+				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
+				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
+				BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */,
+				BE464A28243C2ABC00BE8336 /* LogWindowController.xib in Resources */,
+				BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE464A2F243C4CB100BE8336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */,
+				BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE4649FB243C29CE00BE8336 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */,
+				BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */,
+				BE464A19243C2A9C00BE8336 /* Trojan.swift in Sources */,
+				BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */,
+				BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */,
+				BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */,
+				BE464A15243C2A8300BE8336 /* Profile.swift in Sources */,
+				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
+				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
+				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
+				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE464A2D243C4CB100BE8336 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE464A36243C4CB100BE8336 /* ViewController.swift in Sources */,
+				BE464A34243C4CB100BE8336 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE464A06243C29CE00BE8336 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE464A07243C29CE00BE8336 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		BE464A39243C4CB100BE8336 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE464A3A243C4CB100BE8336 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE464A0B243C29CE00BE8336 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BE464A0C243C29CE00BE8336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BE464A0E243C29CE00BE8336 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Trojan/Trojan.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Trojan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BE464A0F243C29CE00BE8336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Trojan/Trojan.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Trojan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BE464A3F243C4CB100BE8336 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = StartAtLoginLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan.StartAtLoginLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BE464A40243C4CB100BE8336 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = StartAtLoginLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan.StartAtLoginLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE4649FA243C29CE00BE8336 /* Build configuration list for PBXProject "Trojan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE464A0B243C29CE00BE8336 /* Debug */,
+				BE464A0C243C29CE00BE8336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE464A0D243C29CE00BE8336 /* Build configuration list for PBXNativeTarget "Trojan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE464A0E243C29CE00BE8336 /* Debug */,
+				BE464A0F243C29CE00BE8336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE464A3E243C4CB100BE8336 /* Build configuration list for PBXNativeTarget "StartAtLoginLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE464A3F243C4CB100BE8336 /* Debug */,
+				BE464A40243C4CB100BE8336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE4649F7243C29CE00BE8336 /* Project object */;
+}
