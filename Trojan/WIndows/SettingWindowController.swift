@@ -52,7 +52,10 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             guard let w = self else {return}
             Profile.shared.client = c
             Profile.shared.name = w.selectedName
-            Profiles.shared.update(Profile.shared)
+            let p = Profile()
+            p.name = w.selectedName
+            p.client = c
+            Profiles.shared.update(p)
             Profile.shared.saveProfile()
             w.closeFromSave = true
             w.window?.close()
@@ -101,6 +104,11 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     @IBAction func removeTap(_ sender: NSButton) {
         if Profiles.shared.count() > 1 {
             let index = IndexSet(integer: self.profilesTableView.selectedRow)
+            let p = Profiles.shared.itemAtIndex(self.profilesTableView.selectedRow)
+            if Profiles.isSame(p!, Profile.shared) {
+                self.shakeWindows()
+                return
+            }
             self.profilesTableView.beginUpdates()
             Profiles.shared.remove(selectedName)
             self.profilesTableView.removeRows(at: index, withAnimation: .effectFade)
@@ -213,8 +221,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     private func getDataAtRow(_ index:Int) -> (String, Bool) {
         let profile = Profiles.shared.itemAtIndex(index)
         if profile != nil {
-            let isActive = (profile!.name == Profile.shared.name || (profile!.client.remote_addr == Profile.shared.client.remote_addr && profile!.client.remote_port == Profile.shared.client.remote_port))
-            return (profile!.name, isActive)
+            return (profile!.name, Profiles.isSame(profile!, Profile.shared))
         } else {
             return ("", false)
         }

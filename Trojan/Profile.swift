@@ -78,7 +78,6 @@ class Profile {
             
             Trojan.shared.stop()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-                Profiles.shared.add(self)
                 Profiles.shared.save()
                 Trojan.shared.start()
             }
@@ -137,6 +136,7 @@ class Profile {
         let ssl = SSL(verify: verify, verify_hostname: verify_hostname, cert: cert, cipher: cipher, cipher_tls13: cipher_tls13, sni: sni, alpn: alpn, reuse_session: reuse_session, session_ticket: session_ticket, curves: curves)
         let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp)
         self.client = c
+        self.name = "Default"
     }
     
     func arguments() -> [String] {
@@ -218,6 +218,10 @@ class Profiles {
         }
         UserDefaults.standard.set(dic, forKey: USERDEFAULTS_PROFILE)
         UserDefaults.standard.synchronize()
+    }
+    
+    class func isSame(_ a: Profile, _ b: Profile) -> Bool {
+        return (a.name == b.name && (a.client.remote_addr == b.client.remote_addr && a.client.remote_port == b.client.remote_port && a.client.password == b.client.password))
     }
     
     func load() {
