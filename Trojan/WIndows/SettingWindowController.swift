@@ -20,12 +20,13 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     @IBOutlet weak var removeButton: NSButton!
     
     private var closeFromSave = false
+    private var selectedName = ""
     
     override func windowDidLoad() {
         super.windowDidLoad()
         self.profilesTableView.delegate = self
         self.profilesTableView.dataSource = self
-        
+        self.textView.isAutomaticQuoteSubstitutionEnabled = false
         if let s = Profile.shared.jsonString {
             self.textView.string = s
         }
@@ -40,17 +41,21 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             } else {
                 self.shakeWindows()
             }
-        }catch {
+        }catch let e {
+            print("decodeJSON", e)
             self.shakeWindows()
         }
     }
     
     @IBAction func saveTap(_ sender: NSButton) {
-        self.decodeJSON { (c) in
+        self.decodeJSON {[weak self] (c) in
+            guard let w = self else {return}
             Profile.shared.client = c
+            Profile.shared.name = w.selectedName
+            Profiles.shared.update(Profile.shared)
             Profile.shared.saveProfile()
-            self.closeFromSave = true
-            self.window?.close()
+            w.closeFromSave = true
+            w.window?.close()
         }
     }
     
@@ -71,8 +76,12 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             guard let w = self else {return}
             w.profilesTableView.beginUpdates()
             let p = Profile()
-            p.name = "New Server"
+            p.name = "New Server\(Profiles.shared.count())"
             p.client = c
+            p.client.remote_port = 443
+            p.client.remote_addr = ""
+            p.client.password = [""]
+            w.selectedName = p.name
             if Profiles.shared.add(p) {
                 let index = IndexSet(integer: Profiles.shared.count()-1)
                 w.profilesTableView.insertRows(at: index, withAnimation: .effectFade)
@@ -90,7 +99,16 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     }
     
     @IBAction func removeTap(_ sender: NSButton) {
-        
+        if Profiles.shared.count() > 1 {
+            let index = IndexSet(integer: self.profilesTableView.selectedRow)
+            self.profilesTableView.beginUpdates()
+            Profiles.shared.remove(selectedName)
+            self.profilesTableView.removeRows(at: index, withAnimation: .effectFade)
+            self.profilesTableView.selectRowIndexes(index, byExtendingSelection: false)
+            self.profilesTableView.endUpdates()
+        } else {
+            self.shakeWindows()
+        }
     }
     
     //--------------------------------------------------
@@ -118,6 +136,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
         let p = Profiles.shared.itemAtIndex(row)
         if p != nil {
             p!.name = object as! String
+            selectedName = p!.name
         }
     }
     
@@ -182,6 +201,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
         if self.profilesTableView.selectedRow >= 0 {
             let s = Profiles.shared.itemAtIndex(self.profilesTableView.selectedRow)
             if s != nil {
+                selectedName = s!.name
                 self.textView.string = s!.jsonString!
             }
         } else {
@@ -193,7 +213,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     private func getDataAtRow(_ index:Int) -> (String, Bool) {
         let profile = Profiles.shared.itemAtIndex(index)
         if profile != nil {
-            let isActive = (profile!.name == Profile.shared.name)
+            let isActive = (profile!.name == Profile.shared.name || (profile!.client.remote_addr == Profile.shared.client.remote_addr && profile!.client.remote_port == Profile.shared.client.remote_port))
             return (profile!.name, isActive)
         } else {
             return ("", false)

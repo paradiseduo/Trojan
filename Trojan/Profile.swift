@@ -68,17 +68,23 @@ class Profile {
     func saveProfile() {
         let url = NSURL.fileURL(withPath: CONFIG_PATH)
         do {
+            try FileManager.default.removeItem(atPath: url.path)
+        }catch let error {
+            print("removeItem \(error)")
+        }
+        FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
+        do {
             try self.jsonString?.write(to: url, atomically: true, encoding: String.Encoding.utf8)
             
             Trojan.shared.stop()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                Profiles.shared.add(self)
+                Profiles.shared.save()
                 Trojan.shared.start()
             }
         } catch let error {
             print("saveProfile: ", error)
         }
-        Profiles.shared.add(self)
-        Profiles.shared.save()
     }
     
     func loadProfile() {
@@ -88,7 +94,9 @@ class Profile {
                 if let data = manager.contents(atPath: CONFIG_PATH) {
                     let f = try JSONDecoder().decode(Client.self, from: data)
                     self.client = f
-                    self.name = Profiles.shared.getName(profile: self)
+                    Profiles.shared.getName(profile: self) { (n) in
+                        self.name = n
+                    }
                 } else {
                     self.loadDefaultProfile()
                 }
@@ -146,13 +154,12 @@ class Profiles {
         return profiles.count
     }
     
-    func getName(profile: Profile) -> String {
+    func getName(profile: Profile, name: (String)->()) {
         for item in profiles {
             if item.client.remote_addr == profile.client.remote_addr && item.client.remote_port == profile.client.remote_port && item.client.password == profile.client.password {
-                return item.name
+                name(item.name)
             }
         }
-        return "Default"
     }
     
     func itemAtIndex(_ index: Int) -> Profile? {
@@ -160,6 +167,15 @@ class Profiles {
             return profiles[index]
         }
         return nil
+    }
+    
+    func update(_ profile: Profile) {
+        for (i, item) in profiles.enumerated() {
+            if item.name == profile.name {
+                profiles[i] = profile
+                break
+            }
+        }
     }
     
     @discardableResult func add(_ profile: Profile) -> Bool {
@@ -173,12 +189,12 @@ class Profiles {
         }
     }
     
-    @discardableResult func remove(_ profile: Profile) -> Bool {
+    @discardableResult func remove(_ name: String) -> Bool {
         if profiles.contains(where: { (p) -> Bool in
-            return p.name == profile.name
+            return p.name == name
         }) {
             profiles.removeAll { (p) -> Bool in
-                return p.name == profile.name
+                return p.name == name
             }
             return true
         } else {
@@ -198,6 +214,7 @@ class Profiles {
         var dic = [String: String]()
         for item in profiles {
             dic[item.name] = item.jsonString
+            print("save", item.name, item.client.remote_addr)
         }
         UserDefaults.standard.set(dic, forKey: USERDEFAULTS_PROFILE)
         UserDefaults.standard.synchronize()
@@ -220,6 +237,7 @@ class Profiles {
                     print("Profiles load: ", e)
                 }
             }
+            Profile.shared.loadProfile()
         } else {
             Profile.shared.loadProfile()
             profiles.append(Profile.shared)

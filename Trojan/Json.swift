@@ -9,15 +9,15 @@
 import Foundation
 
 struct Client: Codable {
-    let run_type: String
-    let local_addr: String
-    let local_port: Int
-    let password: [String]
-    let remote_addr: String
-    let remote_port: Int
-    let log_level: Int
-    let ssl: SSL
-    let tcp: TCP
+    var run_type: String
+    var local_addr: String
+    var local_port: Int
+    var password: [String]
+    var remote_addr: String
+    var remote_port: Int
+    var log_level: Int
+    var ssl: SSL
+    var tcp: TCP
 
     private enum CodingKeys: String, CodingKey {
         case run_type = "run_type"
@@ -34,16 +34,16 @@ struct Client: Codable {
 
 
 struct SSL: Codable {
-    let verify: Bool
-    let verify_hostname: Bool
-    let cert: String
-    let cipher: String
-    let cipher_tls13: String
-    let sni: String
-    let alpn: [String]
-    let reuse_session: Bool
-    let session_ticket: Bool
-    let curves: String
+    var verify: Bool
+    var verify_hostname: Bool
+    var cert: String
+    var cipher: String
+    var cipher_tls13: String
+    var sni: String
+    var alpn: [String]
+    var reuse_session: Bool
+    var session_ticket: Bool
+    var curves: String
 
     private enum CodingKeys: String, CodingKey {
         case verify = "verify"
@@ -61,11 +61,11 @@ struct SSL: Codable {
 
 
 struct TCP: Codable {
-    let no_delay: Bool
-    let keep_alive: Bool
-    let reuse_port: Bool
-    let fast_open: Bool
-    let fast_open_qlen: Int
+    var no_delay: Bool
+    var keep_alive: Bool
+    var reuse_port: Bool
+    var fast_open: Bool
+    var fast_open_qlen: Int
 
     private enum CodingKeys: String, CodingKey {
         case no_delay = "no_delay"
