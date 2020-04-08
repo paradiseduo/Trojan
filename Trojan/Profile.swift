@@ -214,7 +214,6 @@ class Profiles {
         var dic = [String: String]()
         for item in profiles {
             dic[item.name] = item.jsonString
-            print("save", item.name, item.client.remote_addr)
         }
         UserDefaults.standard.set(dic, forKey: USERDEFAULTS_PROFILE)
         UserDefaults.standard.synchronize()
