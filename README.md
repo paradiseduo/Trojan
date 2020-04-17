@@ -1,6 +1,9 @@
-![](https://github.com/paradiseduo/Trojan/blob/master/img/icon.png)
-
-# Trojan
+<h1 align="center">
+  <img src="https://github.com/paradiseduo/Trojan/blob/master/img/icon.png" alt="Trojan" width="256">
+  <br>
+  Trojan
+  <br>
+</h1>
 
 Trojan is a GUI program for trojan on macOS.
 
