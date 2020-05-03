@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */; };
+		5F9198AEFF523A283F4AF86B /* Pods_ProxyConfHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */; };
+		83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */; };
 		BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A02243C29CE00BE8336 /* AppDelegate.swift */; };
 		BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A04243C29CE00BE8336 /* Assets.xcassets */; };
 		BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A06243C29CE00BE8336 /* MainMenu.xib */; };
@@ -29,6 +32,9 @@
 		BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A37243C4CB100BE8336 /* Assets.xcassets */; };
 		BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE464A39243C4CB100BE8336 /* Main.storyboard */; };
 		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
+		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
+		BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */ = {isa = PBXBuildFile; fileRef = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */; };
 		BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,9 +49,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE524E02245EFF3C003F3E80 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1AC85AC4F6A665FFBF5E32F6 /* Pods-Trojan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trojan.release.xcconfig"; path = "Target Support Files/Pods-Trojan/Pods-Trojan.release.xcconfig"; sourceTree = "<group>"; };
+		2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trojan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8AA9966E1D35373DF930DB /* Pods-Trojan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trojan.debug.xcconfig"; path = "Target Support Files/Pods-Trojan/Pods-Trojan.debug.xcconfig"; sourceTree = "<group>"; };
+		67B6D44C12B2FDD442F3F62D /* Pods-ProxyConfHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProxyConfHelper.release.xcconfig"; path = "Target Support Files/Pods-ProxyConfHelper/Pods-ProxyConfHelper.release.xcconfig"; sourceTree = "<group>"; };
 		BE4649FF243C29CE00BE8336 /* Trojan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trojan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE464A02243C29CE00BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE464A04243C29CE00BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,7 +92,18 @@
 		BE464A3A243C4CB100BE8336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE464A3C243C4CB100BE8336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartAtLoginLauncher.entitlements; sourceTree = "<group>"; };
+		BE524E04245EFF3C003F3E80 /* ProxyConfHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProxyConfHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE524E06245EFF3C003F3E80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BE524E0B245F00E5003F3E80 /* Trojan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trojan-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyConfHelper.m; sourceTree = "<group>"; };
+		BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyConfHelper.h; sourceTree = "<group>"; };
+		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextView.swift; sourceTree = "<group>"; };
+		CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StartAtLoginLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.release.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.release.xcconfig"; sourceTree = "<group>"; };
+		EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProxyConfHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProxyConfHelper.debug.xcconfig"; path = "Target Support Files/Pods-ProxyConfHelper/Pods-ProxyConfHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.debug.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,18 +119,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE524E01245EFF3C003F3E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F9198AEFF523A283F4AF86B /* Pods_ProxyConfHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22116DD016CA1C073684B4DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */,
+				CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */,
+				2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DB9494A13EC7C5A78F99948 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */,
+				67B6D44C12B2FDD442F3F62D /* Pods-ProxyConfHelper.release.xcconfig */,
+				F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */,
+				D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */,
+				5D8AA9966E1D35373DF930DB /* Pods-Trojan.debug.xcconfig */,
+				1AC85AC4F6A665FFBF5E32F6 /* Pods-Trojan.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BE4649F6243C29CE00BE8336 = {
 			isa = PBXGroup;
 			children = (
 				BE464A01243C29CE00BE8336 /* Trojan */,
 				BE464A32243C4CB100BE8336 /* StartAtLoginLauncher */,
+				BE524E05245EFF3C003F3E80 /* ProxyConfHelper */,
 				BE464A00243C29CE00BE8336 /* Products */,
+				2DB9494A13EC7C5A78F99948 /* Pods */,
+				22116DD016CA1C073684B4DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +174,7 @@
 			children = (
 				BE4649FF243C29CE00BE8336 /* Trojan.app */,
 				BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */,
+				BE524E04245EFF3C003F3E80 /* ProxyConfHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,11 +191,14 @@
 				BE464A1A243C2AA100BE8336 /* CommandLine.swift */,
 				BE464A1C243C2AA500BE8336 /* Configuration.swift */,
 				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
+				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
+				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
 				BE464A20243C2AAF00BE8336 /* WIndows */,
 				BE464A04243C29CE00BE8336 /* Assets.xcassets */,
 				BE464A06243C29CE00BE8336 /* MainMenu.xib */,
 				BE464A09243C29CE00BE8336 /* Info.plist */,
 				BE464A0A243C29CE00BE8336 /* Trojan.entitlements */,
+				BE524E0B245F00E5003F3E80 /* Trojan-Bridging-Header.h */,
 			);
 			path = Trojan;
 			sourceTree = "<group>";
@@ -160,6 +230,15 @@
 			path = StartAtLoginLauncher;
 			sourceTree = "<group>";
 		};
+		BE524E05245EFF3C003F3E80 /* ProxyConfHelper */ = {
+			isa = PBXGroup;
+			children = (
+				BE524E06245EFF3C003F3E80 /* main.m */,
+				BE524E0F245F0142003F3E80 /* version.h */,
+			);
+			path = ProxyConfHelper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,10 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE464A0D243C29CE00BE8336 /* Build configuration list for PBXNativeTarget "Trojan" */;
 			buildPhases = (
+				6EA2092E5692357C5BF73C8E /* [CP] Check Pods Manifest.lock */,
 				BE4649FB243C29CE00BE8336 /* Sources */,
 				BE4649FC243C29CE00BE8336 /* Frameworks */,
 				BE4649FD243C29CE00BE8336 /* Resources */,
 				BE464A41243C4D0700BE8336 /* CopyFiles */,
+				CF7283FE56C93B4CD1F4F80E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +266,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE464A3E243C4CB100BE8336 /* Build configuration list for PBXNativeTarget "StartAtLoginLauncher" */;
 			buildPhases = (
+				5DC3A9507B8799C06F4EA4B8 /* [CP] Check Pods Manifest.lock */,
 				BE464A2D243C4CB100BE8336 /* Sources */,
 				BE464A2E243C4CB100BE8336 /* Frameworks */,
 				BE464A2F243C4CB100BE8336 /* Resources */,
@@ -198,6 +280,24 @@
 			productReference = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BE524E03245EFF3C003F3E80 /* ProxyConfHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE524E0A245EFF3C003F3E80 /* Build configuration list for PBXNativeTarget "ProxyConfHelper" */;
+			buildPhases = (
+				FBF25DEDE67A777C265FCA57 /* [CP] Check Pods Manifest.lock */,
+				BE524E00245EFF3C003F3E80 /* Sources */,
+				BE524E01245EFF3C003F3E80 /* Frameworks */,
+				BE524E02245EFF3C003F3E80 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProxyConfHelper;
+			productName = ProxyConfHelper;
+			productReference = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,9 +310,13 @@
 				TargetAttributes = {
 					BE4649FE243C29CE00BE8336 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 					BE464A30243C4CB100BE8336 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					BE524E03245EFF3C003F3E80 = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -231,6 +335,7 @@
 			targets = (
 				BE4649FE243C29CE00BE8336 /* Trojan */,
 				BE464A30243C4CB100BE8336 /* StartAtLoginLauncher */,
+				BE524E03245EFF3C003F3E80 /* ProxyConfHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -240,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */,
 				BE464A11243C29DA00BE8336 /* trojan in Resources */,
 				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
 				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
@@ -260,12 +366,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5DC3A9507B8799C06F4EA4B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StartAtLoginLauncher-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EA2092E5692357C5BF73C8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trojan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF7283FE56C93B4CD1F4F80E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trojan/Pods-Trojan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trojan/Pods-Trojan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trojan/Pods-Trojan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBF25DEDE67A777C265FCA57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProxyConfHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BE4649FB243C29CE00BE8336 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */,
+				BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */,
 				BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */,
 				BE464A19243C2A9C00BE8336 /* Trojan.swift in Sources */,
 				BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */,
@@ -286,6 +479,14 @@
 			files = (
 				BE464A36243C4CB100BE8336 /* ViewController.swift in Sources */,
 				BE464A34243C4CB100BE8336 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE524E00245EFF3C003F3E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE524E07245EFF3C003F3E80 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,8 +627,10 @@
 		};
 		BE464A0E243C29CE00BE8336 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D8AA9966E1D35373DF930DB /* Pods-Trojan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Trojan/Trojan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -440,14 +643,18 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Trojan/Trojan-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		BE464A0F243C29CE00BE8336 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AC85AC4F6A665FFBF5E32F6 /* Pods-Trojan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Trojan/Trojan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -460,12 +667,14 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Trojan/Trojan-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		BE464A3F243C4CB100BE8336 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
@@ -486,6 +695,7 @@
 		};
 		BE464A40243C4CB100BE8336 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
@@ -501,6 +711,24 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BE524E08245EFF3C003F3E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BE524E09245EFF3C003F3E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67B6D44C12B2FDD442F3F62D /* Pods-ProxyConfHelper.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -530,6 +758,15 @@
 			buildConfigurations = (
 				BE464A3F243C4CB100BE8336 /* Debug */,
 				BE464A40243C4CB100BE8336 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE524E0A245EFF3C003F3E80 /* Build configuration list for PBXNativeTarget "ProxyConfHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE524E08245EFF3C003F3E80 /* Debug */,
+				BE524E09245EFF3C003F3E80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

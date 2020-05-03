@@ -2,7 +2,7 @@
 //  EditableNSTextView.swift
 //  Trojan
 //
-//  Created by YouShaoduo on 2020/4/7.
+//  Created by ParadiseDuo on 2020/4/7.
 //  Copyright © 2020 ParadiseDuo. All rights reserved.
 //
 

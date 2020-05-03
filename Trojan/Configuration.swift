@@ -13,7 +13,7 @@ let TROJAN_START = Notification.Name("TROJAN_START")
 let TROJAN_STOP = Notification.Name("TROJAN_STOP")
 let USERDEFAULTS_TROJAN_ON = "TROJAN_ON"
 let USERDEFAULTS_PROFILE = "Profile"
-let CONFIG_PATH = NSHomeDirectory()+"/Documents/trojan_client.json"
+let CONFIG_PATH = NSHomeDirectory()+"/Documents/Trojan/trojan_client.json"
 
 // Version Checker Helper
 let _VERSION_XML_URL = "https://raw.githubusercontent.com/paradiseduo/Trojan/master/Trojan/Info.plist"
