@@ -22,6 +22,7 @@ class StatusMenuManager: NSObject {
     var toastW: ToastWindowController!
     
     override func awakeFromNib() {
+        updateApplicationConfig()
         Profiles.shared.load()
         Profile.shared.loadProfile()
         updateMainMenu()
@@ -39,6 +40,33 @@ class StatusMenuManager: NSObject {
                 self.updateMainMenu()
             }
         }
+    }
+    
+    private func updateApplicationConfig() {
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: [
+            USERDEFAULTS_RUNNING_MODE: "auto",
+            USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT: NSNumber(value: 10800 as UInt16),
+            USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS: "127.0.0.1",
+            USERDEFAULTS_PAC_SERVER_LISTEN_ADDRESS: "127.0.0.1",
+            USERDEFAULTS_PAC_SERVER_LISTEN_PORT:NSNumber(value: 8090 as UInt16),
+            USERDEFAULTS_GFW_LIST_URL: "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
+            USERDEFAULTS_ACL_WHITE_LIST_URL: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/banAD.acl",
+            USERDEFAULTS_ACL_AUTO_LIST_URL: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/gfwlist-banAD.acl",
+            USERDEFAULTS_ACL_PROXY_BACK_CHN_URL:"https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/backcn-banAD.acl",
+            USERDEFAULTS_AUTO_CONFIGURE_NETWORK_SERVICES: NSNumber(value: true as Bool),
+            USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS: "127.0.0.1",
+            USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT: NSNumber(value: 1087 as UInt16),
+            USERDEFAULTS_LOCAL_HTTP_ON: true,
+            USERDEFAULTS_LOCAL_HTTP_FOLLOW_GLOBAL: true,
+            USERDEFAULTS_ACL_FILE_NAME: "chn.acl"
+        ])
+        
+        let fileMgr = FileManager.default
+        if fileMgr.fileExists(atPath: CONFIG_PATH_OLD) {
+            try! fileMgr.moveItem(atPath: CONFIG_PATH_OLD, toPath: CONFIG_PATH)
+        }
+        SyncPac()
     }
     
     func updateMainMenu() {
@@ -163,6 +191,61 @@ class StatusMenuManager: NSObject {
         NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
 
         self.makeToast("Export Command Copied.")
+    }
+    
+    @IBAction func pacMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("auto", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+    
+    @IBAction func WhiteListMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("chn.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+    
+    @IBAction func globalMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("global", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+    
+    @IBAction func manualMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("manual", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+    
+    func applyConfig() {
+        let defaults = UserDefaults.standard
+        let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
+        let mode = defaults.string(forKey: USERDEFAULTS_RUNNING_MODE)
+        
+        if isOn {
+            if mode == "auto" {
+                ProxyConfHelper.disableProxy("hi")
+                ProxyConfHelper.enablePACProxy("hi")
+            } else if mode == "global" {
+                ProxyConfHelper.disableProxy("hi")
+                ProxyConfHelper.enableGlobalProxy()
+            } else if mode == "manual" {
+                ProxyConfHelper.disableProxy("hi")
+            } else if mode == "whiteList" {
+                ProxyConfHelper.disableProxy("hi")
+                ProxyConfHelper.enableWhiteListProxy()//新白名单基于GlobalMode
+            }
+        } else {
+            Trojan.shared.stop()
+        }
     }
     
     func makeToast(_ message: String) {

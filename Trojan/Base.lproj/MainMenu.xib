@@ -33,6 +33,31 @@
                         <action selector="powerSwitch:" target="Voe-Tx-rLC" id="dno-zg-HD9"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="Pei-ry-g4V"/>
+                <menuItem title="Auto Mode Base On PAC" id="gh3-ld-apY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="pacMode:" target="Voe-Tx-rLC" id="p0P-Ad-iII"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="White List Mode" id="czN-6H-Giu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="WhiteListMode:" target="Voe-Tx-rLC" id="HaZ-qW-ZfZ"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Global Mode" id="fvC-5Z-4w5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="globalMode:" target="Voe-Tx-rLC" id="lR2-Pc-i0C"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Manual Mode" id="REy-hH-h4P">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="manualMode:" target="Voe-Tx-rLC" id="vhp-nc-akk"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
                 <menuItem title="Trojan Setting" id="nGS-Ow-TSH">
                     <modifierMask key="keyEquivalentModifierMask"/>

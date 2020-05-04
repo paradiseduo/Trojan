@@ -14,6 +14,7 @@ let TROJAN_STOP = Notification.Name("TROJAN_STOP")
 let USERDEFAULTS_TROJAN_ON = "TROJAN_ON"
 let USERDEFAULTS_PROFILE = "Profile"
 let CONFIG_PATH = NSHomeDirectory()+"/Documents/Trojan/trojan_client.json"
+let CONFIG_PATH_OLD = NSHomeDirectory()+"/Documents/trojan_client.json"
 
 // Version Checker Helper
 let _VERSION_XML_URL = "https://raw.githubusercontent.com/paradiseduo/Trojan/master/Trojan/Info.plist"
@@ -24,9 +25,17 @@ let LOG_PATH = "/usr/local/var/log/trojan"
 let LOG_CLEAN_FINISH = Notification.Name("LOG_CLEAN_FINISH")
 
 // Launcher Helper
-let USERDEFAULTS_LAUNCH_AT_LOGIN = "USERDEFAULTS_LAUNCH_AT_LOGIN"
 let KILL_LAUNCHER = Notification.Name("MacOS_Trojan_KILL_LAUNCHER")
 let LAUNCHER_APPID = "MacOS.Trojan.StartAtLoginLauncher"
 
 let ISSUES_URL = "https://github.com/paradiseduo/Trojan/issues"
 let RELEASE_URL = "https://github.com/paradiseduo/Trojan/releases"
+
+let PACRulesDirPath = NSHomeDirectory() + "/Documents/Trojan/"
+let PACUserRuleFilePath = PACRulesDirPath + "user-rule.txt"
+let PACFilePath = PACRulesDirPath + "gfwlist.js"
+let GFWListFilePath = PACRulesDirPath + "gfwlist.txt"
+
+let ACLWhiteListFilePath = PACRulesDirPath + "chn.acl"
+let ACLBackCHNFilePath = PACRulesDirPath + "backchn.acl"
+let ACLGFWListFilePath = PACRulesDirPath + "gfwlist.acl"

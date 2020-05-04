@@ -35,6 +35,15 @@
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
 		BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */ = {isa = PBXBuildFile; fileRef = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */; };
+		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
+		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
+		BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A04245FC8C600891EAC /* whitelist.pac */; };
+		BEC48A0D245FC8C600891EAC /* chn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A05245FC8C600891EAC /* chn.acl */; };
+		BEC48A0E245FC8C600891EAC /* gfwlist.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A06245FC8C600891EAC /* gfwlist.txt */; };
+		BEC48A0F245FC8C600891EAC /* whiteiplist.pac in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A07245FC8C600891EAC /* whiteiplist.pac */; };
+		BEC48A10245FC8C600891EAC /* abp.js in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A08245FC8C600891EAC /* abp.js */; };
+		BEC48A11245FC8C600891EAC /* user-rule.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A09245FC8C600891EAC /* user-rule.txt */; };
+		BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A0A245FC8C600891EAC /* gfwlist.acl */; };
 		BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +107,16 @@
 		BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyConfHelper.m; sourceTree = "<group>"; };
 		BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyConfHelper.h; sourceTree = "<group>"; };
 		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		BEC48A00245FC79000891EAC /* PAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAC.swift; sourceTree = "<group>"; };
+		BEC48A03245FC8C500891EAC /* backchn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backchn.acl; sourceTree = "<group>"; };
+		BEC48A04245FC8C600891EAC /* whitelist.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whitelist.pac; sourceTree = "<group>"; };
+		BEC48A05245FC8C600891EAC /* chn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chn.acl; sourceTree = "<group>"; };
+		BEC48A06245FC8C600891EAC /* gfwlist.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gfwlist.txt; sourceTree = "<group>"; };
+		BEC48A07245FC8C600891EAC /* whiteiplist.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whiteiplist.pac; sourceTree = "<group>"; };
+		BEC48A08245FC8C600891EAC /* abp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = abp.js; sourceTree = "<group>"; };
+		BEC48A09245FC8C600891EAC /* user-rule.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "user-rule.txt"; sourceTree = "<group>"; };
+		BEC48A0A245FC8C600891EAC /* gfwlist.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gfwlist.acl; sourceTree = "<group>"; };
+		BEC48A13245FCBA800891EAC /* DefaultsConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultsConfig.h; sourceTree = "<group>"; };
 		BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextView.swift; sourceTree = "<group>"; };
 		CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StartAtLoginLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.release.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,8 +210,11 @@
 				BE464A1A243C2AA100BE8336 /* CommandLine.swift */,
 				BE464A1C243C2AA500BE8336 /* Configuration.swift */,
 				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
+				BEC48A00245FC79000891EAC /* PAC.swift */,
+				BEC48A13245FCBA800891EAC /* DefaultsConfig.h */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
+				BEC48A02245FC8A200891EAC /* File */,
 				BE464A20243C2AAF00BE8336 /* WIndows */,
 				BE464A04243C29CE00BE8336 /* Assets.xcassets */,
 				BE464A06243C29CE00BE8336 /* MainMenu.xib */,
@@ -237,6 +259,21 @@
 				BE524E0F245F0142003F3E80 /* version.h */,
 			);
 			path = ProxyConfHelper;
+			sourceTree = "<group>";
+		};
+		BEC48A02245FC8A200891EAC /* File */ = {
+			isa = PBXGroup;
+			children = (
+				BEC48A09245FC8C600891EAC /* user-rule.txt */,
+				BEC48A05245FC8C600891EAC /* chn.acl */,
+				BEC48A03245FC8C500891EAC /* backchn.acl */,
+				BEC48A04245FC8C600891EAC /* whitelist.pac */,
+				BEC48A07245FC8C600891EAC /* whiteiplist.pac */,
+				BEC48A0A245FC8C600891EAC /* gfwlist.acl */,
+				BEC48A06245FC8C600891EAC /* gfwlist.txt */,
+				BEC48A08245FC8C600891EAC /* abp.js */,
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,11 +382,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC48A10245FC8C600891EAC /* abp.js in Resources */,
 				BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */,
 				BE464A11243C29DA00BE8336 /* trojan in Resources */,
+				BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */,
+				BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */,
 				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
+				BEC48A0D245FC8C600891EAC /* chn.acl in Resources */,
+				BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */,
 				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
+				BEC48A0F245FC8C600891EAC /* whiteiplist.pac in Resources */,
 				BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */,
+				BEC48A0E245FC8C600891EAC /* gfwlist.txt in Resources */,
+				BEC48A11245FC8C600891EAC /* user-rule.txt in Resources */,
 				BE464A28243C2ABC00BE8336 /* LogWindowController.xib in Resources */,
 				BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */,
 			);
@@ -469,6 +514,7 @@
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
 				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
+				BEC48A01245FC79000891EAC /* PAC.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
