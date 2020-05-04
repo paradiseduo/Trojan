@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39900A524BE139E9D8616552 /* libPods-ProxyConfHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130D936E0F21D05BF85D0A1 /* libPods-ProxyConfHelper.a */; };
 		5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */; };
-		5F9198AEFF523A283F4AF86B /* Pods_ProxyConfHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */; };
 		83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */; };
 		BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A02243C29CE00BE8336 /* AppDelegate.swift */; };
 		BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A04243C29CE00BE8336 /* Assets.xcassets */; };
@@ -70,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1130D936E0F21D05BF85D0A1 /* libPods-ProxyConfHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProxyConfHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC85AC4F6A665FFBF5E32F6 /* Pods-Trojan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trojan.release.xcconfig"; path = "Target Support Files/Pods-Trojan/Pods-Trojan.release.xcconfig"; sourceTree = "<group>"; };
 		2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trojan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8AA9966E1D35373DF930DB /* Pods-Trojan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trojan.debug.xcconfig"; path = "Target Support Files/Pods-Trojan/Pods-Trojan.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextView.swift; sourceTree = "<group>"; };
 		CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StartAtLoginLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.release.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.release.xcconfig"; sourceTree = "<group>"; };
-		EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProxyConfHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProxyConfHelper.debug.xcconfig"; path = "Target Support Files/Pods-ProxyConfHelper/Pods-ProxyConfHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.debug.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,7 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F9198AEFF523A283F4AF86B /* Pods_ProxyConfHelper.framework in Frameworks */,
+				39900A524BE139E9D8616552 /* libPods-ProxyConfHelper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,9 +156,9 @@
 		22116DD016CA1C073684B4DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EA0864E27AF4A4C8C99C9772 /* Pods_ProxyConfHelper.framework */,
 				CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */,
 				2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */,
+				1130D936E0F21D05BF85D0A1 /* libPods-ProxyConfHelper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -765,6 +765,7 @@
 			baseConfigurationReference = EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -774,6 +775,7 @@
 			baseConfigurationReference = 67B6D44C12B2FDD442F3F62D /* Pods-ProxyConfHelper.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

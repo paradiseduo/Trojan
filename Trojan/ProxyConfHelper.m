@@ -8,7 +8,7 @@
 
 #import "ProxyConfHelper.h"
 #import "DefaultsConfig.h"
-#define kShadowsocksHelper [[NSBundle mainBundle] pathForResource:@"ProxyConfHelper" ofType:nil]
+#define kTrojanHelper [[NSBundle mainBundle] pathForResource:@"ProxyConfHelper" ofType:nil]
 
 @implementation ProxyConfHelper
 
@@ -17,10 +17,10 @@ GCDWebServer *webServer = nil;
 + (void)callHelper:(NSArray*) arguments {
     NSTask *task;
     task = [[NSTask alloc] init];
-    [task setLaunchPath:kShadowsocksHelper];
+    [task setLaunchPath:kTrojanHelper];
     
     // this log is very important
-    NSLog(@"run shadowsocks helper: %@", kShadowsocksHelper);
+    NSLog(@"run Trojan helper: %@", kTrojanHelper);
     [task setArguments:arguments];
 
     NSPipe *stdoutpipe;

@@ -14,11 +14,18 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="StatusMenuManager" customModule="Trojan" customModuleProvider="target">
             <connections>
+                <outlet property="aclAutoItem" destination="NEA-Fa-rON" id="znc-Er-JoQ"/>
+                <outlet property="aclModeItem" destination="b2z-2C-t82" id="43m-jx-cIg"/>
+                <outlet property="backChinaItem" destination="x6U-Ur-hKu" id="dLv-0t-UVH"/>
                 <outlet property="copyCommandItem" destination="Bea-Hp-fhg" id="M1T-eU-z8Q"/>
+                <outlet property="globalItem" destination="fvC-5Z-4w5" id="bI6-44-rQq"/>
                 <outlet property="launchItem" destination="z8y-i0-4vF" id="VP9-lB-IEa"/>
+                <outlet property="manualItem" destination="REy-hH-h4P" id="W1g-kW-nEy"/>
+                <outlet property="pacItem" destination="gh3-ld-apY" id="urJ-A1-Exy"/>
                 <outlet property="statusMenu" destination="zOa-kh-Dxd" id="bl4-yd-acl"/>
                 <outlet property="switchLabel" destination="VPI-fv-1dZ" id="g05-Oh-nWv"/>
                 <outlet property="toggleRunning" destination="SL2-0h-OFw" id="xvB-nv-B6M"/>
+                <outlet property="whiteListItem" destination="czN-6H-Giu" id="HLh-dO-QfK"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -57,6 +64,25 @@
                     <connections>
                         <action selector="manualMode:" target="Voe-Tx-rLC" id="vhp-nc-akk"/>
                     </connections>
+                </menuItem>
+                <menuItem title="ACL Mode" id="b2z-2C-t82">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" id="cxH-YN-kkP">
+                        <items>
+                            <menuItem title="ACL Auto" id="NEA-Fa-rON">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="aclAutoMode:" target="Voe-Tx-rLC" id="xmY-Dq-1sW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Proxy Back China" id="x6U-Ur-hKu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="backChinaMode:" target="Voe-Tx-rLC" id="57F-8X-7wQ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
                 <menuItem title="Trojan Setting" id="nGS-Ow-TSH">

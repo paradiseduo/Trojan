@@ -2,7 +2,7 @@
 //  PAC.swift
 //  Trojan
 //
-//  Created by YouShaoduo on 2020/5/4.
+//  Created by ParadiseDuo on 2020/5/4.
 //  Copyright © 2020 ParadiseDuo. All rights reserved.
 //
 

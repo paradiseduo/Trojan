@@ -31,5 +31,7 @@ class Trojan {
             t.terminate()
         }
         self.task = nil
+        ProxyConfHelper.stopPACServer()
+        ProxyConfHelper.disableProxy("hi")
     }
 }

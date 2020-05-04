@@ -17,6 +17,14 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var launchItem: NSMenuItem!
     @IBOutlet weak var copyCommandItem: NSMenuItem!
     
+    @IBOutlet weak var pacItem: NSMenuItem!
+    @IBOutlet weak var whiteListItem: NSMenuItem!
+    @IBOutlet weak var globalItem: NSMenuItem!
+    @IBOutlet weak var manualItem: NSMenuItem!
+    @IBOutlet weak var aclAutoItem: NSMenuItem!
+    @IBOutlet weak var backChinaItem: NSMenuItem!
+    @IBOutlet weak var aclModeItem: NSMenuItem!
+    
     var settingW: SettingWindowController!
     var logW: LogWindowController!
     var toastW: ToastWindowController!
@@ -67,6 +75,7 @@ class StatusMenuManager: NSObject {
             try! fileMgr.moveItem(atPath: CONFIG_PATH_OLD, toPath: CONFIG_PATH)
         }
         SyncPac()
+        applyConfig()
     }
     
     func updateMainMenu() {
@@ -225,6 +234,22 @@ class StatusMenuManager: NSObject {
         self.applyConfig()
     }
     
+    @IBAction func aclAutoMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("gfwlist.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+    
+    @IBAction func backChinaMode(_ sender: NSMenuItem) {
+        let defaults = UserDefaults.standard
+        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
+        defaults.setValue("backchn.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
+        defaults.synchronize()
+        self.applyConfig()
+    }
+
     func applyConfig() {
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
@@ -245,6 +270,41 @@ class StatusMenuManager: NSObject {
             }
         } else {
             Trojan.shared.stop()
+        }
+        updateRunningModeMenu()
+    }
+    
+    func updateRunningModeMenu() {
+        let defaults = UserDefaults.standard
+        let mode = defaults.string(forKey: USERDEFAULTS_RUNNING_MODE)
+
+        pacItem.state = NSControl.StateValue(rawValue: 0)
+        globalItem.state = NSControl.StateValue(rawValue: 0)
+        manualItem.state = NSControl.StateValue(rawValue: 0)
+        whiteListItem.state = NSControl.StateValue(rawValue: 0)
+        backChinaItem.state = NSControl.StateValue(rawValue: 0)
+        aclAutoItem.state = NSControl.StateValue(rawValue: 0)
+        aclModeItem.state = NSControl.StateValue(rawValue: 0)
+        if mode == "auto" {
+            pacItem.state = NSControl.StateValue(rawValue: 1)
+        } else if mode == "global" {
+            globalItem.state = NSControl.StateValue(rawValue: 1)
+        } else if mode == "manual" {
+            manualItem.state = NSControl.StateValue(rawValue: 1)
+        } else if mode == "whiteList" {
+            let aclMode = defaults.string(forKey: USERDEFAULTS_ACL_FILE_NAME)!
+            switch aclMode {
+            case "backchn.acl":
+                aclModeItem.state = NSControl.StateValue(rawValue: 1)
+                backChinaItem.state = NSControl.StateValue(rawValue: 1)
+                break
+            case "gfwlist.acl":
+                aclModeItem.state = NSControl.StateValue(rawValue: 1)
+                aclAutoItem.state = NSControl.StateValue(rawValue: 1)
+                break
+            default:
+                whiteListItem.state = NSControl.StateValue(rawValue: 1)
+            }
         }
     }
     
