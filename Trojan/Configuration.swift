@@ -39,3 +39,10 @@ let GFWListFilePath = PACRulesDirPath + "gfwlist.txt"
 let ACLWhiteListFilePath = PACRulesDirPath + "chn.acl"
 let ACLBackCHNFilePath = PACRulesDirPath + "backchn.acl"
 let ACLGFWListFilePath = PACRulesDirPath + "gfwlist.acl"
+
+let PRIVOXY_VERSION = "3.0.28.static"
+let APP_SUPPORT_DIR = "/Library/Application Support/Trojan/"
+let LAUNCH_AGENT_DIR = "/Library/LaunchAgents/"
+let LAUNCH_AGENT_CONF_PRIVOXY_NAME = "MacOS.Trojan.http.plist"
+
+let NOTIFY_HTTP_CONF_CHANGED = Notification.Name(rawValue: "NOTIFY_HTTP_CONF_CHANGED")

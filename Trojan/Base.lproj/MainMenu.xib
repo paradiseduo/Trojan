@@ -85,10 +85,16 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
-                <menuItem title="Trojan Setting" id="nGS-Ow-TSH">
+                <menuItem title="⚙ Trojan Setting" id="nGS-Ow-TSH">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="setting:" target="Voe-Tx-rLC" id="PZ0-Ha-wO6"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="⚙ HTTP Proxy Settings" id="RP0-CT-P2y">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="httpSetting:" target="Voe-Tx-rLC" id="4No-cC-I46"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Socks5 Proxy Export Line To Pasteboard" id="Bea-Hp-fhg">
@@ -102,7 +108,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Log Setting" id="jrR-c8-bft">
                         <items>
-                            <menuItem title="View Logs" id="Vly-3T-mmX">
+                            <menuItem title="⚙ View Logs" id="Vly-3T-mmX">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showLog:" target="Voe-Tx-rLC" id="Xvg-zm-wrV"/>

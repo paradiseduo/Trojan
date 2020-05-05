@@ -31,10 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static func getLauncherStatus() -> Bool {
         let jobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
         let autoLaunchRegistered = jobs?.contains(where: { $0["Label"] as! String == LAUNCHER_APPID }) ?? false
-        
-        UserDefaults.standard.set(autoLaunchRegistered, forKey: USERDEFAULTS_LAUNCH_AT_LOGIN)
-        UserDefaults.standard.synchronize()
-        
         return autoLaunchRegistered
     }
     

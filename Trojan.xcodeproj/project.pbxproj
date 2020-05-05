@@ -10,6 +10,19 @@
 		39900A524BE139E9D8616552 /* libPods-ProxyConfHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130D936E0F21D05BF85D0A1 /* libPods-ProxyConfHelper.a */; };
 		5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */; };
 		83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */; };
+		BE11D0A224611D9100075E25 /* install_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0A124611D9100075E25 /* install_helper.sh */; };
+		BE11D0A52461204C00075E25 /* ProxyConfHelper in Resources */ = {isa = PBXBuildFile; fileRef = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */; };
+		BE11D0B12461232E00075E25 /* LaunchAgentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */; };
+		BE11D0B32461243600075E25 /* install_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0B22461243600075E25 /* install_privoxy.sh */; };
+		BE11D0B52461246A00075E25 /* privoxy in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0B42461246A00075E25 /* privoxy */; };
+		BE11D0B92461248700075E25 /* reload_conf_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0B82461248700075E25 /* reload_conf_privoxy.sh */; };
+		BE11D0BB246124A700075E25 /* start_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0BA246124A700075E25 /* start_privoxy.sh */; };
+		BE11D0BD246124BA00075E25 /* stop_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0BC246124BA00075E25 /* stop_privoxy.sh */; };
+		BE11D0BF246124D600075E25 /* remove_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0BE246124D600075E25 /* remove_privoxy.sh */; };
+		BE11D0C12461256100075E25 /* privoxy.config.example in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0C02461256100075E25 /* privoxy.config.example */; };
+		BE11D0C22461289400075E25 /* libpcre.1.dylib in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0B62461247100075E25 /* libpcre.1.dylib */; };
+		BE11D0C524612F6D00075E25 /* HTTPPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */; };
+		BE11D0C624612F6D00075E25 /* HTTPPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */; };
 		BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A02243C29CE00BE8336 /* AppDelegate.swift */; };
 		BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A04243C29CE00BE8336 /* Assets.xcassets */; };
 		BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A06243C29CE00BE8336 /* MainMenu.xib */; };
@@ -34,7 +47,6 @@
 		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
-		BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */ = {isa = PBXBuildFile; fileRef = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */; };
 		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
 		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
 		BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A04245FC8C600891EAC /* whitelist.pac */; };
@@ -46,6 +58,16 @@
 		BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A0A245FC8C600891EAC /* gfwlist.acl */; };
 		BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE11D0A32461204300075E25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE4649F7243C29CE00BE8336 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE524E03245EFF3C003F3E80;
+			remoteInfo = ProxyConfHelper;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BE464A41243C4D0700BE8336 /* CopyFiles */ = {
@@ -75,6 +97,18 @@
 		2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trojan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8AA9966E1D35373DF930DB /* Pods-Trojan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trojan.debug.xcconfig"; path = "Target Support Files/Pods-Trojan/Pods-Trojan.debug.xcconfig"; sourceTree = "<group>"; };
 		67B6D44C12B2FDD442F3F62D /* Pods-ProxyConfHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProxyConfHelper.release.xcconfig"; path = "Target Support Files/Pods-ProxyConfHelper/Pods-ProxyConfHelper.release.xcconfig"; sourceTree = "<group>"; };
+		BE11D0A124611D9100075E25 /* install_helper.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_helper.sh; sourceTree = "<group>"; };
+		BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAgentHelper.swift; sourceTree = "<group>"; };
+		BE11D0B22461243600075E25 /* install_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_privoxy.sh; sourceTree = "<group>"; };
+		BE11D0B42461246A00075E25 /* privoxy */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = privoxy; sourceTree = "<group>"; };
+		BE11D0B62461247100075E25 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcre.1.dylib; sourceTree = "<group>"; };
+		BE11D0B82461248700075E25 /* reload_conf_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = reload_conf_privoxy.sh; sourceTree = "<group>"; };
+		BE11D0BA246124A700075E25 /* start_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start_privoxy.sh; sourceTree = "<group>"; };
+		BE11D0BC246124BA00075E25 /* stop_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stop_privoxy.sh; sourceTree = "<group>"; };
+		BE11D0BE246124D600075E25 /* remove_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = remove_privoxy.sh; sourceTree = "<group>"; };
+		BE11D0C02461256100075E25 /* privoxy.config.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privoxy.config.example; sourceTree = "<group>"; };
+		BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPreferencesWindowController.swift; sourceTree = "<group>"; };
+		BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTTPPreferencesWindowController.xib; sourceTree = "<group>"; };
 		BE4649FF243C29CE00BE8336 /* Trojan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trojan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE464A02243C29CE00BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE464A04243C29CE00BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +210,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BE11D0A024611D6F00075E25 /* InstallHelper */ = {
+			isa = PBXGroup;
+			children = (
+				BE464A10243C29DA00BE8336 /* trojan */,
+				BE11D0B42461246A00075E25 /* privoxy */,
+				BE11D0B62461247100075E25 /* libpcre.1.dylib */,
+				BE11D0A124611D9100075E25 /* install_helper.sh */,
+				BE11D0B22461243600075E25 /* install_privoxy.sh */,
+				BE11D0B82461248700075E25 /* reload_conf_privoxy.sh */,
+				BE11D0BA246124A700075E25 /* start_privoxy.sh */,
+				BE11D0BC246124BA00075E25 /* stop_privoxy.sh */,
+				BE11D0BE246124D600075E25 /* remove_privoxy.sh */,
+				BE11D0C02461256100075E25 /* privoxy.config.example */,
+			);
+			path = InstallHelper;
+			sourceTree = "<group>";
+		};
 		BE4649F6243C29CE00BE8336 = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +252,6 @@
 		BE464A01243C29CE00BE8336 /* Trojan */ = {
 			isa = PBXGroup;
 			children = (
-				BE464A10243C29DA00BE8336 /* trojan */,
 				BE464A02243C29CE00BE8336 /* AppDelegate.swift */,
 				BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */,
 				BE464A14243C2A8300BE8336 /* Profile.swift */,
@@ -211,9 +261,11 @@
 				BE464A1C243C2AA500BE8336 /* Configuration.swift */,
 				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
 				BEC48A00245FC79000891EAC /* PAC.swift */,
+				BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */,
 				BEC48A13245FCBA800891EAC /* DefaultsConfig.h */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
+				BE11D0A024611D6F00075E25 /* InstallHelper */,
 				BEC48A02245FC8A200891EAC /* File */,
 				BE464A20243C2AAF00BE8336 /* WIndows */,
 				BE464A04243C29CE00BE8336 /* Assets.xcassets */,
@@ -235,6 +287,8 @@
 				BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */,
 				BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */,
 				BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */,
+				BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */,
+				BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */,
 			);
 			path = WIndows;
 			sourceTree = "<group>";
@@ -293,6 +347,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BE11D0A42461204300075E25 /* PBXTargetDependency */,
 			);
 			name = Trojan;
 			productName = Trojan;
@@ -382,17 +437,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE11D0C22461289400075E25 /* libpcre.1.dylib in Resources */,
+				BE11D0B92461248700075E25 /* reload_conf_privoxy.sh in Resources */,
+				BE11D0A52461204C00075E25 /* ProxyConfHelper in Resources */,
 				BEC48A10245FC8C600891EAC /* abp.js in Resources */,
-				BE524E14245F028E003F3E80 /* ProxyConfHelper in Resources */,
 				BE464A11243C29DA00BE8336 /* trojan in Resources */,
+				BE11D0BF246124D600075E25 /* remove_privoxy.sh in Resources */,
 				BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */,
 				BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */,
+				BE11D0C624612F6D00075E25 /* HTTPPreferencesWindowController.xib in Resources */,
 				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
 				BEC48A0D245FC8C600891EAC /* chn.acl in Resources */,
 				BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */,
+				BE11D0A224611D9100075E25 /* install_helper.sh in Resources */,
+				BE11D0C12461256100075E25 /* privoxy.config.example in Resources */,
 				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
 				BEC48A0F245FC8C600891EAC /* whiteiplist.pac in Resources */,
+				BE11D0B32461243600075E25 /* install_privoxy.sh in Resources */,
+				BE11D0B52461246A00075E25 /* privoxy in Resources */,
 				BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */,
+				BE11D0BD246124BA00075E25 /* stop_privoxy.sh in Resources */,
+				BE11D0BB246124A700075E25 /* start_privoxy.sh in Resources */,
 				BEC48A0E245FC8C600891EAC /* gfwlist.txt in Resources */,
 				BEC48A11245FC8C600891EAC /* user-rule.txt in Resources */,
 				BE464A28243C2ABC00BE8336 /* LogWindowController.xib in Resources */,
@@ -512,9 +577,11 @@
 				BE464A15243C2A8300BE8336 /* Profile.swift in Sources */,
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
+				BE11D0B12461232E00075E25 /* LaunchAgentHelper.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
 				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
 				BEC48A01245FC79000891EAC /* PAC.swift in Sources */,
+				BE11D0C524612F6D00075E25 /* HTTPPreferencesWindowController.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +604,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE11D0A42461204300075E25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE524E03245EFF3C003F3E80 /* ProxyConfHelper */;
+			targetProxy = BE11D0A32461204300075E25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BE464A06243C29CE00BE8336 /* MainMenu.xib */ = {
@@ -685,6 +760,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Trojan/InstallHelper",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan;
@@ -708,6 +787,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Trojan/InstallHelper",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.1;

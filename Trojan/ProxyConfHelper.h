@@ -12,6 +12,10 @@
 
 @interface ProxyConfHelper : NSObject
 
++ (BOOL)isVersionOk;
+
++ (void)install;
+
 + (void)enablePACProxy:(NSString*) PACFilePath;
 
 + (void)enableGlobalProxy;

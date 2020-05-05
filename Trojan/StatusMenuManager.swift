@@ -28,12 +28,11 @@ class StatusMenuManager: NSObject {
     var settingW: SettingWindowController!
     var logW: LogWindowController!
     var toastW: ToastWindowController!
+    var httpW: HTTPPreferencesWindowController!
     
     override func awakeFromNib() {
         updateApplicationConfig()
-        Profiles.shared.load()
-        Profile.shared.loadProfile()
-        updateMainMenu()
+        
         NotificationCenter.default.addObserver(forName: TROJAN_START, object: nil, queue: OperationQueue.main) { (noti) in
             if !UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
                 UserDefaults.standard.set(true, forKey: USERDEFAULTS_TROJAN_ON)
@@ -48,14 +47,21 @@ class StatusMenuManager: NSObject {
                 self.updateMainMenu()
             }
         }
+        NotificationCenter.default.addObserver(forName: NOTIFY_HTTP_CONF_CHANGED, object: nil, queue: OperationQueue.main) { (noti) in
+            SyncPrivoxy {
+                self.applyConfig()
+            }
+        }
     }
     
     private func updateApplicationConfig() {
         let defaults = UserDefaults.standard
         defaults.register(defaults: [
             USERDEFAULTS_RUNNING_MODE: "auto",
-            USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT: NSNumber(value: 10800 as UInt16),
             USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS: "127.0.0.1",
+            USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT: NSNumber(value: 10800 as UInt16),
+            USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS: "127.0.0.1",
+            USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT: NSNumber(value: 10801 as UInt16),
             USERDEFAULTS_PAC_SERVER_LISTEN_ADDRESS: "127.0.0.1",
             USERDEFAULTS_PAC_SERVER_LISTEN_PORT:NSNumber(value: 8090 as UInt16),
             USERDEFAULTS_GFW_LIST_URL: "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
@@ -63,8 +69,6 @@ class StatusMenuManager: NSObject {
             USERDEFAULTS_ACL_AUTO_LIST_URL: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/gfwlist-banAD.acl",
             USERDEFAULTS_ACL_PROXY_BACK_CHN_URL:"https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/backcn-banAD.acl",
             USERDEFAULTS_AUTO_CONFIGURE_NETWORK_SERVICES: NSNumber(value: true as Bool),
-            USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS: "127.0.0.1",
-            USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT: NSNumber(value: 1087 as UInt16),
             USERDEFAULTS_LOCAL_HTTP_ON: true,
             USERDEFAULTS_LOCAL_HTTP_FOLLOW_GLOBAL: true,
             USERDEFAULTS_ACL_FILE_NAME: "chn.acl"
@@ -74,8 +78,17 @@ class StatusMenuManager: NSObject {
         if fileMgr.fileExists(atPath: CONFIG_PATH_OLD) {
             try! fileMgr.moveItem(atPath: CONFIG_PATH_OLD, toPath: CONFIG_PATH)
         }
-        SyncPac()
-        applyConfig()
+        InstallPrivoxy { (suc) in
+            SyncPrivoxy {
+                ProxyConfHelper.install()
+                SyncPac()
+                
+                Profiles.shared.load()
+                Profile.shared.loadProfile()
+                self.updateMainMenu()
+                self.applyConfig()
+            }
+        }
     }
     
     func updateMainMenu() {
@@ -117,13 +130,22 @@ class StatusMenuManager: NSObject {
             self.makeToast("Trojan ON")
         }
         defaults.synchronize()
+        applyConfig()
         updateMainMenu()
     }
     
     @IBAction func quit(_ sender: NSMenuItem) {
-        Trojan.shared.stop()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-            NSApplication.shared.terminate(self)
+        StopPrivoxy { (s) in
+            Trojan.shared.stop()
+            ProxyConfHelper.stopPACServer()
+            ProxyConfHelper.disableProxy("hi")
+            if AppDelegate.getLauncherStatus() == false {
+                RemovePrivoxy { (ss) in
+                    NSApplication.shared.terminate(self)
+                }
+            } else {
+                NSApplication.shared.terminate(self)
+            }
         }
     }
     
@@ -160,6 +182,18 @@ class StatusMenuManager: NSObject {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func httpSetting(_ sender: NSMenuItem) {
+        if self.httpW != nil {
+            self.httpW.close()
+        }
+        let c = HTTPPreferencesWindowController(windowNibName: "HTTPPreferencesWindowController")
+        self.httpW = c
+        c.showWindow(self)
+        c.window?.center()
+        c.window?.makeKeyAndOrderFront(self)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
     @IBAction func checkUpdate(_ sender: NSMenuItem) {
         let versionChecker = VersionChecker()
         DispatchQueue.global().async {
@@ -174,7 +208,7 @@ class StatusMenuManager: NSObject {
     }
     
     @IBAction func launchAtLogin(_ sender: NSMenuItem) {
-        if UserDefaults.standard.bool(forKey: USERDEFAULTS_LAUNCH_AT_LOGIN) {
+        if AppDelegate.getLauncherStatus() {
             AppDelegate.setLauncherStatus(open: false)
         } else {
             AppDelegate.setLauncherStatus(open: true)

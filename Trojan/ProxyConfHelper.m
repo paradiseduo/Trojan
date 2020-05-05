@@ -8,11 +8,58 @@
 
 #import "ProxyConfHelper.h"
 #import "DefaultsConfig.h"
-#define kTrojanHelper [[NSBundle mainBundle] pathForResource:@"ProxyConfHelper" ofType:nil]
+#import "../ProxyConfHelper/version.h"
+#define kTrojanHelper @"/Library/Application Support/Trojan/ProxyConfHelper"
 
 @implementation ProxyConfHelper
 
 GCDWebServer *webServer = nil;
+
++ (BOOL)isVersionOk {
+    NSTask *task;
+    task = [[NSTask alloc] init];
+    [task setLaunchPath:kTrojanHelper];
+    
+    NSArray *args;
+    args = [NSArray arrayWithObjects:@"-v", nil];
+    [task setArguments: args];
+    
+    NSPipe *pipe;
+    pipe = [NSPipe pipe];
+    [task setStandardOutput:pipe];
+    
+    NSFileHandle *fd;
+    fd = [pipe fileHandleForReading];
+    
+    [task launch];
+    
+    NSData *data;
+    data = [fd readDataToEndOfFile];
+    
+    NSString *str;
+    str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    if (![str isEqualToString:kProxyConfHelperVersion]) {
+        return NO;
+    }
+    return YES;
+}
+
++ (void)install {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:kTrojanHelper] || ![self isVersionOk]) {
+        NSString *helperPath = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"install_helper.sh"];
+        NSLog(@"run install script: %@", helperPath);
+        NSDictionary *error;
+        NSString *script = [NSString stringWithFormat:@"do shell script \"bash %@\" with administrator privileges", helperPath];
+        NSAppleScript *appleScript = [[NSAppleScript new] initWithSource:script];
+        if ([appleScript executeAndReturnError:&error]) {
+            NSLog(@"installation success");
+        } else {
+            NSLog(@"installation failure");
+        }
+    }
+}
 
 + (void)callHelper:(NSArray*) arguments {
     NSTask *task;
