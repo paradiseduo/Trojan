@@ -30,6 +30,52 @@ struct Client: Codable {
         case ssl = "ssl"
         case tcp = "tcp"
     }
+    
+    func json() -> [String: AnyObject] {
+        let c = self
+        let ssl: [String: AnyObject] = ["verify": NSNumber(value: c.ssl.verify) as AnyObject,
+                                        "verify_hostname": NSNumber(value: c.ssl.verify_hostname) as AnyObject,
+                                        "cert": c.ssl.cert as AnyObject,
+                                        "cipher": c.ssl.cipher as AnyObject,
+                                        "cipher_tls13": c.ssl.cipher_tls13 as AnyObject,
+                                        "sni": c.ssl.sni as AnyObject,
+                                        "alpn": c.ssl.alpn as AnyObject,
+                                        "reuse_session": NSNumber(value: c.ssl.reuse_session) as AnyObject,
+                                        "session_ticket": NSNumber(value: c.ssl.session_ticket) as AnyObject,
+                                        "curves": c.ssl.curves as AnyObject
+                                       ]
+        
+        let tcp: [String: AnyObject] = ["no_delay": NSNumber(value: c.tcp.no_delay) as AnyObject,
+                                        "keep_alive": NSNumber(value: c.tcp.keep_alive) as AnyObject,
+                                        "reuse_port": NSNumber(value: c.tcp.reuse_port) as AnyObject,
+                                        "fast_open": NSNumber(value: c.tcp.fast_open) as AnyObject,
+                                        "fast_open_qlen": NSNumber(value: c.tcp.fast_open_qlen) as AnyObject
+                                       ]
+        
+        let conf: [String: AnyObject] = ["run_type": c.run_type as AnyObject,
+                                         "local_addr": c.local_addr as AnyObject,
+                                         "local_port": NSNumber(value: c.local_port) as AnyObject,
+                                         "remote_addr": c.remote_addr as AnyObject,
+                                         "remote_port": NSNumber(value: c.remote_port) as AnyObject,
+                                         "password": c.password as AnyObject,
+                                         "log_level": NSNumber(value: c.log_level) as AnyObject,
+                                         "ssl": ssl as AnyObject,
+                                         "tcp": tcp as AnyObject
+                                        ]
+        
+        return conf
+    }
+    
+    func jsonString() -> String {
+        do {
+            let data =  try JSONSerialization.data(withJSONObject: self.json(), options: JSONSerialization.WritingOptions.prettyPrinted)
+            let convertedString = String(data: data, encoding: String.Encoding.utf8)
+            return convertedString ?? ""
+        } catch let myJSONError {
+            print(myJSONError)
+        }
+        return ""
+    }
 }
 
 

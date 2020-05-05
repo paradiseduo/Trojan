@@ -67,7 +67,7 @@ GCDWebServer *webServer = nil;
     [task setLaunchPath:kTrojanHelper];
     
     // this log is very important
-    NSLog(@"run Trojan helper: %@", kTrojanHelper);
+    NSLog(@"run Trojan helper: %@ %@", kTrojanHelper, arguments);
     [task setArguments:arguments];
 
     NSPipe *stdoutpipe;

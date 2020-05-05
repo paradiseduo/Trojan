@@ -17,7 +17,8 @@
                 <outlet property="aclAutoItem" destination="NEA-Fa-rON" id="znc-Er-JoQ"/>
                 <outlet property="aclModeItem" destination="b2z-2C-t82" id="43m-jx-cIg"/>
                 <outlet property="backChinaItem" destination="x6U-Ur-hKu" id="dLv-0t-UVH"/>
-                <outlet property="copyCommandItem" destination="Bea-Hp-fhg" id="M1T-eU-z8Q"/>
+                <outlet property="copyHTTPCommandItem" destination="iX9-46-1nH" id="ZuE-eg-mSg"/>
+                <outlet property="copySocks5CommandItem" destination="Bea-Hp-fhg" id="GSb-By-nS2"/>
                 <outlet property="globalItem" destination="fvC-5Z-4w5" id="bI6-44-rQq"/>
                 <outlet property="launchItem" destination="z8y-i0-4vF" id="VP9-lB-IEa"/>
                 <outlet property="manualItem" destination="REy-hH-h4P" id="W1g-kW-nEy"/>
@@ -100,7 +101,13 @@
                 <menuItem title="Socks5 Proxy Export Line To Pasteboard" id="Bea-Hp-fhg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="copyCommandLineTap:" target="Voe-Tx-rLC" id="nS6-ql-f47"/>
+                        <action selector="copySocks5CommandLineTap:" target="Voe-Tx-rLC" id="viH-pH-NQ5"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="HTTP Proxy Export Line To Pasteboard" id="iX9-46-1nH">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="copyHTTPCommandLineTap:" target="Voe-Tx-rLC" id="BJ7-fF-Pm8"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="veu-Pn-4Fw"/>

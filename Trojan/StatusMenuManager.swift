@@ -15,7 +15,8 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var switchLabel: NSMenuItem!
     @IBOutlet weak var toggleRunning: NSMenuItem!
     @IBOutlet weak var launchItem: NSMenuItem!
-    @IBOutlet weak var copyCommandItem: NSMenuItem!
+    @IBOutlet weak var copySocks5CommandItem: NSMenuItem!
+    @IBOutlet weak var copyHTTPCommandItem: NSMenuItem!
     
     @IBOutlet weak var pacItem: NSMenuItem!
     @IBOutlet weak var whiteListItem: NSMenuItem!
@@ -37,7 +38,10 @@ class StatusMenuManager: NSObject {
             if !UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
                 UserDefaults.standard.set(true, forKey: USERDEFAULTS_TROJAN_ON)
                 UserDefaults.standard.synchronize()
-                self.updateMainMenu()
+                SyncPrivoxy {
+                    self.updateMainMenu()
+                    self.applyConfig()
+                }
             }
         }
         NotificationCenter.default.addObserver(forName: TROJAN_STOP, object: nil, queue: OperationQueue.main) { (noti) in
@@ -102,7 +106,8 @@ class StatusMenuManager: NSObject {
             let icon = NSImage(named: "open")
             statusItem.button?.image = icon
             statusItem.menu = statusMenu
-            copyCommandItem.isHidden = false
+            copySocks5CommandItem.isHidden = false
+            copyHTTPCommandItem.isHidden = false
         } else {
             switchLabel.title = "Trojan: Off"
             switchLabel.image = NSImage(named: NSImage.statusUnavailableName)
@@ -111,8 +116,8 @@ class StatusMenuManager: NSObject {
             let icon = NSImage(named: "close")
             statusItem.button?.image = icon
             statusItem.menu = statusMenu
-            copyCommandItem.isHidden = true
-            
+            copySocks5CommandItem.isHidden = true
+            copyHTTPCommandItem.isHidden = true
         }
         self.launchItem.state = NSControl.StateValue(rawValue: AppDelegate.getLauncherStatus() ? 1 : 0)
     }
@@ -137,8 +142,6 @@ class StatusMenuManager: NSObject {
     @IBAction func quit(_ sender: NSMenuItem) {
         StopPrivoxy { (s) in
             Trojan.shared.stop()
-            ProxyConfHelper.stopPACServer()
-            ProxyConfHelper.disableProxy("hi")
             if AppDelegate.getLauncherStatus() == false {
                 RemovePrivoxy { (ss) in
                     NSApplication.shared.terminate(self)
@@ -225,15 +228,43 @@ class StatusMenuManager: NSObject {
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    @IBAction func copyCommandLineTap(_ sender: NSMenuItem) {
-        Profile.shared.loadProfile()
-
-        let command = "export ALL_PROXY=socks5://\(Profile.shared.client.local_addr):\(Profile.shared.client.local_port);export no_proxy=localhost;"
-
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
-
-        self.makeToast("Export Command Copied.")
+    @IBAction func copySocks5CommandLineTap(_ sender: NSMenuItem) {
+        // Get the Http proxy config.
+        let defaults = UserDefaults.standard
+        let address = defaults.string(forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
+        let port = defaults.integer(forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
+        
+        if let a = address {
+            let command = "export ALL_PROXY=socks5://\(a):\(port);export no_proxy=localhost;"
+            // Copy to paste board.
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
+            
+            // Show a toast notification.
+            self.makeToast("Export Command Copied.")
+        } else {
+            self.makeToast("Export Command Copied Failed.")
+        }
+    }
+    
+    @IBAction func copyHTTPCommandLineTap(_ sender: NSMenuItem) {
+        // Get the Http proxy config.
+        let defaults = UserDefaults.standard
+        let address = defaults.string(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS)
+        let port = defaults.integer(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT)
+        
+        if let a = address {
+            let command = "export http_proxy=http://\(a):\(port);export https_proxy=http://\(a):\(port);"
+            
+            // Copy to paste board.
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
+            
+            // Show a toast notification.
+            self.makeToast("Export Command Copied.")
+        } else {
+            self.makeToast("Export Command Copied Failed.")
+        }
     }
     
     @IBAction func pacMode(_ sender: NSMenuItem) {

@@ -10,7 +10,7 @@ import Cocoa
 
 let tableViewDragType: String = "trojan.server.profile.data"
 
-class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate {
+class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate, NSTextFieldDelegate {
 
     @IBOutlet weak var scroll: NSScrollView!
     @IBOutlet var textView: EditableNSTextView!
@@ -19,25 +19,52 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     @IBOutlet weak var copyButton: NSButton!
     @IBOutlet weak var removeButton: NSButton!
     
+    @IBOutlet weak var remoteAddress: NSTextField!
+    @IBOutlet weak var remotePort: NSTextField!
+    @IBOutlet weak var password: NSTextField!
+    @IBOutlet weak var localAddress: NSTextField!
+    @IBOutlet weak var localPort: NSTextField!
+    
     private var closeFromSave = false
     private var selectedName = ""
+    
+    private var selectClient: Client!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         self.profilesTableView.delegate = self
         self.profilesTableView.dataSource = self
         self.textView.isAutomaticQuoteSubstitutionEnabled = false
-        if let s = Profile.shared.jsonString {
-            self.textView.string = s
+        self.textView.delegate = self
+        if let p = Profiles.shared.itemAtIndex(0) {
+            self.textView.string = p.jsonString
         }
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        self.remoteAddress.delegate = self
+        self.remotePort.delegate = self
+        self.password.delegate = self
+        self.localPort.delegate = self
+        self.localAddress.delegate = self
+    }
+    
+    private func updateWithClient(c: Client) {
+        self.selectClient = c
+        self.remoteAddress.stringValue = c.remote_addr
+        self.remotePort.stringValue = "\(c.remote_port)"
+        self.password.stringValue = c.password.first ?? ""
+        self.localAddress.stringValue = c.local_addr
+        self.localPort.stringValue = "\(c.local_port)"
     }
     
     private func decodeJSON(handle: (_ client: Client)->()) {
         do {
             if let d = self.textView.string.data(using: String.Encoding.utf8) {
                 let f = try JSONDecoder().decode(Client.self, from: d)
-                handle(f)
+                if f.local_port > 65535 || f.remote_port > 65535 || f.local_port < 1 || f.remote_port < 1 {
+                    self.shakeWindows()
+                } else {
+                    handle(f)
+                }
             } else {
                 self.shakeWindows()
             }
@@ -210,7 +237,11 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             let s = Profiles.shared.itemAtIndex(self.profilesTableView.selectedRow)
             if s != nil {
                 selectedName = s!.name
-                self.textView.string = s!.jsonString!
+                self.textView.string = s!.jsonString
+                self.decodeJSON { [weak self] (c) in
+                    guard let w = self else {return}
+                    w.updateWithClient(c: c)
+                }
             }
         } else {
             let index = IndexSet(integer: Profiles.shared.count()-1)
@@ -254,6 +285,50 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     func windowWillClose(_ notification: Notification) {
         if !self.closeFromSave {
             Profiles.shared.load()
+        }
+    }
+    
+    func textDidChange(_ notification: Notification) {
+        if let _ = notification.object as? NSTextView {
+            self.decodeJSON { [weak self] (c) in
+                guard let w = self else {return}
+                w.updateWithClient(c: c)
+            }
+        }
+    }
+    
+    func controlTextDidChange(_ obj: Notification) {
+        if let t = obj.object as? NSTextField {
+            switch t {
+            case self.remoteAddress:
+                self.selectClient.remote_addr = self.remoteAddress.stringValue
+                break
+            case self.remotePort:
+                if let p = Int(self.remotePort.stringValue) {
+                    self.selectClient.remote_port = p
+                } else {
+                    self.shakeWindows()
+                    return
+                }
+                break
+            case self.password:
+                self.selectClient.password = [self.password.stringValue]
+                break
+            case self.localAddress:
+                self.selectClient.local_addr = self.localAddress.stringValue
+                break
+            case self.localPort:
+                if let p = Int(self.localPort.stringValue) {
+                    self.selectClient.local_port = p
+                } else {
+                    self.shakeWindows()
+                    return
+                }
+                break
+            default:
+                break
+            }
+            self.textView.string = self.selectClient.jsonString()
         }
     }
 }
