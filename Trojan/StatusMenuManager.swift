@@ -81,7 +81,6 @@ class StatusMenuManager: NSObject {
         let fileMgr = FileManager.default
         if fileMgr.fileExists(atPath: CONFIG_PATH_OLD) {
             do {
-                try fileMgr.createDirectory(atPath: CONFIG_PATH, withIntermediateDirectories: true, attributes: nil)
                 try fileMgr.moveItem(atPath: CONFIG_PATH_OLD, toPath: CONFIG_PATH)
             } catch {
                 
