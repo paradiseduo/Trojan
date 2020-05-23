@@ -100,9 +100,12 @@ class Profile {
         let reuse_port: Bool = false
         let fast_open: Bool = false
         let fast_open_qlen: Int = 20
+        let dhparam: String = ""
+        let plain_http_response: String = ""
+        let prefer_server_cipher: Bool = true
         
         let tcp = TCP(no_delay: no_delay, keep_alive: keep_alive, reuse_port: reuse_port, fast_open: fast_open, fast_open_qlen: fast_open_qlen)
-        let ssl = SSL(verify: verify, verify_hostname: verify_hostname, cert: cert, cipher: cipher, cipher_tls13: cipher_tls13, sni: sni, alpn: alpn, reuse_session: reuse_session, session_ticket: session_ticket, curves: curves)
+        let ssl = SSL(verify: verify, verify_hostname: verify_hostname, cert: cert, cipher: cipher, cipher_tls13: cipher_tls13, sni: sni, alpn: alpn, reuse_session: reuse_session, session_ticket: session_ticket, curves: curves, plain_http_response: plain_http_response, dhparam: dhparam, prefer_server_cipher: prefer_server_cipher)
         let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp)
         self.client = c
         self.name = "Default"
