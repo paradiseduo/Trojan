@@ -85,13 +85,14 @@ class StatusMenuManager: NSObject {
                 
             }
         }
+        Profiles.shared.load()
+        Profile.shared.loadProfile()
+        
         InstallPrivoxy { (suc) in
             SyncPrivoxy {
                 ProxyConfHelper.install()
                 SyncPac()
                 
-                Profiles.shared.load()
-                Profile.shared.loadProfile()
                 self.updateMainMenu()
                 self.applyConfig()
                 
