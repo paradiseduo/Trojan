@@ -24,10 +24,6 @@ let _VERSION_XML_LOCAL:String = Bundle.main.bundlePath + "/Contents/Info.plist"
 let LOG_PATH = "/usr/local/var/log/trojan"
 let LOG_CLEAN_FINISH = Notification.Name("LOG_CLEAN_FINISH")
 
-// Launcher Helper
-let KILL_LAUNCHER = Notification.Name("MacOS_Trojan_KILL_LAUNCHER")
-let LAUNCHER_APPID = "MacOS.Trojan.StartAtLoginLauncher"
-
 let ISSUES_URL = "https://github.com/paradiseduo/Trojan/issues"
 let RELEASE_URL = "https://github.com/paradiseduo/Trojan/releases"
 

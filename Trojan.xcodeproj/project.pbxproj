@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		39900A524BE139E9D8616552 /* libPods-ProxyConfHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1130D936E0F21D05BF85D0A1 /* libPods-ProxyConfHelper.a */; };
-		5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */; };
 		83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6A00262839FD947FB40D30 /* Pods_Trojan.framework */; };
 		BE11D0A224611D9100075E25 /* install_helper.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0A124611D9100075E25 /* install_helper.sh */; };
 		BE11D0A52461204C00075E25 /* ProxyConfHelper in Resources */ = {isa = PBXBuildFile; fileRef = BE524E04245EFF3C003F3E80 /* ProxyConfHelper */; };
@@ -38,15 +37,11 @@
 		BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A24243C2ABC00BE8336 /* LogWindowController.swift */; };
 		BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */; };
 		BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */; };
-		BE464A34243C4CB100BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A33243C4CB100BE8336 /* AppDelegate.swift */; };
-		BE464A36243C4CB100BE8336 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A35243C4CB100BE8336 /* ViewController.swift */; };
-		BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A37243C4CB100BE8336 /* Assets.xcassets */; };
-		BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE464A39243C4CB100BE8336 /* Main.storyboard */; };
-		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
 		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
 		BE59998B247923C5002177A2 /* SettingsWIndowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE599989247923C5002177A2 /* SettingsWIndowController.xib */; };
+		BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59998C24792E06002177A2 /* LoginServiceKit.swift */; };
 		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
 		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
 		BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A04245FC8C600891EAC /* whitelist.pac */; };
@@ -70,16 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BE464A41243C4D0700BE8336 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BE524E02245EFF3C003F3E80 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,13 +112,6 @@
 		BE464A24243C2ABC00BE8336 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingWindowController.swift; sourceTree = "<group>"; };
 		BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastWindowController.xib; sourceTree = "<group>"; };
-		BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartAtLoginLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE464A33243C4CB100BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BE464A35243C4CB100BE8336 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BE464A37243C4CB100BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE464A3A243C4CB100BE8336 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE464A3C243C4CB100BE8336 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartAtLoginLauncher.entitlements; sourceTree = "<group>"; };
 		BE524E04245EFF3C003F3E80 /* ProxyConfHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProxyConfHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE524E06245EFF3C003F3E80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE524E0B245F00E5003F3E80 /* Trojan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trojan-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -142,6 +120,7 @@
 		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		BE599988247923C5002177A2 /* SettingsWIndowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWIndowController.swift; sourceTree = "<group>"; };
 		BE599989247923C5002177A2 /* SettingsWIndowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWIndowController.xib; sourceTree = "<group>"; };
+		BE59998C24792E06002177A2 /* LoginServiceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServiceKit.swift; sourceTree = "<group>"; };
 		BEC48A00245FC79000891EAC /* PAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAC.swift; sourceTree = "<group>"; };
 		BEC48A03245FC8C500891EAC /* backchn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backchn.acl; sourceTree = "<group>"; };
 		BEC48A04245FC8C600891EAC /* whitelist.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whitelist.pac; sourceTree = "<group>"; };
@@ -165,14 +144,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83415DA4E43B0E97B0148C26 /* Pods_Trojan.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE464A2E243C4CB100BE8336 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5ECDF034A4BD93D587DE0712 /* Pods_StartAtLoginLauncher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				BE464A01243C29CE00BE8336 /* Trojan */,
-				BE464A32243C4CB100BE8336 /* StartAtLoginLauncher */,
 				BE524E05245EFF3C003F3E80 /* ProxyConfHelper */,
 				BE464A00243C29CE00BE8336 /* Products */,
 				2DB9494A13EC7C5A78F99948 /* Pods */,
@@ -243,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				BE4649FF243C29CE00BE8336 /* Trojan.app */,
-				BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */,
 				BE524E04245EFF3C003F3E80 /* ProxyConfHelper */,
 			);
 			name = Products;
@@ -262,6 +231,7 @@
 				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
 				BEC48A00245FC79000891EAC /* PAC.swift */,
 				BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */,
+				BE59998C24792E06002177A2 /* LoginServiceKit.swift */,
 				BEC48A13245FCBA800891EAC /* DefaultsConfig.h */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
@@ -291,19 +261,6 @@
 				BE599989247923C5002177A2 /* SettingsWIndowController.xib */,
 			);
 			path = WIndows;
-			sourceTree = "<group>";
-		};
-		BE464A32243C4CB100BE8336 /* StartAtLoginLauncher */ = {
-			isa = PBXGroup;
-			children = (
-				BE464A33243C4CB100BE8336 /* AppDelegate.swift */,
-				BE464A35243C4CB100BE8336 /* ViewController.swift */,
-				BE464A37243C4CB100BE8336 /* Assets.xcassets */,
-				BE464A39243C4CB100BE8336 /* Main.storyboard */,
-				BE464A3C243C4CB100BE8336 /* Info.plist */,
-				BE464A3D243C4CB100BE8336 /* StartAtLoginLauncher.entitlements */,
-			);
-			path = StartAtLoginLauncher;
 			sourceTree = "<group>";
 		};
 		BE524E05245EFF3C003F3E80 /* ProxyConfHelper */ = {
@@ -341,7 +298,6 @@
 				BE4649FB243C29CE00BE8336 /* Sources */,
 				BE4649FC243C29CE00BE8336 /* Frameworks */,
 				BE4649FD243C29CE00BE8336 /* Resources */,
-				BE464A41243C4D0700BE8336 /* CopyFiles */,
 				CF7283FE56C93B4CD1F4F80E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -352,24 +308,6 @@
 			name = Trojan;
 			productName = Trojan;
 			productReference = BE4649FF243C29CE00BE8336 /* Trojan.app */;
-			productType = "com.apple.product-type.application";
-		};
-		BE464A30243C4CB100BE8336 /* StartAtLoginLauncher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BE464A3E243C4CB100BE8336 /* Build configuration list for PBXNativeTarget "StartAtLoginLauncher" */;
-			buildPhases = (
-				5DC3A9507B8799C06F4EA4B8 /* [CP] Check Pods Manifest.lock */,
-				BE464A2D243C4CB100BE8336 /* Sources */,
-				BE464A2E243C4CB100BE8336 /* Frameworks */,
-				BE464A2F243C4CB100BE8336 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = StartAtLoginLauncher;
-			productName = StartAtLoginLauncher;
-			productReference = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BE524E03245EFF3C003F3E80 /* ProxyConfHelper */ = {
@@ -404,9 +342,6 @@
 						CreatedOnToolsVersion = 11.4;
 						LastSwiftMigration = 1140;
 					};
-					BE464A30243C4CB100BE8336 = {
-						CreatedOnToolsVersion = 11.4;
-					};
 					BE524E03245EFF3C003F3E80 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -426,7 +361,6 @@
 			projectRoot = "";
 			targets = (
 				BE4649FE243C29CE00BE8336 /* Trojan */,
-				BE464A30243C4CB100BE8336 /* StartAtLoginLauncher */,
 				BE524E03245EFF3C003F3E80 /* ProxyConfHelper */,
 			);
 		};
@@ -465,40 +399,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE464A2F243C4CB100BE8336 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE464A38243C4CB100BE8336 /* Assets.xcassets in Resources */,
-				BE464A3B243C4CB100BE8336 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5DC3A9507B8799C06F4EA4B8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StartAtLoginLauncher-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6EA2092E5692357C5BF73C8E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,18 +483,10 @@
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
 				BE11D0B12461232E00075E25 /* LaunchAgentHelper.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
+				BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */,
 				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
 				BEC48A01245FC79000891EAC /* PAC.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE464A2D243C4CB100BE8336 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE464A36243C4CB100BE8336 /* ViewController.swift in Sources */,
-				BE464A34243C4CB100BE8336 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,14 +515,6 @@
 				BE464A07243C29CE00BE8336 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		BE464A39243C4CB100BE8336 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE464A3A243C4CB100BE8336 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -808,52 +695,6 @@
 			};
 			name = Release;
 		};
-		BE464A3F243C4CB100BE8336 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y6H3BL52H5;
-				INFOPLIST_FILE = StartAtLoginLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan.StartAtLoginLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		BE464A40243C4CB100BE8336 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = StartAtLoginLauncher/StartAtLoginLauncher.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y6H3BL52H5;
-				INFOPLIST_FILE = StartAtLoginLauncher/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = MacOS.Trojan.StartAtLoginLauncher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		BE524E08245EFF3C003F3E80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */;
@@ -891,15 +732,6 @@
 			buildConfigurations = (
 				BE464A0E243C29CE00BE8336 /* Debug */,
 				BE464A0F243C29CE00BE8336 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BE464A3E243C4CB100BE8336 /* Build configuration list for PBXNativeTarget "StartAtLoginLauncher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BE464A3F243C4CB100BE8336 /* Debug */,
-				BE464A40243C4CB100BE8336 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

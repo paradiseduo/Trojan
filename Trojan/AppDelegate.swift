@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,12 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
             Trojan.shared.start()
         }
-        
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == LAUNCHER_APPID }.isEmpty
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: KILL_LAUNCHER, object: Bundle.main.bundleIdentifier!)
-        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -29,13 +22,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     static func getLauncherStatus() -> Bool {
-        let jobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
-        let autoLaunchRegistered = jobs?.contains(where: { $0["Label"] as! String == LAUNCHER_APPID }) ?? false
-        return autoLaunchRegistered
+        return LoginServiceKit.isExistLoginItems()
     }
     
     static func setLauncherStatus(open: Bool) {
-        SMLoginItemSetEnabled(LAUNCHER_APPID as CFString, open)
+        if open {
+            LoginServiceKit.addLoginItems()
+        } else {
+            LoginServiceKit.removeLoginItems()
+        }
     }
 }
 
