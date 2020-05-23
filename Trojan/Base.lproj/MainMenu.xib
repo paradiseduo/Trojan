@@ -17,10 +17,8 @@
                 <outlet property="aclAutoItem" destination="NEA-Fa-rON" id="znc-Er-JoQ"/>
                 <outlet property="aclModeItem" destination="b2z-2C-t82" id="43m-jx-cIg"/>
                 <outlet property="backChinaItem" destination="x6U-Ur-hKu" id="dLv-0t-UVH"/>
-                <outlet property="copyHTTPCommandItem" destination="iX9-46-1nH" id="ZuE-eg-mSg"/>
-                <outlet property="copySocks5CommandItem" destination="Bea-Hp-fhg" id="GSb-By-nS2"/>
+                <outlet property="copyCommandItem" destination="Bea-Hp-fhg" id="Wd9-DE-io5"/>
                 <outlet property="globalItem" destination="fvC-5Z-4w5" id="bI6-44-rQq"/>
-                <outlet property="launchItem" destination="z8y-i0-4vF" id="VP9-lB-IEa"/>
                 <outlet property="manualItem" destination="REy-hH-h4P" id="W1g-kW-nEy"/>
                 <outlet property="pacItem" destination="gh3-ld-apY" id="urJ-A1-Exy"/>
                 <outlet property="statusMenu" destination="zOa-kh-Dxd" id="bl4-yd-acl"/>
@@ -86,73 +84,62 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
-                <menuItem title="⚙ Trojan Setting" id="nGS-Ow-TSH">
+                <menuItem title="⚙ Servers Setting" id="nGS-Ow-TSH">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="setting:" target="Voe-Tx-rLC" id="PZ0-Ha-wO6"/>
+                        <action selector="serversSetting:" target="Voe-Tx-rLC" id="gH9-Ln-nTS"/>
                     </connections>
                 </menuItem>
-                <menuItem title="⚙ HTTP Proxy Settings" id="RP0-CT-P2y">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="httpSetting:" target="Voe-Tx-rLC" id="4No-cC-I46"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Socks5 Proxy Export Line To Pasteboard" id="Bea-Hp-fhg">
+                <menuItem title="Export Command Line To Pasteboard" id="Bea-Hp-fhg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="copySocks5CommandLineTap:" target="Voe-Tx-rLC" id="viH-pH-NQ5"/>
                     </connections>
                 </menuItem>
-                <menuItem title="HTTP Proxy Export Line To Pasteboard" id="iX9-46-1nH">
+                <menuItem isSeparatorItem="YES" id="veu-Pn-4Fw"/>
+                <menuItem title="⚙ Settings" id="nzW-Ph-yuS">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="copyHTTPCommandLineTap:" target="Voe-Tx-rLC" id="BJ7-fF-Pm8"/>
+                        <action selector="settingsTap:" target="Voe-Tx-rLC" id="VRZ-YS-cdc"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="veu-Pn-4Fw"/>
-                <menuItem title="Log Setting" id="T1A-pW-RPc">
+                <menuItem title="Help" id="i2H-13-hlp">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Log Setting" id="jrR-c8-bft">
+                    <menu key="submenu" id="5oV-2d-kcy">
                         <items>
-                            <menuItem title="⚙ View Logs" id="Vly-3T-mmX">
+                            <menuItem title="⚙ View Logs" id="p8A-3V-2aa">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showLog:" target="Voe-Tx-rLC" id="Xvg-zm-wrV"/>
+                                    <action selector="showLog:" target="Voe-Tx-rLC" id="nAf-hi-tBM"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Clean Logs" id="Oxi-zf-gHV">
+                            <menuItem title="Clean Logs" id="0PN-XY-ZXt">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="cleanLogs:" target="Voe-Tx-rLC" id="DXx-K2-4ib"/>
+                                    <action selector="cleanLogs:" target="Voe-Tx-rLC" id="XaB-bT-KhQ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="MK3-bi-tP6"/>
+                            <menuItem title="Check Update" id="BLJ-op-AkG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkUpdate:" target="Voe-Tx-rLC" id="Jfp-xf-gTf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Feedback" id="nHU-cq-FkI">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="feedbackTap:" target="Voe-Tx-rLC" id="ytI-YZ-9hj"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="About" id="YkQ-MK-047">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="aboutMe:" target="Voe-Tx-rLC" id="dyE-It-Phn"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
-                </menuItem>
-                <menuItem title="Launch At Login" id="z8y-i0-4vF">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="launchAtLogin:" target="Voe-Tx-rLC" id="wD6-1l-LDi"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Check Update" id="wan-WB-ozU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="checkUpdate:" target="Voe-Tx-rLC" id="kx7-fb-tTR"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Feedback" id="DH6-Gn-ZiV">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="feedbackTap:" target="Voe-Tx-rLC" id="aUw-eC-X8l"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="About" id="uwU-TU-jdu">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="aboutMe:" target="Voe-Tx-rLC" id="c9H-4v-RXi"/>
-                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="c1r-Sm-ft0"/>
                 <menuItem title="Quit" id="9WC-iB-Jq8">

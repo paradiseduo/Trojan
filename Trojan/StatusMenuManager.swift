@@ -14,9 +14,7 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var switchLabel: NSMenuItem!
     @IBOutlet weak var toggleRunning: NSMenuItem!
-    @IBOutlet weak var launchItem: NSMenuItem!
-    @IBOutlet weak var copySocks5CommandItem: NSMenuItem!
-    @IBOutlet weak var copyHTTPCommandItem: NSMenuItem!
+    @IBOutlet weak var copyCommandItem: NSMenuItem!
     
     @IBOutlet weak var pacItem: NSMenuItem!
     @IBOutlet weak var whiteListItem: NSMenuItem!
@@ -27,9 +25,9 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var aclModeItem: NSMenuItem!
     
     var settingW: SettingWindowController!
+    var settingsW: SettingsWIndowController!
     var logW: LogWindowController!
     var toastW: ToastWindowController!
-    var httpW: HTTPPreferencesWindowController!
     
     override func awakeFromNib() {
         updateApplicationConfig()
@@ -75,7 +73,8 @@ class StatusMenuManager: NSObject {
             USERDEFAULTS_AUTO_CONFIGURE_NETWORK_SERVICES: NSNumber(value: true as Bool),
             USERDEFAULTS_LOCAL_HTTP_ON: true,
             USERDEFAULTS_LOCAL_HTTP_FOLLOW_GLOBAL: true,
-            USERDEFAULTS_ACL_FILE_NAME: "chn.acl"
+            USERDEFAULTS_ACL_FILE_NAME: "chn.acl",
+            USERDEFAULTS_AUTO_CHECK_UPDATE:false
         ])
         
         let fileMgr = FileManager.default
@@ -95,6 +94,10 @@ class StatusMenuManager: NSObject {
                 Profile.shared.loadProfile()
                 self.updateMainMenu()
                 self.applyConfig()
+                
+                if UserDefaults.standard.bool(forKey: USERDEFAULTS_AUTO_CHECK_UPDATE) {
+                    self.checkUpdate(showAlert: false)
+                }
             }
         }
     }
@@ -110,8 +113,9 @@ class StatusMenuManager: NSObject {
             let icon = NSImage(named: "open")
             statusItem.button?.image = icon
             statusItem.menu = statusMenu
-            copySocks5CommandItem.isHidden = false
-            copyHTTPCommandItem.isHidden = false
+            if Profiles.shared.count() > 0 {
+                copyCommandItem.isHidden = false
+            }
         } else {
             switchLabel.title = "Trojan: Off"
             switchLabel.image = NSImage(named: NSImage.statusUnavailableName)
@@ -120,10 +124,8 @@ class StatusMenuManager: NSObject {
             let icon = NSImage(named: "close")
             statusItem.button?.image = icon
             statusItem.menu = statusMenu
-            copySocks5CommandItem.isHidden = true
-            copyHTTPCommandItem.isHidden = true
+            copyCommandItem.isHidden = true
         }
-        self.launchItem.state = NSControl.StateValue(rawValue: AppDelegate.getLauncherStatus() ? 1 : 0)
     }
     
     @IBAction func powerSwitch(_ sender: NSMenuItem) {
@@ -176,8 +178,7 @@ class StatusMenuManager: NSObject {
         }
     }
     
-    
-    @IBAction func setting(_ sender: NSMenuItem) {
+    @IBAction func serversSetting(_ sender: NSMenuItem) {
         if self.settingW != nil {
             self.settingW.close()
         }
@@ -189,38 +190,35 @@ class StatusMenuManager: NSObject {
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    @IBAction func httpSetting(_ sender: NSMenuItem) {
-        if self.httpW != nil {
-            self.httpW.close()
+    @IBAction func checkUpdate(_ sender: NSMenuItem) {
+        self.checkUpdate(showAlert: true)
+    }
+    
+    @IBAction func settingsTap(_ sender: NSMenuItem) {
+        if self.settingsW != nil {
+            self.settingsW.close()
         }
-        let c = HTTPPreferencesWindowController(windowNibName: "HTTPPreferencesWindowController")
-        self.httpW = c
+        let c = SettingsWIndowController(windowNibName: "SettingsWIndowController")
+        self.settingsW = c
         c.showWindow(self)
         c.window?.center()
         c.window?.makeKeyAndOrderFront(self)
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    @IBAction func checkUpdate(_ sender: NSMenuItem) {
+    func checkUpdate(showAlert: Bool) {
         let versionChecker = VersionChecker()
         DispatchQueue.global().async {
             let newVersion = versionChecker.checkNewVersion()
             DispatchQueue.main.async {
-                let alertResult = versionChecker.showAlertView(Title: newVersion["Title"] as! String, SubTitle: newVersion["SubTitle"] as! String, ConfirmBtn: newVersion["ConfirmBtn"] as! String, CancelBtn: newVersion["CancelBtn"] as! String)
-                if (newVersion["newVersion"] as! Bool && alertResult == 1000){
-                    NSWorkspace.shared.open(URL(string: RELEASE_URL)!)
+                if (showAlert || newVersion["newVersion"] as! Bool){
+                    let alertResult = versionChecker.showAlertView(Title: newVersion["Title"] as! String, SubTitle: newVersion["SubTitle"] as! String, ConfirmBtn: newVersion["ConfirmBtn"] as! String, CancelBtn: newVersion["CancelBtn"] as! String)
+                    if (newVersion["newVersion"] as! Bool && alertResult == 1000){
+                        NSWorkspace.shared.open(URL(string: RELEASE_URL)!)
+                    }
                 }
             }
         }
-    }
-    
-    @IBAction func launchAtLogin(_ sender: NSMenuItem) {
-        if AppDelegate.getLauncherStatus() {
-            AppDelegate.setLauncherStatus(open: false)
-        } else {
-            AppDelegate.setLauncherStatus(open: true)
-        }
-        self.updateMainMenu()
     }
     
     @IBAction func feedbackTap(_ sender: NSMenuItem) {
@@ -237,37 +235,34 @@ class StatusMenuManager: NSObject {
         let defaults = UserDefaults.standard
         let address = defaults.string(forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
         let port = defaults.integer(forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
+        let httpAddress = defaults.string(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS)
+        let httpPort = defaults.integer(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT)
         
-        if let a = address {
-            let command = "export ALL_PROXY=socks5://\(a):\(port);export no_proxy=localhost;"
-            // Copy to paste board.
-            NSPasteboard.general.clearContents()
-            NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
-            
-            // Show a toast notification.
-            self.makeToast("Export Command Copied.")
+        if defaults.bool(forKey: USERDEFAULTS_LOCAL_HTTP_ON) {
+            if let a = httpAddress {
+                let command = "export http_proxy=http://\(a):\(httpPort);export https_proxy=http://\(a):\(httpPort);"
+                
+                // Copy to paste board.
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
+                
+                // Show a toast notification.
+                self.makeToast("Export Command Copied.")
+            } else {
+                self.makeToast("Export Command Copied Failed.")
+            }
         } else {
-            self.makeToast("Export Command Copied Failed.")
-        }
-    }
-    
-    @IBAction func copyHTTPCommandLineTap(_ sender: NSMenuItem) {
-        // Get the Http proxy config.
-        let defaults = UserDefaults.standard
-        let address = defaults.string(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_ADDRESS)
-        let port = defaults.integer(forKey: USERDEFAULTS_LOCAL_HTTP_LISTEN_PORT)
-        
-        if let a = address {
-            let command = "export http_proxy=http://\(a):\(port);export https_proxy=http://\(a):\(port);"
-            
-            // Copy to paste board.
-            NSPasteboard.general.clearContents()
-            NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
-            
-            // Show a toast notification.
-            self.makeToast("Export Command Copied.")
-        } else {
-            self.makeToast("Export Command Copied Failed.")
+            if let a = address {
+                let command = "export ALL_PROXY=socks5://\(a):\(port);export no_proxy=localhost;"
+                // Copy to paste board.
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
+                
+                // Show a toast notification.
+                self.makeToast("Export Command Copied.")
+            } else {
+                self.makeToast("Export Command Copied Failed.")
+            }
         }
     }
     

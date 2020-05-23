@@ -26,4 +26,5 @@ static NSString * const USERDEFAULTS_LOCAL_HTTP_ON = @"LocalHTTPOn";
 static NSString * const USERDEFAULTS_LOCAL_HTTP_FOLLOW_GLOBAL = @"LocalHTTP.FollowGlobal";
 static NSString * const USERDEFAULTS_AUTO_CONFIGURE_NETWORK_SERVICES = @"AutoConfigureNetworkServices";
 static NSString * const USERDEFAULTS_PROXY4_NETWORK_SERVICES = @"Proxy4NetworkServices";
+static NSString * const USERDEFAULTS_AUTO_CHECK_UPDATE = @"USERDEFAULTS_AUTO_CHECK_UPDATE";
 #endif /* DefaultsConfig_h */

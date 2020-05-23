@@ -21,8 +21,6 @@
 		BE11D0BF246124D600075E25 /* remove_privoxy.sh in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0BE246124D600075E25 /* remove_privoxy.sh */; };
 		BE11D0C12461256100075E25 /* privoxy.config.example in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0C02461256100075E25 /* privoxy.config.example */; };
 		BE11D0C22461289400075E25 /* libpcre.1.dylib in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0B62461247100075E25 /* libpcre.1.dylib */; };
-		BE11D0C524612F6D00075E25 /* HTTPPreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */; };
-		BE11D0C624612F6D00075E25 /* HTTPPreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */; };
 		BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A02243C29CE00BE8336 /* AppDelegate.swift */; };
 		BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE464A04243C29CE00BE8336 /* Assets.xcassets */; };
 		BE464A08243C29CE00BE8336 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A06243C29CE00BE8336 /* MainMenu.xib */; };
@@ -47,6 +45,8 @@
 		BE464A42243C4D1900BE8336 /* StartAtLoginLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE464A31243C4CB100BE8336 /* StartAtLoginLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
+		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
+		BE59998B247923C5002177A2 /* SettingsWIndowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE599989247923C5002177A2 /* SettingsWIndowController.xib */; };
 		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
 		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
 		BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A04245FC8C600891EAC /* whitelist.pac */; };
@@ -107,8 +107,6 @@
 		BE11D0BC246124BA00075E25 /* stop_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stop_privoxy.sh; sourceTree = "<group>"; };
 		BE11D0BE246124D600075E25 /* remove_privoxy.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = remove_privoxy.sh; sourceTree = "<group>"; };
 		BE11D0C02461256100075E25 /* privoxy.config.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privoxy.config.example; sourceTree = "<group>"; };
-		BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPreferencesWindowController.swift; sourceTree = "<group>"; };
-		BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTTPPreferencesWindowController.xib; sourceTree = "<group>"; };
 		BE4649FF243C29CE00BE8336 /* Trojan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trojan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE464A02243C29CE00BE8336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE464A04243C29CE00BE8336 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +140,8 @@
 		BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyConfHelper.m; sourceTree = "<group>"; };
 		BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyConfHelper.h; sourceTree = "<group>"; };
 		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		BE599988247923C5002177A2 /* SettingsWIndowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWIndowController.swift; sourceTree = "<group>"; };
+		BE599989247923C5002177A2 /* SettingsWIndowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWIndowController.xib; sourceTree = "<group>"; };
 		BEC48A00245FC79000891EAC /* PAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAC.swift; sourceTree = "<group>"; };
 		BEC48A03245FC8C500891EAC /* backchn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backchn.acl; sourceTree = "<group>"; };
 		BEC48A04245FC8C600891EAC /* whitelist.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whitelist.pac; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 				BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */,
 				BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */,
 				BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */,
-				BE11D0C324612F6D00075E25 /* HTTPPreferencesWindowController.swift */,
-				BE11D0C424612F6D00075E25 /* HTTPPreferencesWindowController.xib */,
+				BE599988247923C5002177A2 /* SettingsWIndowController.swift */,
+				BE599989247923C5002177A2 /* SettingsWIndowController.xib */,
 			);
 			path = WIndows;
 			sourceTree = "<group>";
@@ -443,9 +443,9 @@
 				BEC48A10245FC8C600891EAC /* abp.js in Resources */,
 				BE464A11243C29DA00BE8336 /* trojan in Resources */,
 				BE11D0BF246124D600075E25 /* remove_privoxy.sh in Resources */,
+				BE59998B247923C5002177A2 /* SettingsWIndowController.xib in Resources */,
 				BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */,
 				BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */,
-				BE11D0C624612F6D00075E25 /* HTTPPreferencesWindowController.xib in Resources */,
 				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
 				BEC48A0D245FC8C600891EAC /* chn.acl in Resources */,
 				BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */,
@@ -574,6 +574,7 @@
 				BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */,
 				BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */,
 				BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */,
+				BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */,
 				BE464A15243C2A8300BE8336 /* Profile.swift in Sources */,
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
@@ -581,7 +582,6 @@
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
 				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
 				BEC48A01245FC79000891EAC /* PAC.swift in Sources */,
-				BE11D0C524612F6D00075E25 /* HTTPPreferencesWindowController.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
