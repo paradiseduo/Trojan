@@ -12,9 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        if UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
-            Trojan.shared.start()
-        }
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
