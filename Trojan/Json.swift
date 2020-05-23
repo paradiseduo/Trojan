@@ -72,7 +72,12 @@ struct Client: Codable {
     
     func jsonString() -> String {
         do {
-            let data =  try JSONSerialization.data(withJSONObject: self.json(), options: JSONSerialization.WritingOptions.prettyPrinted)
+            var data: Data
+            if #available(OSX 10.13, *) {
+                data =  try JSONSerialization.data(withJSONObject: self.json(), options: [.prettyPrinted, .sortedKeys])
+            } else {
+                data =  try JSONSerialization.data(withJSONObject: self.json(), options: [.prettyPrinted])
+            }
             let convertedString = String(data: data, encoding: String.Encoding.utf8)
             return convertedString ?? ""
         } catch let myJSONError {
