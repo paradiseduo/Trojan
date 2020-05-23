@@ -15,7 +15,7 @@ struct Client: Codable {
     var password: [String]
     var remote_addr: String
     var remote_port: Int
-    var log_level: Int
+    var log_level: Int?
     var ssl: SSL
     var tcp: TCP
 
@@ -33,23 +33,27 @@ struct Client: Codable {
     
     func json() -> [String: AnyObject] {
         let c = self
-        let ssl: [String: AnyObject] = ["verify": NSNumber(value: c.ssl.verify) as AnyObject,
-                                        "verify_hostname": NSNumber(value: c.ssl.verify_hostname) as AnyObject,
+        
+        let ssl: [String: AnyObject] = ["verify": NSNumber(value: c.ssl.verify ?? true) as AnyObject,
+                                        "verify_hostname": NSNumber(value: c.ssl.verify_hostname ?? true) as AnyObject,
                                         "cert": c.ssl.cert as AnyObject,
                                         "cipher": c.ssl.cipher as AnyObject,
                                         "cipher_tls13": c.ssl.cipher_tls13 as AnyObject,
                                         "sni": c.ssl.sni as AnyObject,
                                         "alpn": c.ssl.alpn as AnyObject,
-                                        "reuse_session": NSNumber(value: c.ssl.reuse_session) as AnyObject,
-                                        "session_ticket": NSNumber(value: c.ssl.session_ticket) as AnyObject,
-                                        "curves": c.ssl.curves as AnyObject
+                                        "reuse_session": NSNumber(value: c.ssl.reuse_session ?? true) as AnyObject,
+                                        "session_ticket": NSNumber(value: c.ssl.session_ticket ?? false) as AnyObject,
+                                        "curves": c.ssl.curves as AnyObject,
+                                        "plain_http_response": c.ssl.plain_http_response as AnyObject,
+                                        "dhparam": c.ssl.dhparam as AnyObject,
+                                        "prefer_server_cipher": NSNumber(value: c.ssl.prefer_server_cipher ?? true) as AnyObject
                                        ]
         
-        let tcp: [String: AnyObject] = ["no_delay": NSNumber(value: c.tcp.no_delay) as AnyObject,
-                                        "keep_alive": NSNumber(value: c.tcp.keep_alive) as AnyObject,
-                                        "reuse_port": NSNumber(value: c.tcp.reuse_port) as AnyObject,
-                                        "fast_open": NSNumber(value: c.tcp.fast_open) as AnyObject,
-                                        "fast_open_qlen": NSNumber(value: c.tcp.fast_open_qlen) as AnyObject
+        let tcp: [String: AnyObject] = ["no_delay": NSNumber(value: c.tcp.no_delay ?? true) as AnyObject,
+                                        "keep_alive": NSNumber(value: c.tcp.keep_alive ?? true) as AnyObject,
+                                        "reuse_port": NSNumber(value: c.tcp.reuse_port ?? false) as AnyObject,
+                                        "fast_open": NSNumber(value: c.tcp.fast_open ?? false) as AnyObject,
+                                        "fast_open_qlen": NSNumber(value: c.tcp.fast_open_qlen ?? 20) as AnyObject
                                        ]
         
         let conf: [String: AnyObject] = ["run_type": c.run_type as AnyObject,
@@ -58,7 +62,7 @@ struct Client: Codable {
                                          "remote_addr": c.remote_addr as AnyObject,
                                          "remote_port": NSNumber(value: c.remote_port) as AnyObject,
                                          "password": c.password as AnyObject,
-                                         "log_level": NSNumber(value: c.log_level) as AnyObject,
+                                         "log_level": NSNumber(value: c.log_level ?? 1) as AnyObject,
                                          "ssl": ssl as AnyObject,
                                          "tcp": tcp as AnyObject
                                         ]
@@ -80,17 +84,20 @@ struct Client: Codable {
 
 
 struct SSL: Codable {
-    var verify: Bool
-    var verify_hostname: Bool
-    var cert: String
-    var cipher: String
-    var cipher_tls13: String
-    var sni: String
-    var alpn: [String]
-    var reuse_session: Bool
-    var session_ticket: Bool
-    var curves: String
-
+    var verify: Bool?
+    var verify_hostname: Bool?
+    var cert: String?
+    var cipher: String?
+    var cipher_tls13: String?
+    var sni: String?
+    var alpn: [String]?
+    var reuse_session: Bool?
+    var session_ticket: Bool?
+    var curves: String?
+    var plain_http_response: String?
+    var dhparam: String?
+    var prefer_server_cipher: Bool?
+    
     private enum CodingKeys: String, CodingKey {
         case verify = "verify"
         case verify_hostname = "verify_hostname"
@@ -102,16 +109,19 @@ struct SSL: Codable {
         case reuse_session = "reuse_session"
         case session_ticket = "session_ticket"
         case curves = "curves"
+        case plain_http_response = "plain_http_response"
+        case dhparam = "dhparam"
+        case prefer_server_cipher = "prefer_server_cipher"
     }
 }
 
 
 struct TCP: Codable {
-    var no_delay: Bool
-    var keep_alive: Bool
-    var reuse_port: Bool
-    var fast_open: Bool
-    var fast_open_qlen: Int
+    var no_delay: Bool?
+    var keep_alive: Bool?
+    var reuse_port: Bool?
+    var fast_open: Bool?
+    var fast_open_qlen: Int?
 
     private enum CodingKeys: String, CodingKey {
         case no_delay = "no_delay"
