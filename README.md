@@ -13,7 +13,7 @@ Trojan is a GUI program for trojan on macOS.
 
 ## Version:
 
-v1.2
+v1.5
 
 ![](https://github.com/paradiseduo/Trojan/blob/master/img/version.png)
 
