@@ -41,4 +41,7 @@ let APP_SUPPORT_DIR = "/Library/Application Support/Trojan/"
 let LAUNCH_AGENT_DIR = "/Library/LaunchAgents/"
 let LAUNCH_AGENT_CONF_PRIVOXY_NAME = "MacOS.Trojan.http.plist"
 
+let TROJAN_VERSION = "1.15.1"
+let LAUNCH_AGENT_CONF_TROJAN_NAME = "MacOS.Trojan.local.plist"
+
 let NOTIFY_HTTP_CONF_CHANGED = Notification.Name(rawValue: "NOTIFY_HTTP_CONF_CHANGED")

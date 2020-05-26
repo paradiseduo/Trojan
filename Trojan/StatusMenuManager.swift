@@ -86,7 +86,6 @@ class StatusMenuManager: NSObject {
             }
         }
         Profiles.shared.load()
-        Profile.shared.loadProfile()
         
         InstallPrivoxy { (suc) in
             SyncPrivoxy {

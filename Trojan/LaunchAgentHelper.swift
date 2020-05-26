@@ -30,6 +30,190 @@ func getFileSHA1Sum(_ filepath: String) -> String {
     return ""
 }
 
+func generateTrojanLauchAgentPlist() -> Bool {
+    let trojanPath = NSHomeDirectory() + APP_SUPPORT_DIR + "trojan"
+    let launchAgentDirPath = NSHomeDirectory() + LAUNCH_AGENT_DIR
+    let plistFilepath = launchAgentDirPath + LAUNCH_AGENT_CONF_TROJAN_NAME
+    
+    // Ensure launch agent directory is existed.
+    let fileMgr = FileManager.default
+    if !fileMgr.fileExists(atPath: launchAgentDirPath) {
+        try! fileMgr.createDirectory(atPath: launchAgentDirPath, withIntermediateDirectories: true, attributes: nil)
+    }
+    
+    let oldSha1Sum = getFileSHA1Sum(plistFilepath)
+
+    let arguments = [trojanPath, "--log", LOG_PATH, "--config", CONFIG_PATH]
+
+    // For a complete listing of the keys, see the launchd.plist manual page.
+    let dict: NSMutableDictionary = [
+        "Label": "MacOS.Trojan.local",
+        "WorkingDirectory": NSHomeDirectory() + CONFIG_PATH,
+        "KeepAlive": true,
+        "StandardOutPath": LOG_PATH,
+        "StandardErrorPath": LOG_PATH,
+        "ProgramArguments": arguments
+    ]
+    dict.write(toFile: plistFilepath, atomically: true)
+    let Sha1Sum = getFileSHA1Sum(plistFilepath)
+    if oldSha1Sum != Sha1Sum {
+        return true
+    } else {
+        return false
+    }
+}
+
+func InstallTrojanLocal(finish: @escaping(_ success: Bool)->()) {
+    let fileMgr = FileManager.default
+    let homeDir = NSHomeDirectory()
+    let appSupportDir = homeDir+APP_SUPPORT_DIR
+    if !fileMgr.fileExists(atPath: appSupportDir + "trojan-\(TROJAN_VERSION)/trojan") {
+        let bundle = Bundle.main
+        let installerPath = bundle.path(forResource: "install_trojan.sh", ofType: nil)
+        let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+        task.waitUntilExit()
+        if task.terminationStatus == 0 {
+            NSLog("Install trojan succeeded.")
+            DispatchQueue.main.async {
+                finish(true)
+            }
+        } else {
+            NSLog("Install trojan failed.")
+            DispatchQueue.main.async {
+                finish(false)
+            }
+        }
+    } else {
+        finish(true)
+    }
+}
+
+func ReloadConfTrojan(finish: @escaping(_ success: Bool)->()) {
+    let bundle = Bundle.main
+    let installerPath = bundle.path(forResource: "reload_conf_trojan.sh", ofType: nil)
+    let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+    task.waitUntilExit()
+    if task.terminationStatus == 0 {
+        NSLog("Start trojan succeeded.")
+        DispatchQueue.main.async {
+            finish(true)
+        }
+    } else {
+        NSLog("Start trojan failed.")
+        DispatchQueue.main.async {
+            finish(false)
+        }
+    }
+}
+
+func StartTrojan(finish: @escaping(_ success: Bool)->()) {
+    let bundle = Bundle.main
+    let installerPath = bundle.path(forResource: "start_trojan.sh", ofType: nil)
+    let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+    task.waitUntilExit()
+    if task.terminationStatus == 0 {
+        NSLog("Start trojan succeeded.")
+        DispatchQueue.main.async {
+            finish(true)
+        }
+    } else {
+        NSLog("Start trojan failed.")
+        DispatchQueue.main.async {
+            finish(false)
+        }
+    }
+}
+
+func StopTrojan(finish: @escaping(_ success: Bool)->()) {
+    let bundle = Bundle.main
+    let installerPath = bundle.path(forResource: "stop_trojan.sh", ofType: nil)
+    let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+    task.waitUntilExit()
+    if task.terminationStatus == 0 {
+        NSLog("Stop trojan succeeded.")
+        DispatchQueue.main.async {
+            finish(true)
+        }
+    } else {
+        NSLog("Stop trojan failed.")
+        DispatchQueue.main.async {
+            finish(false)
+        }
+    }
+}
+
+
+func RemoveTrojan(finish: @escaping(_ success: Bool)->()) {
+    let bundle = Bundle.main
+    let installerPath = bundle.path(forResource: "remove_trojan.sh", ofType: nil)
+    let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+    task.waitUntilExit()
+    if task.terminationStatus == 0 {
+        NSLog("Remove trojan succeeded.")
+        DispatchQueue.main.async {
+            finish(true)
+        }
+    } else {
+        NSLog("Remove trojan failed.")
+        DispatchQueue.main.async {
+            finish(false)
+        }
+    }
+}
+
+func writeTrojanConfFile(_ jsonString: String) -> Bool {
+    let url = NSURL.fileURL(withPath: CONFIG_PATH)
+    do {
+        let oldSum = getFileSHA1Sum(CONFIG_PATH)
+        try FileManager.default.removeItem(atPath: CONFIG_PATH)
+        
+        try jsonString.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+        let newSum = getFileSHA1Sum(CONFIG_PATH)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            Profiles.shared.save()
+        }
+        
+        if oldSum == newSum {
+            return false
+        }
+        return true
+    } catch let error {
+        print("saveProfile: ", error)
+    }
+    return false
+}
+
+func SyncTrojan(finish: @escaping(_ success: Bool)->()) {
+    func Sync(_ suc: Bool){
+        SyncPrivoxy {
+            SyncPac()
+            finish(suc)
+        }
+    }
+    var changed: Bool = false
+    changed = changed || generateTrojanLauchAgentPlist()
+    if Profile.shared.client != nil {
+        changed = changed || writeTrojanConfFile(Profile.shared.jsonString)
+        if UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
+            StartTrojan { (s) in
+                if s {
+                    ReloadConfTrojan { (suc) in
+                        Sync(suc)
+                    }
+                } else {
+                    Sync(false)
+                }
+            }
+        } else {
+            Sync(true)
+        }
+    } else {
+        StopTrojan { (s) in
+            Sync(true)
+        }
+    }
+}
+
 func generatePrivoxyLauchAgentPlist() -> Bool {
     let privoxyPath = NSHomeDirectory() + APP_SUPPORT_DIR + "privoxy"
     let logFilePath = NSHomeDirectory() + "/Library/Logs/privoxy.log"
