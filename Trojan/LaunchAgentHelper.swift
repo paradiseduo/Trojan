@@ -48,11 +48,12 @@ func generateTrojanLauchAgentPlist() -> Bool {
     // For a complete listing of the keys, see the launchd.plist manual page.
     let dict: NSMutableDictionary = [
         "Label": "MacOS.Trojan.local",
-        "WorkingDirectory": NSHomeDirectory() + CONFIG_PATH,
+        "WorkingDirectory": NSHomeDirectory() + APP_SUPPORT_DIR,
         "KeepAlive": true,
         "StandardOutPath": LOG_PATH,
         "StandardErrorPath": LOG_PATH,
-        "ProgramArguments": arguments
+        "ProgramArguments": arguments,
+        "EnvironmentVariables": ["DYLD_LIBRARY_PATH": NSHomeDirectory() + APP_SUPPORT_DIR]
     ]
     dict.write(toFile: plistFilepath, atomically: true)
     let Sha1Sum = getFileSHA1Sum(plistFilepath)
@@ -94,12 +95,12 @@ func ReloadConfTrojan(finish: @escaping(_ success: Bool)->()) {
     let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
     task.waitUntilExit()
     if task.terminationStatus == 0 {
-        NSLog("Start trojan succeeded.")
+        NSLog("Reload trojan succeeded.")
         DispatchQueue.main.async {
             finish(true)
         }
     } else {
-        NSLog("Start trojan failed.")
+        NSLog("Reload trojan failed.")
         DispatchQueue.main.async {
             finish(false)
         }
@@ -192,17 +193,12 @@ func SyncTrojan(finish: @escaping(_ success: Bool)->()) {
     }
     var changed: Bool = false
     changed = changed || generateTrojanLauchAgentPlist()
-    if Profile.shared.client != nil {
+    let mgr = Profile.shared
+    if mgr.client != nil && mgr.client.remote_addr != "" {
         changed = changed || writeTrojanConfFile(Profile.shared.jsonString)
         if UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
-            StartTrojan { (s) in
-                if s {
-                    ReloadConfTrojan { (suc) in
-                        Sync(suc)
-                    }
-                } else {
-                    Sync(false)
-                }
+            ReloadConfTrojan { (suc) in
+                Sync(suc)
             }
         } else {
             Sync(true)
@@ -255,12 +251,12 @@ func ReloadConfPrivoxy(finish: @escaping(_ success: Bool)->()) {
     let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
     task.waitUntilExit()
     if task.terminationStatus == 0 {
-        NSLog("reload privoxy succeeded.")
+        NSLog("Reload privoxy succeeded.")
         DispatchQueue.main.async {
             finish(true)
         }
     } else {
-        NSLog("reload privoxy failed.")
+        NSLog("Reload privoxy failed.")
         DispatchQueue.main.async {
             finish(false)
         }
@@ -389,7 +385,7 @@ func SyncPrivoxy(finish: @escaping()->()) {
     if mgr.client != nil && mgr.client.remote_addr != "" {
         changed = changed || writePrivoxyConfFile()
         
-        let on = UserDefaults.standard.bool(forKey: USERDEFAULTS_LOCAL_HTTP_ON)
+        let on = UserDefaults.standard.bool(forKey: USERDEFAULTS_LOCAL_HTTP_ON) && UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON)
         if on {
             ReloadConfPrivoxy { (success) in
                 finish()

@@ -30,6 +30,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             LoginServiceKit.removeLoginItems()
         }
     }
+    
+    static func stopTrojan(finish: @escaping()->()) {
+        StopTrojan { (s) in
+            StopPrivoxy { (ss) in
+                ProxyConfHelper.stopPACServer()
+                ProxyConfHelper.disableProxy("hi")
+                let defaults = UserDefaults.standard
+                defaults.set(false, forKey: USERDEFAULTS_TROJAN_ON)
+                defaults.synchronize()
+                DispatchQueue.main.async {
+                    finish()
+                }
+            }
+        }
+    }
 }
 
 

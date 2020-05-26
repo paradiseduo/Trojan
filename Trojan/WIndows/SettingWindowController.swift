@@ -85,6 +85,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             Profiles.shared.update(p)
             Profile.shared.saveProfile()
             w.closeFromSave = true
+            NotificationCenter.default.post(name: NOTIFY_SERVER_PROFILES_CHANGED, object: nil)
             w.window?.close()
         }
     }

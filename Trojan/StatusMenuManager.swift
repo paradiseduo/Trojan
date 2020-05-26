@@ -32,26 +32,27 @@ class StatusMenuManager: NSObject {
     override func awakeFromNib() {
         updateApplicationConfig()
         
-        NotificationCenter.default.addObserver(forName: TROJAN_START, object: nil, queue: OperationQueue.main) { (noti) in
-            if !UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
-                UserDefaults.standard.set(true, forKey: USERDEFAULTS_TROJAN_ON)
-                UserDefaults.standard.synchronize()
-                SyncPrivoxy {
-                    self.updateMainMenu()
-                    self.applyConfig()
+        NotificationCenter.default.addObserver(forName: NOTIFY_HTTP_CONF_CHANGED, object: nil, queue: OperationQueue.main) { (noti) in
+            SyncPrivoxy {
+                StatusMenuManager.applyConfig { (s) in
+                    self.refresh()
                 }
             }
         }
-        NotificationCenter.default.addObserver(forName: TROJAN_STOP, object: nil, queue: OperationQueue.main) { (noti) in
-            if UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
-                UserDefaults.standard.set(false, forKey: USERDEFAULTS_TROJAN_ON)
-                UserDefaults.standard.synchronize()
-                self.updateMainMenu()
-            }
+        NotificationCenter.default.addObserver(forName: NOTIFY_UPDATE_RUNNING_MODE_MENU, object: nil, queue: OperationQueue.main) { (noti) in
+            self.updateRunningModeMenu()
         }
-        NotificationCenter.default.addObserver(forName: NOTIFY_HTTP_CONF_CHANGED, object: nil, queue: OperationQueue.main) { (noti) in
-            SyncPrivoxy {
-                self.applyConfig()
+        NotificationCenter.default.addObserver(forName: NOTIFY_SERVER_PROFILES_CHANGED, object: nil, queue: OperationQueue.main) { (noti) in
+            if Profiles.shared.count() > 0 {
+                if !UserDefaults.standard.bool(forKey: USERDEFAULTS_TROJAN_ON) {
+                    self.toggle { (suc) in
+                        self.refresh()
+                    }
+                } else {
+                    SyncTrojan { (s) in
+                        self.refresh()
+                    }
+                }
             }
         }
     }
@@ -86,19 +87,26 @@ class StatusMenuManager: NSObject {
             }
         }
         Profiles.shared.load()
-        
-        InstallPrivoxy { (suc) in
-            SyncPrivoxy {
+        InstallTrojanLocal { (s) in
+            InstallPrivoxy { (suc) in
                 ProxyConfHelper.install()
                 SyncPac()
-                
-                self.updateMainMenu()
-                self.applyConfig()
+
+                StatusMenuManager.applyConfig { (s) in
+                    self.refresh()
+                }
                 
                 if UserDefaults.standard.bool(forKey: USERDEFAULTS_AUTO_CHECK_UPDATE) {
                     self.checkUpdate(showAlert: false)
                 }
             }
+        }
+    }
+    
+    private func refresh() {
+        DispatchQueue.main.async {
+            self.updateMainMenu()
+            self.updateRunningModeMenu()
         }
     }
     
@@ -129,28 +137,38 @@ class StatusMenuManager: NSObject {
     }
     
     @IBAction func powerSwitch(_ sender: NSMenuItem) {
+        self.toggle { (s) in
+            self.updateMainMenu()
+        }
+    }
+    
+    private func toggle(finish: @escaping(_ success: Bool)->()) {
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
         if isOn {
             defaults.set(false, forKey: USERDEFAULTS_TROJAN_ON)
-            Trojan.shared.stop()
             self.makeToast("Trojan OFF")
         } else {
             defaults.set(true, forKey: USERDEFAULTS_TROJAN_ON)
-            Trojan.shared.start()
             self.makeToast("Trojan ON")
         }
         defaults.synchronize()
-        applyConfig()
-        updateMainMenu()
+        StatusMenuManager.applyConfig { (suc) in
+            SyncTrojan { (s) in
+                DispatchQueue.main.async {
+                    finish(true)
+                }
+            }
+        }
     }
     
     @IBAction func quit(_ sender: NSMenuItem) {
-        StopPrivoxy { (s) in
-            Trojan.shared.stop()
+        AppDelegate.stopTrojan {
             if AppDelegate.getLauncherStatus() == false {
-                RemovePrivoxy { (ss) in
-                    NSApplication.shared.terminate(self)
+                RemovePrivoxy { (s) in
+                    RemoveTrojan { (ss) in
+                        NSApplication.shared.terminate(self)
+                    }
                 }
             } else {
                 NSApplication.shared.terminate(self)
@@ -267,75 +285,65 @@ class StatusMenuManager: NSObject {
     }
     
     @IBAction func pacMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("auto", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.PAC)
     }
     
     @IBAction func WhiteListMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("chn.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.WHITELIST)
     }
     
     @IBAction func globalMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("global", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.GLOBAL)
     }
     
     @IBAction func manualMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("manual", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.MANUAL)
     }
     
     @IBAction func aclAutoMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("gfwlist.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.ACLAUTO)
     }
     
     @IBAction func backChinaMode(_ sender: NSMenuItem) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("whiteList", forKey: USERDEFAULTS_RUNNING_MODE)
-        defaults.setValue("backchn.acl", forKey: USERDEFAULTS_ACL_FILE_NAME)
-        defaults.synchronize()
-        self.applyConfig()
+        Mode.switchTo(.CHINA)
     }
 
-    func applyConfig() {
+    static func applyConfig(finish: @escaping(_ success: Bool)->()) {
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
         let mode = defaults.string(forKey: USERDEFAULTS_RUNNING_MODE)
         
         if isOn {
-            if mode == "auto" {
-                ProxyConfHelper.disableProxy("hi")
-                ProxyConfHelper.enablePACProxy("hi")
-            } else if mode == "global" {
-                ProxyConfHelper.disableProxy("hi")
-                ProxyConfHelper.enableGlobalProxy()
-            } else if mode == "manual" {
-                ProxyConfHelper.disableProxy("hi")
-            } else if mode == "whiteList" {
-                ProxyConfHelper.disableProxy("hi")
-                ProxyConfHelper.enableWhiteListProxy()//新白名单基于GlobalMode
+            StartTrojan { (s) in
+                if s {
+                    StartPrivoxy { (ss) in
+                        if ss {
+                            if mode == "auto" {
+                                ProxyConfHelper.disableProxy("hi")
+                                ProxyConfHelper.enablePACProxy("hi")
+                            } else if mode == "global" {
+                                ProxyConfHelper.disableProxy("hi")
+                                ProxyConfHelper.enableGlobalProxy()
+                            } else if mode == "manual" {
+                                ProxyConfHelper.disableProxy("hi")
+                            } else if mode == "whiteList" {
+                                ProxyConfHelper.disableProxy("hi")
+                                ProxyConfHelper.enableWhiteListProxy()//新白名单基于GlobalMode
+                            }
+                            finish(true)
+                        } else {
+                            finish(false)
+                        }
+                    }
+                } else {
+                    finish(false)
+                }
             }
         } else {
-            Trojan.shared.stop()
+            AppDelegate.stopTrojan {
+                finish(true)
+            }
         }
-        updateRunningModeMenu()
     }
     
     func updateRunningModeMenu() {

@@ -31,28 +31,6 @@ class Profile {
         UserDefaults.standard.setValue(self.client.local_addr, forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
         UserDefaults.standard.setValue(NSNumber(value: self.client.local_port), forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
         UserDefaults.standard.synchronize()
-//        let url = NSURL.fileURL(withPath: CONFIG_PATH)
-//        do {
-//            try FileManager.default.removeItem(atPath: url.path)
-//        }catch let error {
-//            print("removeItem \(error)")
-//        }
-//        FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
-//        do {
-//            try self.jsonString.write(to: url, atomically: true, encoding: String.Encoding.utf8)
-//
-//            UserDefaults.standard.setValue(self.client.local_addr, forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
-//            UserDefaults.standard.setValue(NSNumber(value: self.client.local_port), forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
-//            UserDefaults.standard.synchronize()
-//
-//            Trojan.shared.stop()
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
-//                Profiles.shared.save()
-//                Trojan.shared.start()
-//            }
-//        } catch let error {
-//            print("saveProfile: ", error)
-//        }
     }
     
     func loadProfile() {

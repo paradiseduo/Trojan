@@ -27,7 +27,6 @@
 		BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */; };
 		BE464A15243C2A8300BE8336 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A14243C2A8300BE8336 /* Profile.swift */; };
 		BE464A17243C2A8900BE8336 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A16243C2A8900BE8336 /* Json.swift */; };
-		BE464A19243C2A9C00BE8336 /* Trojan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A18243C2A9C00BE8336 /* Trojan.swift */; };
 		BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1A243C2AA100BE8336 /* CommandLine.swift */; };
 		BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1C243C2AA500BE8336 /* Configuration.swift */; };
 		BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1E243C2AA900BE8336 /* VersionChecker.swift */; };
@@ -57,6 +56,7 @@
 		E8BA62AB247CD49600557A6E /* stop_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62AA247CD49600557A6E /* stop_trojan.sh */; };
 		E8BA62AD247CD4B900557A6E /* reload_conf_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62AC247CD4B900557A6E /* reload_conf_trojan.sh */; };
 		E8BA62AF247CD4DA00557A6E /* remove_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62AE247CD4DA00557A6E /* remove_trojan.sh */; };
+		E8BA62B2247CEBA500557A6E /* ModeSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BA62B1247CEBA500557A6E /* ModeSwitcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +107,6 @@
 		BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuManager.swift; sourceTree = "<group>"; };
 		BE464A14243C2A8300BE8336 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BE464A16243C2A8900BE8336 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
-		BE464A18243C2A9C00BE8336 /* Trojan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trojan.swift; sourceTree = "<group>"; };
 		BE464A1A243C2AA100BE8336 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		BE464A1C243C2AA500BE8336 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BE464A1E243C2AA900BE8336 /* VersionChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		E8BA62AA247CD49600557A6E /* stop_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stop_trojan.sh; sourceTree = "<group>"; };
 		E8BA62AC247CD4B900557A6E /* reload_conf_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = reload_conf_trojan.sh; sourceTree = "<group>"; };
 		E8BA62AE247CD4DA00557A6E /* remove_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = remove_trojan.sh; sourceTree = "<group>"; };
+		E8BA62B1247CEBA500557A6E /* ModeSwitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSwitcher.swift; sourceTree = "<group>"; };
 		EC62B1D04D8D5DC345607E41 /* Pods-ProxyConfHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProxyConfHelper.debug.xcconfig"; path = "Target Support Files/Pods-ProxyConfHelper/Pods-ProxyConfHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		F7AD288CA94EC1B48B84342B /* Pods-StartAtLoginLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.debug.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,13 +240,13 @@
 				BE464A12243C2A7E00BE8336 /* StatusMenuManager.swift */,
 				BE464A14243C2A8300BE8336 /* Profile.swift */,
 				BE464A16243C2A8900BE8336 /* Json.swift */,
-				BE464A18243C2A9C00BE8336 /* Trojan.swift */,
 				BE464A1A243C2AA100BE8336 /* CommandLine.swift */,
 				BE464A1C243C2AA500BE8336 /* Configuration.swift */,
 				BE464A1E243C2AA900BE8336 /* VersionChecker.swift */,
 				BEC48A00245FC79000891EAC /* PAC.swift */,
 				BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */,
 				BE59998C24792E06002177A2 /* LoginServiceKit.swift */,
+				E8BA62B1247CEBA500557A6E /* ModeSwitcher.swift */,
 				BEC48A13245FCBA800891EAC /* DefaultsConfig.h */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
@@ -493,10 +493,10 @@
 				BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */,
 				BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */,
 				BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */,
-				BE464A19243C2A9C00BE8336 /* Trojan.swift in Sources */,
 				BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */,
 				BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */,
 				BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */,
+				E8BA62B2247CEBA500557A6E /* ModeSwitcher.swift in Sources */,
 				BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */,
 				BE464A15243C2A8300BE8336 /* Profile.swift in Sources */,
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
