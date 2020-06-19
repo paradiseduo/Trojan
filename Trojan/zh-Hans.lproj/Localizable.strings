@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Trojan
+
+  Created by Paradiseduo on 2020/6/19.
+  Copyright © 2020 ParadiseDuo. All rights reserved.
+*/
+
+"Turn Trojan On" = "启动Trojan";
+"Turn Trojan Off" = "关闭Trojan";
+"Trojan: Off" = "Trojan: 关闭";
+"Trojan: On" = "Trojan: 启动";
+"Export Command Copied." = "命令已拷贝";
+"Export Command Copied Failed." = "拷贝命令失败";
+"Logs Cleand" = "日志已清除";

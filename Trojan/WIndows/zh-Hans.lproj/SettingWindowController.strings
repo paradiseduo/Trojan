@@ -1,0 +1,30 @@
+
+/* Class = "NSWindow"; title = "Setting"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "设置";
+
+/* Class = "NSTextFieldCell"; title = "Text"; ObjectID = "GBD-1J-aUY"; */
+"GBD-1J-aUY.title" = "Text";
+
+/* Class = "NSTextFieldCell"; title = "Local Port"; ObjectID = "Gyu-fJ-ZES"; */
+"Gyu-fJ-ZES.title" = "本地端口";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "IxW-2H-8rV"; */
+"IxW-2H-8rV.title" = "Box";
+
+/* Class = "NSTextFieldCell"; title = "Local Address"; ObjectID = "Wei-TG-x93"; */
+"Wei-TG-x93.title" = "本地监听地址";
+
+/* Class = "NSTextFieldCell"; title = "Remote Port"; ObjectID = "bvj-l8-8ET"; */
+"bvj-l8-8ET.title" = "服务器端口";
+
+/* Class = "NSTextFieldCell"; title = "Remote Address"; ObjectID = "fli-dh-s7u"; */
+"fli-dh-s7u.title" = "服务器地址";
+
+/* Class = "NSTextFieldCell"; title = "Password"; ObjectID = "i0D-9V-Vbd"; */
+"i0D-9V-Vbd.title" = "密码";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "xO8-VQ-N2V"; */
+"xO8-VQ-N2V.title" = "保存";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "yh5-3a-s5u"; */
+"yh5-3a-s5u.title" = "取消";

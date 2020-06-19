@@ -1,0 +1,42 @@
+
+/* Class = "NSButtonCell"; title = "Check Updates At Launch"; ObjectID = "2lA-Yb-g5P"; */
+"2lA-Yb-g5P.title" = "打开后自动检查更新";
+
+/* Class = "NSTextFieldCell"; title = "HTTP Proxy Listen Address:"; ObjectID = "7Gu-mk-D4u"; */
+"7Gu-mk-D4u.title" = "HTTP代理监听地址:";
+
+/* Class = "NSTabViewItem"; label = "HTTP"; ObjectID = "9eZ-LB-LAE"; */
+"9eZ-LB-LAE.label" = "HTTP";
+
+/* Class = "NSWindow"; title = "Settings"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "设置";
+
+/* Class = "NSToolbarItem"; label = "General"; ObjectID = "PXB-LX-C1I"; */
+"PXB-LX-C1I.label" = "常规设置";
+
+/* Class = "NSToolbarItem"; paletteLabel = "General"; ObjectID = "PXB-LX-C1I"; */
+"PXB-LX-C1I.paletteLabel" = "常规设置";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "UkP-CN-9fg"; */
+"UkP-CN-9fg.title" = "保存";
+
+/* Class = "NSTextFieldCell"; title = "HTTP Proxy Listen Port:"; ObjectID = "WJH-fF-F97"; */
+"WJH-fF-F97.title" = "HTTP代理监听端口:";
+
+/* Class = "NSButtonCell"; title = "Launch At Login"; ObjectID = "XRd-gw-sVz"; */
+"XRd-gw-sVz.title" = "登录后自动启动";
+
+/* Class = "NSButtonCell"; title = "HTTP Proxy Enable"; ObjectID = "ddc-tk-35g"; */
+"ddc-tk-35g.title" = "开启HTTP代理";
+
+/* Class = "NSButtonCell"; title = "Follow Global Mode"; ObjectID = "qsk-nQ-vvI"; */
+"qsk-nQ-vvI.title" = "跟随全局模式";
+
+/* Class = "NSTabViewItem"; label = "General"; ObjectID = "u90-Qy-cbH"; */
+"u90-Qy-cbH.label" = "常规设置";
+
+/* Class = "NSToolbarItem"; label = "HTTP"; ObjectID = "wfh-Rc-uiw"; */
+"wfh-Rc-uiw.label" = "HTTP";
+
+/* Class = "NSToolbarItem"; paletteLabel = "HTTP"; ObjectID = "wfh-Rc-uiw"; */
+"wfh-Rc-uiw.paletteLabel" = "HTTP";

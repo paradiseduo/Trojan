@@ -114,9 +114,9 @@ class StatusMenuManager: NSObject {
         let defaults = UserDefaults.standard
         let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
         if isOn {
-            switchLabel.title = "Trojan: On"
+            switchLabel.title = "Trojan: On".localized
             switchLabel.image = NSImage(named: NSImage.statusAvailableName)
-            toggleRunning.title = "Turn Trojan Off"
+            toggleRunning.title = "Turn Trojan Off".localized
             
             let icon = NSImage(named: "open")
             statusItem.button?.image = icon
@@ -125,9 +125,9 @@ class StatusMenuManager: NSObject {
                 copyCommandItem.isHidden = false
             }
         } else {
-            switchLabel.title = "Trojan: Off"
+            switchLabel.title = "Trojan: Off".localized
             switchLabel.image = NSImage(named: NSImage.statusUnavailableName)
-            toggleRunning.title = "Turn Trojan On"
+            toggleRunning.title = "Turn Trojan On".localized
             
             let icon = NSImage(named: "close")
             statusItem.button?.image = icon
@@ -147,10 +147,10 @@ class StatusMenuManager: NSObject {
         let isOn = defaults.bool(forKey: USERDEFAULTS_TROJAN_ON)
         if isOn {
             defaults.set(false, forKey: USERDEFAULTS_TROJAN_ON)
-            self.makeToast("Trojan OFF")
+            self.makeToast("Trojan: Off".localized)
         } else {
             defaults.set(true, forKey: USERDEFAULTS_TROJAN_ON)
-            self.makeToast("Trojan ON")
+            self.makeToast("Trojan: On".localized)
         }
         defaults.synchronize()
         StatusMenuManager.applyConfig { (suc) in
@@ -265,9 +265,9 @@ class StatusMenuManager: NSObject {
                 NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
                 
                 // Show a toast notification.
-                self.makeToast("Export Command Copied.")
+                self.makeToast("Export Command Copied.".localized)
             } else {
-                self.makeToast("Export Command Copied Failed.")
+                self.makeToast("Export Command Copied Failed.".localized)
             }
         } else {
             if let a = address {
@@ -277,9 +277,9 @@ class StatusMenuManager: NSObject {
                 NSPasteboard.general.setString(command, forType: NSPasteboard.PasteboardType.string)
                 
                 // Show a toast notification.
-                self.makeToast("Export Command Copied.")
+                self.makeToast("Export Command Copied.".localized)
             } else {
-                self.makeToast("Export Command Copied Failed.")
+                self.makeToast("Export Command Copied Failed.".localized)
             }
         }
     }

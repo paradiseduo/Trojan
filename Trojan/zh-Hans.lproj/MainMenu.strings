@@ -1,0 +1,57 @@
+
+/* Class = "NSMenuItem"; title = "Clean Logs"; ObjectID = "0PN-XY-ZXt"; */
+"0PN-XY-ZXt.title" = "清除日志";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "9WC-iB-Jq8"; */
+"9WC-iB-Jq8.title" = "退出";
+
+/* Class = "NSMenuItem"; title = "Check Update"; ObjectID = "BLJ-op-AkG"; */
+"BLJ-op-AkG.title" = "检查更新";
+
+/* Class = "NSMenuItem"; title = "Export Command Line To Pasteboard"; ObjectID = "Bea-Hp-fhg"; */
+"Bea-Hp-fhg.title" = "复制终端代理命令";
+
+/* Class = "NSMenuItem"; title = "ACL Auto"; ObjectID = "NEA-Fa-rON"; */
+"NEA-Fa-rON.title" = "ACL自动";
+
+/* Class = "NSMenuItem"; title = "Manual Mode"; ObjectID = "REy-hH-h4P"; */
+"REy-hH-h4P.title" = "手动模式";
+
+/* Class = "NSMenuItem"; title = "Turn Trojan On"; ObjectID = "SL2-0h-OFw"; */
+"SL2-0h-OFw.title" = "Turn Trojan On";
+
+/* Class = "NSMenuItem"; title = "Trojan: On"; ObjectID = "VPI-fv-1dZ"; */
+"VPI-fv-1dZ.title" = "Trojan: On";
+
+/* Class = "NSMenuItem"; title = "About"; ObjectID = "YkQ-MK-047"; */
+"YkQ-MK-047.title" = "关于";
+
+/* Class = "NSMenuItem"; title = "ACL Mode"; ObjectID = "b2z-2C-t82"; */
+"b2z-2C-t82.title" = "ACL模式";
+
+/* Class = "NSMenuItem"; title = "White List Mode"; ObjectID = "czN-6H-Giu"; */
+"czN-6H-Giu.title" = "白名单模式";
+
+/* Class = "NSMenuItem"; title = "Global Mode"; ObjectID = "fvC-5Z-4w5"; */
+"fvC-5Z-4w5.title" = "全局模式";
+
+/* Class = "NSMenuItem"; title = "Auto Mode Base On PAC"; ObjectID = "gh3-ld-apY"; */
+"gh3-ld-apY.title" = "PAC自动模式";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "i2H-13-hlp"; */
+"i2H-13-hlp.title" = "帮助";
+
+/* Class = "NSMenuItem"; title = "⚙ Servers Setting"; ObjectID = "nGS-Ow-TSH"; */
+"nGS-Ow-TSH.title" = "⚙ 服务器设置";
+
+/* Class = "NSMenuItem"; title = "Feedback"; ObjectID = "nHU-cq-FkI"; */
+"nHU-cq-FkI.title" = "问题反馈";
+
+/* Class = "NSMenuItem"; title = "⚙ Settings"; ObjectID = "nzW-Ph-yuS"; */
+"nzW-Ph-yuS.title" = "⚙ 设置";
+
+/* Class = "NSMenuItem"; title = "⚙ View Logs"; ObjectID = "p8A-3V-2aa"; */
+"p8A-3V-2aa.title" = "⚙ 查看日志";
+
+/* Class = "NSMenuItem"; title = "Proxy Back China"; ObjectID = "x6U-Ur-hKu"; */
+"x6U-Ur-hKu.title" = "代理大陆IP";

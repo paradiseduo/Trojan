@@ -30,7 +30,6 @@
 		BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1A243C2AA100BE8336 /* CommandLine.swift */; };
 		BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1C243C2AA500BE8336 /* Configuration.swift */; };
 		BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A1E243C2AA900BE8336 /* VersionChecker.swift */; };
-		BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */; };
 		BE464A28243C2ABC00BE8336 /* LogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A22243C2ABC00BE8336 /* LogWindowController.xib */; };
 		BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */; };
 		BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A24243C2ABC00BE8336 /* LogWindowController.swift */; };
@@ -39,7 +38,6 @@
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
 		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
-		BE59998B247923C5002177A2 /* SettingsWIndowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE599989247923C5002177A2 /* SettingsWIndowController.xib */; };
 		BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59998C24792E06002177A2 /* LoginServiceKit.swift */; };
 		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
 		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
@@ -51,6 +49,9 @@
 		BEC48A11245FC8C600891EAC /* user-rule.txt in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A09245FC8C600891EAC /* user-rule.txt */; };
 		BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A0A245FC8C600891EAC /* gfwlist.acl */; };
 		BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */; };
+		E82CD55F249C781000EA38FD /* SettingWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82CD561249C781000EA38FD /* SettingWindowController.xib */; };
+		E82CD565249C788400EA38FD /* SettingsWIndowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E82CD567249C788400EA38FD /* SettingsWIndowController.xib */; };
+		E82CD56D249C7A3E00EA38FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E82CD56F249C7A3E00EA38FD /* Localizable.strings */; };
 		E8BA62A7247CD3EE00557A6E /* install_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62A6247CD3EE00557A6E /* install_trojan.sh */; };
 		E8BA62A9247CD47800557A6E /* start_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62A8247CD47800557A6E /* start_trojan.sh */; };
 		E8BA62AB247CD49600557A6E /* stop_trojan.sh in Resources */ = {isa = PBXBuildFile; fileRef = E8BA62AA247CD49600557A6E /* stop_trojan.sh */; };
@@ -110,7 +111,6 @@
 		BE464A1A243C2AA100BE8336 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		BE464A1C243C2AA500BE8336 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BE464A1E243C2AA900BE8336 /* VersionChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionChecker.swift; sourceTree = "<group>"; };
-		BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingWindowController.xib; sourceTree = "<group>"; };
 		BE464A22243C2ABC00BE8336 /* LogWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogWindowController.xib; sourceTree = "<group>"; };
 		BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastWindowController.swift; sourceTree = "<group>"; };
 		BE464A24243C2ABC00BE8336 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 		BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyConfHelper.h; sourceTree = "<group>"; };
 		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		BE599988247923C5002177A2 /* SettingsWIndowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWIndowController.swift; sourceTree = "<group>"; };
-		BE599989247923C5002177A2 /* SettingsWIndowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWIndowController.xib; sourceTree = "<group>"; };
 		BE59998C24792E06002177A2 /* LoginServiceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServiceKit.swift; sourceTree = "<group>"; };
 		BEC48A00245FC79000891EAC /* PAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAC.swift; sourceTree = "<group>"; };
 		BEC48A03245FC8C500891EAC /* backchn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backchn.acl; sourceTree = "<group>"; };
@@ -138,6 +137,13 @@
 		BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextView.swift; sourceTree = "<group>"; };
 		CDE35465A9F1F101A2188BCB /* Pods_StartAtLoginLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StartAtLoginLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DDA8340BA68165A3F556B5 /* Pods-StartAtLoginLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StartAtLoginLauncher.release.xcconfig"; path = "Target Support Files/Pods-StartAtLoginLauncher/Pods-StartAtLoginLauncher.release.xcconfig"; sourceTree = "<group>"; };
+		E82CD55E249C736500EA38FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		E82CD562249C781600EA38FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingWindowController.xib; sourceTree = "<group>"; };
+		E82CD564249C784000EA38FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingWindowController.strings"; sourceTree = "<group>"; };
+		E82CD566249C788400EA38FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsWIndowController.xib; sourceTree = "<group>"; };
+		E82CD569249C788900EA38FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SettingsWIndowController.strings"; sourceTree = "<group>"; };
+		E82CD56E249C7A3E00EA38FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E82CD570249C7B7900EA38FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E8BA62A6247CD3EE00557A6E /* install_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install_trojan.sh; sourceTree = "<group>"; };
 		E8BA62A8247CD47800557A6E /* start_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start_trojan.sh; sourceTree = "<group>"; };
 		E8BA62AA247CD49600557A6E /* stop_trojan.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stop_trojan.sh; sourceTree = "<group>"; };
@@ -258,6 +264,7 @@
 				BE464A09243C29CE00BE8336 /* Info.plist */,
 				BE464A0A243C29CE00BE8336 /* Trojan.entitlements */,
 				BE524E0B245F00E5003F3E80 /* Trojan-Bridging-Header.h */,
+				E82CD56F249C7A3E00EA38FD /* Localizable.strings */,
 			);
 			path = Trojan;
 			sourceTree = "<group>";
@@ -268,12 +275,12 @@
 				BE464A24243C2ABC00BE8336 /* LogWindowController.swift */,
 				BE464A22243C2ABC00BE8336 /* LogWindowController.xib */,
 				BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */,
-				BE464A21243C2ABC00BE8336 /* SettingWindowController.xib */,
+				E82CD561249C781000EA38FD /* SettingWindowController.xib */,
 				BE464A23243C2ABC00BE8336 /* ToastWindowController.swift */,
 				BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */,
 				BEFBF63D243CC1D0006972DF /* EditableNSTextView.swift */,
 				BE599988247923C5002177A2 /* SettingsWIndowController.swift */,
-				BE599989247923C5002177A2 /* SettingsWIndowController.xib */,
+				E82CD567249C788400EA38FD /* SettingsWIndowController.xib */,
 			);
 			path = WIndows;
 			sourceTree = "<group>";
@@ -369,6 +376,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BE4649F6243C29CE00BE8336;
 			productRefGroup = BE464A00243C29CE00BE8336 /* Products */;
@@ -394,7 +402,7 @@
 				BEC48A10245FC8C600891EAC /* abp.js in Resources */,
 				BE464A11243C29DA00BE8336 /* trojan in Resources */,
 				BE11D0BF246124D600075E25 /* remove_privoxy.sh in Resources */,
-				BE59998B247923C5002177A2 /* SettingsWIndowController.xib in Resources */,
+				E82CD565249C788400EA38FD /* SettingsWIndowController.xib in Resources */,
 				BEC48A0C245FC8C600891EAC /* whitelist.pac in Resources */,
 				BEC48A12245FC8C600891EAC /* gfwlist.acl in Resources */,
 				BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */,
@@ -402,13 +410,14 @@
 				BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */,
 				BE11D0A224611D9100075E25 /* install_helper.sh in Resources */,
 				BE11D0C12461256100075E25 /* privoxy.config.example in Resources */,
+				E82CD56D249C7A3E00EA38FD /* Localizable.strings in Resources */,
 				E8BA62AF247CD4DA00557A6E /* remove_trojan.sh in Resources */,
 				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
 				BEC48A0F245FC8C600891EAC /* whiteiplist.pac in Resources */,
 				BE11D0B32461243600075E25 /* install_privoxy.sh in Resources */,
 				BE11D0B52461246A00075E25 /* privoxy in Resources */,
 				E8BA62A7247CD3EE00557A6E /* install_trojan.sh in Resources */,
-				BE464A27243C2ABC00BE8336 /* SettingWindowController.xib in Resources */,
+				E82CD55F249C781000EA38FD /* SettingWindowController.xib in Resources */,
 				BE11D0BD246124BA00075E25 /* stop_privoxy.sh in Resources */,
 				BE11D0BB246124A700075E25 /* start_privoxy.sh in Resources */,
 				BEC48A0E245FC8C600891EAC /* gfwlist.txt in Resources */,
@@ -533,8 +542,36 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE464A07243C29CE00BE8336 /* Base */,
+				E82CD55E249C736500EA38FD /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		E82CD561249C781000EA38FD /* SettingWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E82CD562249C781600EA38FD /* Base */,
+				E82CD564249C784000EA38FD /* zh-Hans */,
+			);
+			name = SettingWindowController.xib;
+			sourceTree = "<group>";
+		};
+		E82CD567249C788400EA38FD /* SettingsWIndowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E82CD566249C788400EA38FD /* Base */,
+				E82CD569249C788900EA38FD /* zh-Hans */,
+			);
+			name = SettingsWIndowController.xib;
+			sourceTree = "<group>";
+		};
+		E82CD56F249C7A3E00EA38FD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E82CD56E249C7A3E00EA38FD /* zh-Hans */,
+				E82CD570249C7B7900EA38FD /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -544,6 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -604,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -663,7 +702,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y6H3BL52H5;
+				DEVELOPMENT_TEAM = 4J772T4V7C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Trojan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +733,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Y6H3BL52H5;
+				DEVELOPMENT_TEAM = 4J772T4V7C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Trojan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

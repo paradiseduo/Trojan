@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
+}
+
 // Trojan Helper
 let TROJAN_START = Notification.Name("TROJAN_START")
 let TROJAN_STOP = Notification.Name("TROJAN_STOP")

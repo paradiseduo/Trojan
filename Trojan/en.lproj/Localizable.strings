@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Trojan
+
+  Created by Paradiseduo on 2020/6/19.
+  Copyright © 2020 ParadiseDuo. All rights reserved.
+*/
+
+"Turn Trojan On" = "Turn Trojan On";
+"Turn Trojan Off" = "Turn Trojan Off";
+"Trojan: Off" = "Trojan: Off";
+"Trojan: On" = "Trojan: On";
+"Export Command Copied." = "Export Command Copied";
+"Export Command Copied Failed." = "Export Command Copied Failed";
+"Logs Cleand" = "Logs Cleand";
