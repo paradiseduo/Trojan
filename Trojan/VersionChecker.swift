@@ -26,7 +26,7 @@ class VersionChecker: NSObject {
         return action.rawValue
     }
     
-    func parserVersionString(strIn: String) -> Array<Int>{
+    func parserVersionString(strIn: String) -> Int {
         var strTmp = strIn
         if let index = strIn.range(of: "-")?.lowerBound {
             strTmp = String(strIn[..<index])
@@ -45,8 +45,13 @@ class VersionChecker: NSObject {
                 strTmp = String(strTmp[index...])
             }
         } while(strTmp.range(of: ".") != nil);
-        
-        return ret
+        var sum = 0
+        var i = 100
+        for item in ret {
+            sum += item*i
+            i /= 10
+        }
+        return sum
     }
     
     func checkNewVersion() -> [String:Any] {
@@ -107,40 +112,29 @@ class VersionChecker: NSObject {
         else{
             // 处理如果本地版本竟然比远程还新
             
-            var versionArr = parserVersionString(strIn: onlineData["CFBundleShortVersionString"] as! String)
-            var currentVersionArr = parserVersionString(strIn: localData["CFBundleShortVersionString"] as! String)
+            let version = parserVersionString(strIn: onlineData["CFBundleShortVersionString"] as! String)
+            let currentVersion = parserVersionString(strIn: localData["CFBundleShortVersionString"] as! String)
             
-            // 做补0处理
-            while (max(versionArr.count, currentVersionArr.count) != min(versionArr.count, currentVersionArr.count)) {
-                if (versionArr.count < currentVersionArr.count) {
-                    versionArr.append(0)
-                }
-                else {
-                    currentVersionArr.append(0)
-                }
+            if currentVersion < version {
+                haveNewVersion = true
+                subtitle = "新版本为 " + versionString + " build " + buildString + "\n" + "当前版本 " + currentVersionString + " build " + currentBuildString
+                return ["newVersion" : true,
+                        "error": "",
+                        "Title": "软件有更新！",
+                        "SubTitle": subtitle,
+                        "ConfirmBtn": "前往下载",
+                        "CancelBtn": "取消"
+                ]
+            } else {
+                subtitle = "当前版本 " + currentVersionString + " build " + currentBuildString + "\n" + "远端版本 " + versionString + " build " + buildString
+                return ["newVersion" : false,
+                        "error": "",
+                        "Title": "已是最新版本！",
+                        "SubTitle": subtitle,
+                        "ConfirmBtn": "确认",
+                        "CancelBtn": ""
+                ]
             }
-            
-            for i in 0...(currentVersionArr.count - 1) {
-                if versionArr[i] > currentVersionArr[i] {
-                    haveNewVersion = true
-                    subtitle = "新版本为 " + versionString + " build " + buildString + "\n" + "当前版本 " + currentVersionString + " build " + currentBuildString
-                    return ["newVersion" : true,
-                            "error": "",
-                            "Title": "软件有更新！",
-                            "SubTitle": subtitle,
-                            "ConfirmBtn": "前往下载",
-                            "CancelBtn": "取消"
-                    ]
-                }
-            }
-            subtitle = "当前版本 " + currentVersionString + " build " + currentBuildString + "\n" + "远端版本 " + versionString + " build " + buildString
-            return ["newVersion" : false,
-                    "error": "",
-                    "Title": "已是最新版本！",
-                    "SubTitle": subtitle,
-                    "ConfirmBtn": "确认",
-                    "CancelBtn": ""
-            ]
         }
     }
 }
