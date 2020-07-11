@@ -31,6 +31,21 @@ class Profile {
         UserDefaults.standard.setValue(self.client.local_addr, forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
         UserDefaults.standard.setValue(NSNumber(value: self.client.local_port), forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
         UserDefaults.standard.synchronize()
+        let manager = FileManager.default
+        if manager.fileExists(atPath: CONFIG_PATH) {
+            do {
+                try self.jsonString.write(toFile: CONFIG_PATH, atomically: true, encoding: String.Encoding.utf8)
+            } catch let e {
+                print("saveProfile error", e)
+            }
+        } else {
+            manager.createFile(atPath: CONFIG_PATH, contents: nil, attributes: nil)
+            do {
+                try self.jsonString.write(toFile: CONFIG_PATH, atomically: true, encoding: String.Encoding.utf8)
+            } catch let e {
+                print("saveProfile error", e)
+            }
+        }
     }
     
     func loadProfile() {
@@ -53,9 +68,7 @@ class Profile {
         } else {
             self.loadDefaultProfile()
         }
-        UserDefaults.standard.setValue(self.client.local_addr, forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_ADDRESS)
-        UserDefaults.standard.setValue(NSNumber(value: self.client.local_port), forKey: USERDEFAULTS_LOCAL_SOCKS5_LISTEN_PORT)
-        UserDefaults.standard.synchronize()
+        self.saveProfile()
     }
     
     func loadDefaultProfile() {
