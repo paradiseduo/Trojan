@@ -32,7 +32,7 @@ then open Terminal.app and input those commands:
 rm -rf ~/Library/Preferences/MacOS.Trojan.plist
 rm -rf /usr/local/var/log/trojan
 rm -rf ~/Library/Caches/MacOS.Trojan
-rm -rf ~/Documents/trojan_client.json
+rm -rf ~/Documents/Trojan
 ```
 
 ## Screenshots
