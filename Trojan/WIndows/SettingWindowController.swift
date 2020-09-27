@@ -79,9 +79,9 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             guard let w = self else {return}
             w.selectedProfile.client = c
             Profiles.shared.update(w.selectedProfile)
+            Profiles.shared.save()
             w.closeFromSave = true
             NotificationCenter.default.post(name: NOTIFY_REFRESH_SERVERS, object: nil)
-            w.window?.close()
         }
     }
     
@@ -166,7 +166,8 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         let p = Profiles.shared.itemAtIndex(row)
         if p != nil {
-            self.selectedProfile = p!
+            self.selectedProfile.name = object as! String
+            self.selectedProfile.client = p!.client
         }
     }
     
