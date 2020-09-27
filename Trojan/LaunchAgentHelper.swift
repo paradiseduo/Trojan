@@ -264,14 +264,21 @@ func ReloadConfPrivoxy(finish: @escaping(_ success: Bool)->()) {
 }
 
 func StartPrivoxy(finish: @escaping(_ success: Bool)->()) {
-    let bundle = Bundle.main
-    let installerPath = bundle.path(forResource: "start_privoxy.sh", ofType: nil)
-    let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
-    task.waitUntilExit()
-    if task.terminationStatus == 0 {
-        NSLog("Start privoxy succeeded.")
-        DispatchQueue.main.async {
-            finish(true)
+    if generatePrivoxyLauchAgentPlist() {
+        let bundle = Bundle.main
+        let installerPath = bundle.path(forResource: "start_privoxy.sh", ofType: nil)
+        let task = Process.launchedProcess(launchPath: installerPath!, arguments: [""])
+        task.waitUntilExit()
+        if task.terminationStatus == 0 {
+            NSLog("Start privoxy succeeded.")
+            DispatchQueue.main.async {
+                finish(true)
+            }
+        } else {
+            NSLog("Start privoxy failed.")
+            DispatchQueue.main.async {
+                finish(false)
+            }
         }
     } else {
         NSLog("Start privoxy failed.")
