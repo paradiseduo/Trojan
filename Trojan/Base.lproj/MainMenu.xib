@@ -22,6 +22,7 @@
                 <outlet property="globalItem" destination="fvC-5Z-4w5" id="bI6-44-rQq"/>
                 <outlet property="manualItem" destination="REy-hH-h4P" id="W1g-kW-nEy"/>
                 <outlet property="pacItem" destination="gh3-ld-apY" id="urJ-A1-Exy"/>
+                <outlet property="serversMenuItem" destination="Eur-eP-1FK" id="VfC-ha-YCB"/>
                 <outlet property="speedMenu" destination="Vcg-d5-cVm" id="8zc-dM-HJT"/>
                 <outlet property="statusMenu" destination="zOa-kh-Dxd" id="bl4-yd-acl"/>
                 <outlet property="switchLabel" destination="VPI-fv-1dZ" id="g05-Oh-nWv"/>
@@ -84,6 +85,11 @@
                             </menuItem>
                         </items>
                     </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="rjv-DD-Ohy"/>
+                <menuItem title="Servers" id="Eur-eP-1FK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" id="llM-VQ-Alj"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
                 <menuItem title="⚙ Servers Setting" id="nGS-Ow-TSH">

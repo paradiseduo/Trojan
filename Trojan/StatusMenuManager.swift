@@ -28,6 +28,8 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var speedMenu: NSMenu!
     @IBOutlet weak var fixedWidth: NSMenuItem!
     
+    @IBOutlet weak var serversMenuItem: NSMenuItem!
+    
     var settingW: SettingWindowController!
     var settingsW: SettingsWIndowController!
     var logW: LogWindowController!
@@ -65,6 +67,9 @@ class StatusMenuManager: NSObject {
         }
         NotificationCenter.default.addObserver(forName: NOTIFY_SHOW_NETWORK_MONITOR, object: nil, queue: OperationQueue.main) { (noti) in
             self.showSpeed()
+        }
+        NotificationCenter.default.addObserver(forName: NOTIFY_REFRESH_SERVERS, object: nil, queue: OperationQueue.main) { (noti) in
+            self.updateServersMenu()
         }
     }
     
@@ -121,6 +126,7 @@ class StatusMenuManager: NSObject {
         DispatchQueue.main.async {
             self.updateMainMenu()
             self.updateRunningModeMenu()
+            self.updateServersMenu()
         }
     }
     
@@ -184,6 +190,22 @@ class StatusMenuManager: NSObject {
             speedTimer?.invalidate()
             speedTimer = nil
             speedMonitor = nil
+        }
+    }
+    
+    func updateServersMenu() {
+        serversMenuItem.title = Profile.shared.name
+        serversMenuItem.submenu?.removeAllItems()
+        var i = 0
+        for p in Profiles.shared.allProfile() {
+            let item = NSMenuItem(title: p.name, action: #selector(StatusMenuManager.selectServer), keyEquivalent: "")
+            item.tag = i
+            item.target = self
+            if p.equal(profile: Profile.shared) {
+                item.state = NSControl.StateValue(rawValue: 1)
+            }
+            serversMenuItem.submenu?.addItem(item)
+            i += 1
         }
     }
     
@@ -428,6 +450,20 @@ class StatusMenuManager: NSObject {
             default:
                 whiteListItem.state = NSControl.StateValue(rawValue: 1)
             }
+        }
+    }
+    
+    @objc func selectServer(_ sender: NSMenuItem) {
+        let index = sender.tag
+        let spMgr = Profiles.shared
+        let newProfile = spMgr.allProfile()[index]
+        if newProfile.equal(profile: Profile.shared) {
+            return
+        } else {
+            Profile.shared.client = newProfile.client
+            Profile.shared.name = newProfile.name
+            Profile.shared.saveProfile()
+            NotificationCenter.default.post(name: NOTIFY_SERVER_PROFILES_CHANGED, object: nil)
         }
     }
     

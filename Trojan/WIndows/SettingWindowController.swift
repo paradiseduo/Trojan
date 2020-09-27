@@ -26,7 +26,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     @IBOutlet weak var localPort: NSTextField!
     
     private var closeFromSave = false
-    private var selectedName = ""
+    private var selectedProfile = Profile.shared
     
     private var selectClient: Client!
     
@@ -77,15 +77,10 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     @IBAction func saveTap(_ sender: NSButton) {
         self.decodeJSON {[weak self] (c) in
             guard let w = self else {return}
-            Profile.shared.client = c
-            Profile.shared.name = w.selectedName
-            let p = Profile()
-            p.name = w.selectedName
-            p.client = c
-            Profiles.shared.update(p)
-            Profile.shared.saveProfile()
+            w.selectedProfile.client = c
+            Profiles.shared.update(w.selectedProfile)
             w.closeFromSave = true
-            NotificationCenter.default.post(name: NOTIFY_SERVER_PROFILES_CHANGED, object: nil)
+            NotificationCenter.default.post(name: NOTIFY_REFRESH_SERVERS, object: nil)
             w.window?.close()
         }
     }
@@ -112,7 +107,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             p.client.remote_port = 443
             p.client.remote_addr = ""
             p.client.password = [""]
-            w.selectedName = p.name
+            w.selectedProfile = p
             if Profiles.shared.add(p) {
                 let index = IndexSet(integer: Profiles.shared.count()-1)
                 w.profilesTableView.insertRows(at: index, withAnimation: .effectFade)
@@ -138,7 +133,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
                 return
             }
             self.profilesTableView.beginUpdates()
-            Profiles.shared.remove(selectedName)
+            Profiles.shared.remove(self.selectedProfile)
             self.profilesTableView.removeRows(at: index, withAnimation: .effectFade)
             self.profilesTableView.selectRowIndexes(index, byExtendingSelection: false)
             self.profilesTableView.endUpdates()
@@ -171,8 +166,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         let p = Profiles.shared.itemAtIndex(row)
         if p != nil {
-            p!.name = object as! String
-            selectedName = p!.name
+            self.selectedProfile = p!
         }
     }
     
@@ -237,7 +231,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
         if self.profilesTableView.selectedRow >= 0 {
             let s = Profiles.shared.itemAtIndex(self.profilesTableView.selectedRow)
             if s != nil {
-                selectedName = s!.name
+                self.selectedProfile = s!
                 self.textView.string = s!.jsonString
                 self.decodeJSON { [weak self] (c) in
                     guard let w = self else {return}

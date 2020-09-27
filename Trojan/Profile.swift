@@ -108,6 +108,13 @@ class Profile {
     func arguments() -> [String] {
         return ["--log", LOG_PATH, "--config", CONFIG_PATH]
     }
+    
+    func equal(profile: Profile) -> Bool {
+        if client.remote_addr == profile.client.remote_addr && client.remote_port == profile.client.remote_port && client.password == profile.client.password {
+            return true
+        }
+        return false
+    }
 }
 
 
@@ -118,6 +125,10 @@ class Profiles {
     
     func count() -> Int {
         return profiles.count
+    }
+    
+    func allProfile() -> [Profile] {
+        return profiles
     }
     
     func getName(profile: Profile, name: (String)->()) {
@@ -137,7 +148,7 @@ class Profiles {
     
     func update(_ profile: Profile) {
         for (i, item) in profiles.enumerated() {
-            if item.name == profile.name {
+            if item.equal(profile: profile) {
                 profiles[i] = profile
                 break
             }
@@ -146,7 +157,7 @@ class Profiles {
     
     @discardableResult func add(_ profile: Profile) -> Bool {
         if profiles.contains(where: { (p) -> Bool in
-            return p.name == profile.name
+            return p.equal(profile: profile)
         }) {
             return false
         } else {
@@ -155,12 +166,12 @@ class Profiles {
         }
     }
     
-    @discardableResult func remove(_ name: String) -> Bool {
+    @discardableResult func remove(_ profile: Profile) -> Bool {
         if profiles.contains(where: { (p) -> Bool in
-            return p.name == name
+            return p.equal(profile: profile)
         }) {
             profiles.removeAll { (p) -> Bool in
-                return p.name == name
+                return p.equal(profile: profile)
             }
             return true
         } else {
