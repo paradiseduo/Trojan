@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -18,9 +18,11 @@
                 <outlet property="aclModeItem" destination="b2z-2C-t82" id="43m-jx-cIg"/>
                 <outlet property="backChinaItem" destination="x6U-Ur-hKu" id="dLv-0t-UVH"/>
                 <outlet property="copyCommandItem" destination="Bea-Hp-fhg" id="Wd9-DE-io5"/>
+                <outlet property="fixedWidth" destination="qJU-bB-Y5c" id="Wf0-vF-cHr"/>
                 <outlet property="globalItem" destination="fvC-5Z-4w5" id="bI6-44-rQq"/>
                 <outlet property="manualItem" destination="REy-hH-h4P" id="W1g-kW-nEy"/>
                 <outlet property="pacItem" destination="gh3-ld-apY" id="urJ-A1-Exy"/>
+                <outlet property="speedMenu" destination="Vcg-d5-cVm" id="8zc-dM-HJT"/>
                 <outlet property="statusMenu" destination="zOa-kh-Dxd" id="bl4-yd-acl"/>
                 <outlet property="switchLabel" destination="VPI-fv-1dZ" id="g05-Oh-nWv"/>
                 <outlet property="toggleRunning" destination="SL2-0h-OFw" id="xvB-nv-B6M"/>
@@ -150,6 +152,24 @@
                 </menuItem>
             </items>
             <point key="canvasLocation" x="139" y="152"/>
+        </menu>
+        <menu id="Vcg-d5-cVm" userLabel="SpeedMenu">
+            <items>
+                <menuItem title="Fixed Width" id="qJU-bB-Y5c">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="fixedWidth:" target="Voe-Tx-rLC" id="p3s-Pp-BNj"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="3b8-0d-uUl"/>
+                <menuItem title="Close" id="mwK-zU-e1F">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="closeSpeedItem:" target="Voe-Tx-rLC" id="i1r-5B-4OR"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-220" y="17"/>
         </menu>
     </objects>
 </document>

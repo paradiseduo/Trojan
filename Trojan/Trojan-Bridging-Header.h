@@ -4,3 +4,4 @@
 
 #import "ProxyConfHelper.h"
 #import "DefaultsConfig.h"
+#import "NetSpeedMonitor.h"

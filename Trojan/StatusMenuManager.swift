@@ -10,6 +10,7 @@ import Cocoa
 
 class StatusMenuManager: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var speedItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var switchLabel: NSMenuItem!
@@ -24,10 +25,17 @@ class StatusMenuManager: NSObject {
     @IBOutlet weak var backChinaItem: NSMenuItem!
     @IBOutlet weak var aclModeItem: NSMenuItem!
     
+    @IBOutlet weak var speedMenu: NSMenu!
+    @IBOutlet weak var fixedWidth: NSMenuItem!
+    
     var settingW: SettingWindowController!
     var settingsW: SettingsWIndowController!
     var logW: LogWindowController!
     var toastW: ToastWindowController!
+    
+    var speedMonitor:NetSpeedMonitor?
+    var speedTimer:Timer?
+    let repeatTimeinterval: TimeInterval = 2.0
     
     override func awakeFromNib() {
         updateApplicationConfig()
@@ -55,6 +63,9 @@ class StatusMenuManager: NSObject {
                 }
             }
         }
+        NotificationCenter.default.addObserver(forName: NOTIFY_SHOW_NETWORK_MONITOR, object: nil, queue: OperationQueue.main) { (noti) in
+            self.showSpeed()
+        }
     }
     
     private func updateApplicationConfig() {
@@ -75,7 +86,9 @@ class StatusMenuManager: NSObject {
             USERDEFAULTS_LOCAL_HTTP_ON: true,
             USERDEFAULTS_LOCAL_HTTP_FOLLOW_GLOBAL: true,
             USERDEFAULTS_ACL_FILE_NAME: "chn.acl",
-            USERDEFAULTS_AUTO_CHECK_UPDATE:false
+            USERDEFAULTS_AUTO_CHECK_UPDATE:false,
+            USERDEFAULTS_ENABLE_SHOW_SPEED:false,
+            USERDEFAULTS_FIXED_NETWORK_SPEED_VIEW_WIDTH:false
         ])
         
         let fileMgr = FileManager.default
@@ -86,6 +99,7 @@ class StatusMenuManager: NSObject {
                 
             }
         }
+        self.showSpeed()
         Profiles.shared.load()
         InstallTrojanLocal { (s) in
             InstallPrivoxy { (suc) in
@@ -133,6 +147,43 @@ class StatusMenuManager: NSObject {
             statusItem.button?.image = icon
             statusItem.menu = statusMenu
             copyCommandItem.isHidden = true
+        }
+    }
+    
+    func showSpeed() {
+        if UserDefaults.standard.bool(forKey: USERDEFAULTS_ENABLE_SHOW_SPEED) {
+            speedItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+            speedItem.menu = speedMenu
+            if UserDefaults.standard.bool(forKey: USERDEFAULTS_FIXED_NETWORK_SPEED_VIEW_WIDTH) {
+                self.fixedSpeedItemWidth(true)
+                self.fixedWidth.state = NSControl.StateValue.on
+            } else {
+                self.fixedSpeedItemWidth(false)
+                self.fixedWidth.state = NSControl.StateValue.off
+            }
+            if let b = speedItem.button {
+                b.attributedTitle = SpeedTools.speedAttributedString(up: 0.0, down: 0.0)
+            }
+            if speedMonitor == nil{
+                speedMonitor = NetSpeedMonitor()
+            }
+            if speedTimer == nil {
+                speedTimer = Timer(timeInterval: repeatTimeinterval, repeats: true) {[weak self] (timer) in
+                    guard let w = self else {return}
+                    w.speedMonitor?.timeInterval(w.repeatTimeinterval, downloadAndUploadSpeed: { (down, up) in
+                        if let b = w.speedItem.button {
+                            b.attributedTitle = SpeedTools.speedAttributedString(up: up, down: down)
+                        }
+                    })
+                }
+                RunLoop.main.add(speedTimer!, forMode: RunLoop.Mode.common)
+            }
+        } else {
+            speedItem.attributedTitle = NSAttributedString(string: "")
+            NSStatusBar.system.removeStatusItem(speedItem)
+            speedTimer?.invalidate()
+            speedTimer = nil
+            speedMonitor = nil
         }
     }
     
@@ -189,11 +240,11 @@ class StatusMenuManager: NSObject {
     }
     
     @IBAction func cleanLogs(_ sender: NSMenuItem) {
-        CommandLine.async(task: Process(), command: "rm -rf \(LOG_PATH)") { (finish) in
+        CommandLine.async(task: Process(), command: "rm -rf \(LOG_PATH)", terminate:  { (finish) in
             print("CleanLog finish")
             NotificationCenter.default.post(name: LOG_CLEAN_FINISH, object: nil)
             self.makeToast("Logs Cleand")
-        }
+        })
     }
     
     @IBAction func serversSetting(_ sender: NSMenuItem) {
@@ -389,5 +440,29 @@ class StatusMenuManager: NSObject {
         c.message = message
         c.showWindow(self)
         c.fadeInHud()
+    }
+    
+    //------------------------------------------------------------
+    // MARK: Speed Item Actions
+    @IBAction func fixedWidth(_ sender: NSMenuItem) {
+        sender.state = (sender.state == .on ? .off:.on)
+        let b = sender.state == .on ? true:false
+        UserDefaults.standard.setValue(b, forKey: USERDEFAULTS_FIXED_NETWORK_SPEED_VIEW_WIDTH)
+        UserDefaults.standard.synchronize()
+        self.fixedSpeedItemWidth(b)
+    }
+    
+    @IBAction func closeSpeedItem(_ sender: NSMenuItem) {
+        UserDefaults.standard.setValue(false, forKey: USERDEFAULTS_ENABLE_SHOW_SPEED)
+        UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(Notification(name: NOTIFY_SHOW_NETWORK_MONITOR))
+    }
+    
+    private func fixedSpeedItemWidth(_ fixed: Bool) {
+        if fixed {
+            speedItem.length = 70
+        } else {
+            speedItem.length = NSStatusItem.variableLength
+        }
     }
 }

@@ -57,6 +57,10 @@ class SettingsWIndowController: NSWindowController, NSWindowDelegate, NSTextFiel
         }
     }
     
+    @IBAction func showNetwork(_ sender: NSButton) {
+        NotificationCenter.default.post(Notification(name: NOTIFY_SHOW_NETWORK_MONITOR))
+    }
+    
     @IBAction func httpButtonTap(_ sender: NSButton) {
         httpHasChanged = true
     }

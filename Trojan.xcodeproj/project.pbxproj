@@ -35,6 +35,8 @@
 		BE464A2A243C2ABC00BE8336 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A24243C2ABC00BE8336 /* LogWindowController.swift */; };
 		BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */; };
 		BE464A2C243C2ABC00BE8336 /* ToastWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */; };
+		BE47162B252092A6001F8B18 /* NetSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = BE47162A252092A6001F8B18 /* NetSpeedMonitor.m */; };
+		BE47162F25209534001F8B18 /* SpeedTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47162E25209534001F8B18 /* SpeedTools.swift */; };
 		BE524E07245EFF3C003F3E80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E06245EFF3C003F3E80 /* main.m */; };
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
 		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
@@ -116,6 +118,9 @@
 		BE464A24243C2ABC00BE8336 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingWindowController.swift; sourceTree = "<group>"; };
 		BE464A26243C2ABC00BE8336 /* ToastWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastWindowController.xib; sourceTree = "<group>"; };
+		BE471629252092A6001F8B18 /* NetSpeedMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetSpeedMonitor.h; sourceTree = "<group>"; };
+		BE47162A252092A6001F8B18 /* NetSpeedMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetSpeedMonitor.m; sourceTree = "<group>"; };
+		BE47162E25209534001F8B18 /* SpeedTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedTools.swift; sourceTree = "<group>"; };
 		BE524E04245EFF3C003F3E80 /* ProxyConfHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProxyConfHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE524E06245EFF3C003F3E80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE524E0B245F00E5003F3E80 /* Trojan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trojan-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -253,9 +258,12 @@
 				BE11D0B02461232E00075E25 /* LaunchAgentHelper.swift */,
 				BE59998C24792E06002177A2 /* LoginServiceKit.swift */,
 				E8BA62B1247CEBA500557A6E /* ModeSwitcher.swift */,
+				BE47162E25209534001F8B18 /* SpeedTools.swift */,
 				BEC48A13245FCBA800891EAC /* DefaultsConfig.h */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
+				BE471629252092A6001F8B18 /* NetSpeedMonitor.h */,
+				BE47162A252092A6001F8B18 /* NetSpeedMonitor.m */,
 				BE11D0A024611D6F00075E25 /* InstallHelper */,
 				BEC48A02245FC8A200891EAC /* File */,
 				BE464A20243C2AAF00BE8336 /* WIndows */,
@@ -507,8 +515,10 @@
 				BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */,
 				E8BA62B2247CEBA500557A6E /* ModeSwitcher.swift in Sources */,
 				BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */,
+				BE47162B252092A6001F8B18 /* NetSpeedMonitor.m in Sources */,
 				BE464A15243C2A8300BE8336 /* Profile.swift in Sources */,
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
+				BE47162F25209534001F8B18 /* SpeedTools.swift in Sources */,
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
 				BE11D0B12461232E00075E25 /* LaunchAgentHelper.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
