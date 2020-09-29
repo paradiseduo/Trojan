@@ -133,7 +133,7 @@ class Profiles {
     
     func getName(profile: Profile, name: (String)->()) {
         for item in profiles {
-            if item.client.remote_addr == profile.client.remote_addr && item.client.remote_port == profile.client.remote_port && item.client.password == profile.client.password {
+            if item.equal(profile: profile) {
                 name(item.name)
             }
         }
@@ -194,10 +194,6 @@ class Profiles {
         }
         UserDefaults.standard.set(dic, forKey: USERDEFAULTS_PROFILE)
         UserDefaults.standard.synchronize()
-    }
-    
-    class func isSame(_ a: Profile, _ b: Profile) -> Bool {
-        return (a.name == b.name && (a.client.remote_addr == b.client.remote_addr && a.client.remote_port == b.client.remote_port && a.client.password == b.client.password))
     }
     
     func load() {

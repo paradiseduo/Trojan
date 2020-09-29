@@ -236,6 +236,7 @@ class StatusMenuManager: NSObject {
     }
     
     @IBAction func quit(_ sender: NSMenuItem) {
+        Profiles.shared.save()
         AppDelegate.stopTrojan {
             if AppDelegate.getLauncherStatus() == false {
                 RemovePrivoxy { (s) in

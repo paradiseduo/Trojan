@@ -111,8 +111,8 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             p.name = "New Server\(Profiles.shared.count())"
             p.client = c
             p.client.remote_port = 443
-            p.client.remote_addr = ""
-            p.client.password = [""]
+            p.client.remote_addr = "NewServer\(Profiles.shared.count())"
+            p.client.password = ["NewServer\(Profiles.shared.count())"]
             w.selectedProfile = p
             if Profiles.shared.add(p) {
                 let index = IndexSet(integer: Profiles.shared.count()-1)
@@ -134,7 +134,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
         if Profiles.shared.count() > 1 {
             let index = IndexSet(integer: self.profilesTableView.selectedRow)
             let p = Profiles.shared.itemAtIndex(self.profilesTableView.selectedRow)
-            if Profiles.isSame(p!, Profile.shared) {
+            if Profile.shared.equal(profile: p!) {
                 self.shakeWindows()
                 return
             }
@@ -254,7 +254,7 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
     private func getDataAtRow(_ index:Int) -> (String, Bool) {
         let profile = Profiles.shared.itemAtIndex(index)
         if profile != nil {
-            return (profile!.name, Profiles.isSame(profile!, Profile.shared))
+            return (profile!.name, Profile.shared.equal(profile: profile!))
         } else {
             return ("", false)
         }
