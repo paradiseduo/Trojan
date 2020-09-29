@@ -81,7 +81,13 @@ class SettingWindowController: NSWindowController, NSWindowDelegate, NSTableView
             Profiles.shared.update(w.selectedProfile)
             Profiles.shared.save()
             w.closeFromSave = true
-            NotificationCenter.default.post(name: NOTIFY_REFRESH_SERVERS, object: nil)
+            if w.selectedProfile.equal(profile: Profile.shared) {
+                Profile.shared.client = c
+                Profile.shared.name = w.selectedProfile.name
+                NotificationCenter.default.post(name: NOTIFY_SERVER_PROFILES_CHANGED, object: nil)
+            } else {
+                NotificationCenter.default.post(name: NOTIFY_REFRESH_SERVERS, object: nil)
+            }
         }
     }
     
