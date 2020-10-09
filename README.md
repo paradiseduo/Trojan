@@ -13,10 +13,11 @@ Trojan is a GUI program for trojan on macOS.
 
 ## Version:
 
-v1.8
+v2.0
 
-![](https://github.com/paradiseduo/Trojan/blob/master/img/version.png)
-
+<h1 align="center">
+  <img src="https://github.com/paradiseduo/Trojan/blob/master/img/version.png">
+</h1>
 
 
 ## Install
@@ -29,16 +30,28 @@ drop Trojan.app to Trash
 
 then open Terminal.app and input those commands:
 ```bash
-rm -rf ~/Library/Preferences/MacOS.Trojan.plist
 rm -rf /usr/local/var/log/trojan
-rm -rf ~/Library/Caches/MacOS.Trojan
 rm -rf ~/Documents/Trojan
+rm -rf /Library/Application\ Support/Trojan
+rm -rf ~/Library/Application\ Support/Trojan
+rm -rf ~/Library/Preferences/MacOS.Trojan.plist
+rm -rf ~/Library/LaunchAgents/MacOS.Trojan.local.plist
+rm -rf ~/Library/LaunchAgents/MacOS.Trojan.http.plist
+rm -rf ~/Library/Caches/MacOS.Trojan
+rm -rf ~/Library/Containers/MacOS.Trojan
+rm -rf ~/Library/Application\ Scripts/MacOS.Trojan
+rm -rf ~/Library/Containers/MacOS.Trojan.StartAtLoginLauncher
+rm -rf ~/Library/Application\ Scripts/MacOS.Trojan.StartAtLoginLauncher
 ```
 
 ## Screenshots
 
 ### Menu
-![](https://github.com/paradiseduo/Trojan/blob/master/img/menu.png)
+<h1 align="center">
+  <img src="https://github.com/paradiseduo/Trojan/blob/master/img/menu.png">
+</h1>
 
 ### Setting
-![](https://github.com/paradiseduo/Trojan/blob/master/img/setting.png)
+<h1 align="center">
+  <img src="https://github.com/paradiseduo/Trojan/blob/master/img/setting.png">
+</h1>
