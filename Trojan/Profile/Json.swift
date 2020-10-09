@@ -18,6 +18,7 @@ struct Client: Codable {
     var log_level: Int?
     var ssl: SSL
     var tcp: TCP
+    var uuid: String
 
     private enum CodingKeys: String, CodingKey {
         case run_type = "run_type"
@@ -29,6 +30,7 @@ struct Client: Codable {
         case log_level = "log_level"
         case ssl = "ssl"
         case tcp = "tcp"
+        case uuid = "uuid"
     }
     
     func json() -> [String: AnyObject] {
@@ -55,7 +57,10 @@ struct Client: Codable {
                                         "fast_open": NSNumber(value: c.tcp.fast_open ?? false) as AnyObject,
                                         "fast_open_qlen": NSNumber(value: c.tcp.fast_open_qlen ?? 20) as AnyObject
                                        ]
-        
+        var uuid = UUID().uuidString
+        if c.uuid.count > 0 {
+            uuid = c.uuid
+        }
         let conf: [String: AnyObject] = ["run_type": c.run_type as AnyObject,
                                          "local_addr": c.local_addr as AnyObject,
                                          "local_port": NSNumber(value: c.local_port) as AnyObject,
@@ -64,7 +69,8 @@ struct Client: Codable {
                                          "password": c.password as AnyObject,
                                          "log_level": NSNumber(value: c.log_level ?? 1) as AnyObject,
                                          "ssl": ssl as AnyObject,
-                                         "tcp": tcp as AnyObject
+                                         "tcp": tcp as AnyObject,
+                                         "uuid": uuid as AnyObject
                                         ]
         
         return conf

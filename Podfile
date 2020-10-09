@@ -9,18 +9,11 @@ target 'ProxyConfHelper' do
   pod 'BRLOptionParser', '~> 0.3.1'
 end
 
-target 'StartAtLoginLauncher' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for StartAtLoginLauncher
-
-end
-
 target 'Trojan' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for Trojan
-  pod 'GCDWebServer', '~> 3.0'
+  pod 'GCDWebServer'
+  pod 'Alamofire'
 end

@@ -100,7 +100,7 @@ class Profile {
         
         let tcp = TCP(no_delay: no_delay, keep_alive: keep_alive, reuse_port: reuse_port, fast_open: fast_open, fast_open_qlen: fast_open_qlen)
         let ssl = SSL(verify: verify, verify_hostname: verify_hostname, cert: cert, cipher: cipher, cipher_tls13: cipher_tls13, sni: sni, alpn: alpn, reuse_session: reuse_session, session_ticket: session_ticket, curves: curves, plain_http_response: plain_http_response, dhparam: dhparam, prefer_server_cipher: prefer_server_cipher)
-        let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp)
+        let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp, uuid: UUID().uuidString)
         self.client = c
         self.name = "Default"
     }
@@ -110,10 +110,7 @@ class Profile {
     }
     
     func equal(profile: Profile) -> Bool {
-        if client.remote_addr == profile.client.remote_addr && client.remote_port == profile.client.remote_port && client.password == profile.client.password {
-            return true
-        }
-        return false
+        return (client.remote_addr == profile.client.remote_addr && client.remote_port == profile.client.remote_port && client.password == profile.client.password)
     }
 }
 
@@ -122,6 +119,8 @@ class Profiles {
     static let shared = Profiles()
     
     private var profiles = [Profile]()
+    
+    private var speeds = [String: String]()
     
     func count() -> Int {
         return profiles.count
@@ -198,7 +197,7 @@ class Profiles {
     
     func load() {
         profiles.removeAll(keepingCapacity: true)
-        if let dic = UserDefaults.standard.object(forKey: USERDEFAULTS_PROFILE) as? [String: String] {
+        if let dic = UserDefaults.standard.object(forKey: USERDEFAULTS_PROFILE) as? [String: String], dic.keys.count > 0 {
             for key in dic.keys {
                 let profileString = dic[key]
                 do {
