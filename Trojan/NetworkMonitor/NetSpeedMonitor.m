@@ -160,7 +160,7 @@ void SystemProxyChangeCallBack(SCDynamicStoreRef store, CFArrayRef changedKeys,v
 #endif
 #else
     const char* primaryInterface = NULL;
-    SCDynamicStoreRef store = SCDynamicStoreCreate(kCFAllocatorDefault, CFSTR("ShadowsocksX-NG-R"), NULL, NULL);
+    SCDynamicStoreRef store = SCDynamicStoreCreate(kCFAllocatorDefault, CFSTR("Trojan"), NULL, NULL);
     if (store) {
         CFPropertyListRef info = SCDynamicStoreCopyValue(store, CFSTR("State:/Network/Global/IPv4"));
         if (info) {

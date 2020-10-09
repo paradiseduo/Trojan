@@ -1,9 +1,9 @@
 //
 //  SpeedTools.swift
-//  ShadowsocksX-NG
+//  Trojan
 //
 //  Created by ParadiseDuo on 2020/5/1.
-//  Copyright © 2020 qiuyuzhou. All rights reserved.
+//  Copyright © 2020 MacClient. All rights reserved.
 //
 
 import Foundation

@@ -19,6 +19,7 @@ struct Client: Codable {
     var ssl: SSL
     var tcp: TCP
     var uuid: String
+    var group: String
 
     private enum CodingKeys: String, CodingKey {
         case run_type = "run_type"
@@ -31,6 +32,7 @@ struct Client: Codable {
         case ssl = "ssl"
         case tcp = "tcp"
         case uuid = "uuid"
+        case group = "group"
     }
     
     func json() -> [String: AnyObject] {
@@ -70,7 +72,8 @@ struct Client: Codable {
                                          "log_level": NSNumber(value: c.log_level ?? 1) as AnyObject,
                                          "ssl": ssl as AnyObject,
                                          "tcp": tcp as AnyObject,
-                                         "uuid": uuid as AnyObject
+                                         "uuid": uuid as AnyObject,
+                                         "group": c.group as AnyObject
                                         ]
         
         return conf

@@ -74,7 +74,7 @@ class Profile {
     func loadDefaultProfile() {
         let run_type: String = "client"
         let local_addr: String = "127.0.0.1"
-        let local_port: Int = 1080
+        let local_port: Int = 10800
         let remote_addr: String = "usol97.ovod.me"
         let remote_port: Int = 443
         let password: [String] = ["WxUUph"]
@@ -100,7 +100,7 @@ class Profile {
         
         let tcp = TCP(no_delay: no_delay, keep_alive: keep_alive, reuse_port: reuse_port, fast_open: fast_open, fast_open_qlen: fast_open_qlen)
         let ssl = SSL(verify: verify, verify_hostname: verify_hostname, cert: cert, cipher: cipher, cipher_tls13: cipher_tls13, sni: sni, alpn: alpn, reuse_session: reuse_session, session_ticket: session_ticket, curves: curves, plain_http_response: plain_http_response, dhparam: dhparam, prefer_server_cipher: prefer_server_cipher)
-        let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp, uuid: UUID().uuidString)
+        let c = Client(run_type: run_type, local_addr: local_addr, local_port: local_port, password: password, remote_addr: remote_addr, remote_port: remote_port, log_level: log_level, ssl: ssl, tcp: tcp, uuid: UUID().uuidString, group: "")
         self.client = c
         self.name = "Default"
     }
@@ -118,16 +118,12 @@ class Profile {
 class Profiles {
     static let shared = Profiles()
     
-    private var profiles = [Profile]()
+    var profiles = [Profile]()
     
-    private var speeds = [String: String]()
+    var speeds = [String: String]()
     
     func count() -> Int {
         return profiles.count
-    }
-    
-    func allProfile() -> [Profile] {
-        return profiles
     }
     
     func getName(profile: Profile, name: (String)->()) {
@@ -217,5 +213,18 @@ class Profiles {
             Profile.shared.loadProfile()
             profiles.append(Profile.shared)
         }
+    }
+    
+    static func isDuplicatedOrExists(_ profile: Profile) -> (Bool, Bool, Int) {
+        for (i, value) in Profiles.shared.profiles.enumerated() {
+            if value.equal(profile: profile) {
+                //相同节点(不需要更新配置)
+                return (true, true, i)
+            } else if (value.client.remote_addr == profile.client.remote_addr && value.client.remote_port == profile.client.remote_port) {
+                //存在节点(但是更新了配置)
+                return (true, false, i)
+            }
+        }
+        return (false, false, -1)
     }
 }

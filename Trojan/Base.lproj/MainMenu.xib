@@ -91,6 +91,32 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" id="llM-VQ-Alj"/>
                 </menuItem>
+                <menuItem title="Subscribers" id="KTm-qa-dNf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Subscribers" id="bHi-SW-RAb">
+                        <items>
+                            <menuItem title="⚙ Edit Subscribe Feed" id="ags-VN-M7s">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="editSubscribeFeedTao:" target="Voe-Tx-rLC" id="OEd-XV-bmz"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="q6i-xD-e3f"/>
+                            <menuItem title="Update Subscription With Proxy" id="hEu-gf-24N">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="updateSubscribeWithProxy:" target="Voe-Tx-rLC" id="7Wc-GC-ZV2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Update Subscription Without Proxy" id="Gga-2f-cc5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="updateSubscribeWithoutProxy:" target="Voe-Tx-rLC" id="jQb-AS-yqk"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="iio-Qk-cXd"/>
                 <menuItem title="⚙ Servers Setting" id="nGS-Ow-TSH">
                     <modifierMask key="keyEquivalentModifierMask"/>

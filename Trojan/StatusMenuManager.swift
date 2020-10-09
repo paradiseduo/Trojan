@@ -34,6 +34,7 @@ class StatusMenuManager: NSObject {
     var settingsW: SettingsWIndowController!
     var logW: LogWindowController!
     var toastW: ToastWindowController!
+    var subscribePreferenceWinCtrl: SubscribePreferenceWindowController!
     
     var speedMonitor:NetSpeedMonitor?
     var speedTimer:Timer?
@@ -197,7 +198,7 @@ class StatusMenuManager: NSObject {
         serversMenuItem.title = Profile.shared.name
         serversMenuItem.submenu?.removeAllItems()
         var i = 0
-        for p in Profiles.shared.allProfile() {
+        for p in Profiles.shared.profiles {
             let item = NSMenuItem(title: p.name, action: #selector(StatusMenuManager.selectServer), keyEquivalent: "")
             item.tag = i
             item.target = self
@@ -320,6 +321,26 @@ class StatusMenuManager: NSObject {
     @IBAction func aboutMe(_ sender: NSMenuItem) {
         NSApp.orderFrontStandardAboutPanel(sender);
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func editSubscribeFeedTao(_ sender: NSMenuItem) {
+        if subscribePreferenceWinCtrl != nil {
+            subscribePreferenceWinCtrl.close()
+        }
+        let ctrl = SubscribePreferenceWindowController(windowNibName: "SubscribePreferenceWindowController")
+        subscribePreferenceWinCtrl = ctrl
+        
+        ctrl.showWindow(self)
+        NSApp.activate(ignoringOtherApps: true)
+        ctrl.window?.makeKeyAndOrderFront(self)
+    }
+    
+    @IBAction func updateSubscribeWithProxy(_ sender: NSMenuItem) {
+        SubscribeManager.instance.updateAllServerFromSubscribe(auto: false, useProxy: true)
+    }
+    
+    @IBAction func updateSubscribeWithoutProxy(_ sender: NSMenuItem) {
+        SubscribeManager.instance.updateAllServerFromSubscribe(auto: false, useProxy: false)
     }
     
     @IBAction func copySocks5CommandLineTap(_ sender: NSMenuItem) {
@@ -457,7 +478,7 @@ class StatusMenuManager: NSObject {
     @objc func selectServer(_ sender: NSMenuItem) {
         let index = sender.tag
         let spMgr = Profiles.shared
-        let newProfile = spMgr.allProfile()[index]
+        let newProfile = spMgr.profiles[index]
         if newProfile.equal(profile: Profile.shared) {
             return
         } else {

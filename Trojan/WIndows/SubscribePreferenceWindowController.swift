@@ -2,18 +2,376 @@
 //  SubscribePreferenceWindowController.swift
 //  Trojan
 //
-//  Created by YouShaoduo on 2020/10/9.
-//  Copyright © 2020 ParadiseDuo. All rights reserved.
+//  Created by ParadiseDuo on 2020/10/9.
+//  Copyright © 2020 Mac. All rights reserved.
 //
 
 import Cocoa
 
 class SubscribePreferenceWindowController: NSWindowController, NSTableViewDataSource, NSTableViewDelegate {
 
+    @IBOutlet weak var FilterTextField: NSTextField!
+    @IBOutlet weak var OKButton: NSButton!
+
+    @IBOutlet weak var ActiveButton: NSButton!
+    @IBOutlet weak var AutoUpdateButton: NSButton!
+    
+    @IBOutlet weak var FeedTextField: NSTextField!
+    @IBOutlet weak var TokenTextField: NSTextField!
+    @IBOutlet weak var GroupTextField: NSTextField!
+    @IBOutlet weak var MaxCountTextField: NSTextField!
+    @IBOutlet weak var SubscribeTableView: NSTableView!
+
+    @IBOutlet weak var AddSubscribeBtn: NSButton!
+    @IBOutlet weak var DeleteSubscribeBtn: NSButton!
+    
+    var sbMgr: SubscribeManager!
+    var defaults: UserDefaults!
+    let tableViewDragType: String = "subscribe.host"
+    var editingSubscribe: Subscribe!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        sbMgr = SubscribeManager.instance
+        defaults = UserDefaults.standard
+        SubscribeTableView.reloadData()
+        updateSubscribeBoxVisible()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        SubscribeTableView.registerForDraggedTypes(convertToNSPasteboardPasteboardTypeArray([tableViewDragType]))
+        SubscribeTableView.allowsMultipleSelection = true
+        window?.center()
+    }
+    
+    @IBAction func onOk(_ sender: NSButton) {
+        if editingSubscribe != nil {
+            if !editingSubscribe.feedValidator() {
+                // Done Shake window
+                shakeWindows()
+                return
+            }
+            
+            if editingSubscribe.isActive{
+                editingSubscribe.updateServerFromFeed(useProxy: true) {
+                    DispatchQueue.main.async {
+                        if UserDefaults.standard.bool(forKey: USERDEFAULTS_SPEED_TEST_AFTER_SUBSCRIPTION) {
+//                            ConnectTestigManager.shared.start()
+                        }
+                    }
+                }
+            }
+        }
+        sbMgr.save()
+        window?.performClose(self)
+    }
+    
+    @IBAction func onCalcel(_ sender: NSButton) {
+        sbMgr.reload()
+        window?.performClose(self)
+    }
+    
+    @IBAction func onActive(_ sender: NSButton){
+        if editingSubscribe != nil {
+            if sender.state == .off {
+                editingSubscribe.diactivateSubscribe()
+                AutoUpdateButton.isEnabled = false
+            }else{
+                editingSubscribe.activateSubscribe()
+                AutoUpdateButton.isEnabled = true
+            }
+        }
+    }
+    
+    @IBAction func onAutoUpdate(_ sender: NSButton){
+        if editingSubscribe != nil {
+            if sender.state == .off {
+                editingSubscribe.disableAutoUpdate()
+            }else{
+                editingSubscribe.enableAutoUpdate()
+            }
+        }
+    }
+
+    
+    @IBAction func onAdd(_ sender: NSButton) {
+        if editingSubscribe != nil && !editingSubscribe.feedValidator(){
+            shakeWindows()
+            return
+        }
+        SubscribeTableView.beginUpdates()
+        let subscribe = Subscribe(initUrlString: "", initGroupName: "", initToken: "", initFilter: "", initMaxCount: -1, initActive: true,initAutoUpdate: true)
+        sbMgr.subscribes.append(subscribe)
+        
+        let index = IndexSet(integer: sbMgr.subscribes.count-1)
+        SubscribeTableView.insertRows(at: index, withAnimation: .effectFade)
+        
+        self.SubscribeTableView.scrollRowToVisible(self.sbMgr.subscribes.count-1)
+        self.SubscribeTableView.selectRowIndexes(index, byExtendingSelection: false)
+        SubscribeTableView.endUpdates()
+        updateSubscribeBoxVisible()
+    }
+    
+    @IBAction func onDelete(_ sender: NSButton) {
+        let index = Int(SubscribeTableView.selectedRowIndexes.first!)
+        var deleteCount = 0
+        var deleteGroupName = [String]()
+        if index >= 0 {
+            SubscribeTableView.beginUpdates()
+            for (_, toDeleteIndex) in SubscribeTableView.selectedRowIndexes.enumerated() {
+                let s = sbMgr.deleteSubscribe(atIndex: toDeleteIndex - deleteCount)
+                deleteGroupName.append(s.groupName)
+                SubscribeTableView.removeRows(at: IndexSet(integer: toDeleteIndex - deleteCount), withAnimation: .effectFade)
+                deleteCount += 1
+                if sbMgr.subscribes.count == 0 {
+                    cleanField()
+                }
+            }
+            SubscribeTableView.endUpdates()
+        }
+        self.SubscribeTableView.scrollRowToVisible(index - 1)
+        self.SubscribeTableView.selectRowIndexes(IndexSet(integer: index - 1), byExtendingSelection: false)
+        updateSubscribeBoxVisible()
+//        if UserDefaults.standard.bool(forKey: USERDEFAULTS_REMOVE_NODE_AFTER_DELETE_SUBSCRIPTION) {
+//            for g in deleteGroupName {
+//                if g.count > 0 {
+//                    ServerProfileManager.instance.profiles = ServerProfileManager.instance.profiles.filter { $0.ssrGroup != g}
+//                    print(g, ServerProfileManager.instance.profiles.count)
+//                }
+//            }
+//            ServerProfileManager.instance.save()
+//            NotificationCenter.default.post(name: NOTIFY_UPDATE_MAINMENU, object: nil)
+//        }
+    }
+    
+    func updateSubscribeBoxVisible() {
+        if sbMgr.subscribes.count <= 0 {
+            DeleteSubscribeBtn.isEnabled = false
+            FeedTextField.isEnabled = false
+            TokenTextField.isEnabled = false
+            GroupTextField.isEnabled = false
+            MaxCountTextField.isEnabled = false
+            ActiveButton.isEnabled = false
+            AutoUpdateButton.isEnabled = false
+            FilterTextField.isEnabled = false
+        }else{
+            DeleteSubscribeBtn.isEnabled = true
+            FeedTextField.isEnabled = true
+            TokenTextField.isEnabled = true
+            GroupTextField.isEnabled = true
+            MaxCountTextField.isEnabled = true
+            ActiveButton.isEnabled = true
+            AutoUpdateButton.isEnabled = true
+            FilterTextField.isEnabled = true
+        }
+    }
+    
+    func bindSubscribe(_ index:Int) {
+        if index >= 0 && index < sbMgr.subscribes.count {
+            editingSubscribe = sbMgr.subscribes[index]
+            
+            FeedTextField.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "subscribeFeed", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            TokenTextField.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "token", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            GroupTextField.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "groupName", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            MaxCountTextField.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "maxCount", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            ActiveButton.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "isActive", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            AutoUpdateButton.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "autoUpdateEnable", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            FilterTextField.bind(NSBindingName(rawValue: "value"), to: editingSubscribe!, withKeyPath: "filter", options: convertToOptionalNSBindingOptionDictionary([convertFromNSBindingOption(NSBindingOption.continuouslyUpdatesValue): true]))
+            
+        } else {
+            editingSubscribe = nil
+            FeedTextField.unbind(convertToNSBindingName("value"))
+            TokenTextField.unbind(convertToNSBindingName("value"))
+            GroupTextField.unbind(convertToNSBindingName("value"))
+            MaxCountTextField.unbind(convertToNSBindingName("value"))
+            ActiveButton.unbind(convertToNSBindingName("value"))
+            AutoUpdateButton.unbind(convertToNSBindingName("value"))
+            FilterTextField.unbind(convertToNSBindingName("value"))
+        }
+    }
+    
+    func getDataAtRow(_ index:Int) -> String {
+        if index >= sbMgr.subscribes.count {
+            return ""
+        }
+        if sbMgr.subscribes[index].groupName != "" {
+            return sbMgr.subscribes[index].groupName
+        }
+        return sbMgr.subscribes[index].subscribeFeed
+    }
+    
+    // MARK: For NSTableViewDataSource
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        if let mgr = sbMgr {
+            return mgr.subscribes.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: NSTableView
+        , objectValueFor tableColumn: NSTableColumn?
+        , row: Int) -> Any? {
+        
+        let title = getDataAtRow(row)
+        
+        if tableColumn?.identifier == NSUserInterfaceItemIdentifier("main") {
+            if title != "" {return title}
+            else {return "S"}
+        } else if tableColumn?.identifier == NSUserInterfaceItemIdentifier("status") {
+
+            return NSImage(named: NSImage.Name("menu_icon"))
+
+        }
+
+        return ""
+    }
+    
+    // MARK: Drag & Drop reorder rows
+    
+    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
+        let item = NSPasteboardItem()
+        item.setString(String(row), forType: convertToNSPasteboardPasteboardType(tableViewDragType))
+        return item
+    }
+    
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int
+        , proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        if dropOperation == .above {
+            return .move
+        }
+        return NSDragOperation()
+    }
+    
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo
+        , row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+        if let mgr = sbMgr {
+            var oldIndexes = [Int]()
+            info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:], using: {
+                (draggingItem: NSDraggingItem, idx: Int, stop: UnsafeMutablePointer<ObjCBool>) in
+                if let str = (draggingItem.item as! NSPasteboardItem).string(forType: NSPasteboard.PasteboardType(rawValue: self.tableViewDragType)), let index = Int(str) {
+                    oldIndexes.append(index)
+                }
+            })
+            
+            var oldIndexOffset = 0
+            var newIndexOffset = 0
+            
+            // For simplicity, the code below uses `tableView.moveRowAtIndex` to move rows around directly.
+            // You may want to move rows in your content array and then call `tableView.reloadData()` instead.
+            tableView.beginUpdates()
+            for oldIndex in oldIndexes {
+                if oldIndex < row {
+                    let o = mgr.subscribes.remove(at: oldIndex + oldIndexOffset)
+                    mgr.subscribes.insert(o, at:row - 1)
+                    tableView.moveRow(at: oldIndex + oldIndexOffset, to: row - 1)
+                    oldIndexOffset -= 1
+                } else {
+                    let o = mgr.subscribes.remove(at: oldIndex)
+                    mgr.subscribes.insert(o, at:row + newIndexOffset)
+                    tableView.moveRow(at: oldIndex, to: row + newIndexOffset)
+                    newIndexOffset += 1
+                }
+            }
+            tableView.endUpdates()
+            
+            return true
+        }
+        return false
+    }
+    
+    //--------------------------------------------------
+    // For NSTableViewDelegate
+    
+    func tableView(_ tableView: NSTableView
+        , shouldEdit tableColumn: NSTableColumn?, row: Int) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        if row < 0 {
+            editingSubscribe = nil
+            return true
+        }
+        return true
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if SubscribeTableView.selectedRow >= 0 {
+            bindSubscribe(SubscribeTableView.selectedRow)
+            if !editingSubscribe.isActive{
+                AutoUpdateButton.isEnabled = false
+            }
+        } else {
+            if !sbMgr.subscribes.isEmpty {
+                let index = IndexSet(integer: sbMgr.subscribes.count - 1)
+                SubscribeTableView.selectRowIndexes(index, byExtendingSelection: false)
+            }
+        }
+    }
+    
+    func cleanField(){
+        FeedTextField.stringValue = ""
+        TokenTextField.stringValue = ""
+        GroupTextField.stringValue = ""
+        MaxCountTextField.stringValue = ""
+        FilterTextField.stringValue = ""
+    }
+    
+    func shakeWindows(){
+        let numberOfShakes:Int = 8
+        let durationOfShake:Float = 0.5
+        let vigourOfShake:Float = 0.05
+        
+        let frame:CGRect = (window?.frame)!
+        let shakeAnimation = CAKeyframeAnimation()
+        
+        let shakePath = CGMutablePath()
+        
+        shakePath.move(to: CGPoint(x:NSMinX(frame), y:NSMinY(frame)))
+        
+        for _ in 1...numberOfShakes{
+            shakePath.addLine(to: CGPoint(x: NSMinX(frame) - frame.size.width * CGFloat(vigourOfShake), y: NSMinY(frame)))
+            shakePath.addLine(to: CGPoint(x: NSMinX(frame) + frame.size.width * CGFloat(vigourOfShake), y: NSMinY(frame)))
+        }
+        
+        shakePath.closeSubpath()
+        shakeAnimation.path = shakePath
+        shakeAnimation.duration = CFTimeInterval(durationOfShake)
+        window?.animations = ["frameOrigin":shakeAnimation]
+        window?.animator().setFrameOrigin(window!.frame.origin)
+    }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSPasteboardPasteboardTypeArray(_ input: [String]) -> [NSPasteboard.PasteboardType] {
+	return input.map { key in NSPasteboard.PasteboardType(key) }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSBindingOptionDictionary(_ input: [String: Any]?) -> [NSBindingOption: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSBindingOption(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSBindingOption(_ input: NSBindingOption) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSBindingName(_ input: String) -> NSBindingName {
+	return NSBindingName(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSUserInterfaceItemIdentifier(_ input: NSUserInterfaceItemIdentifier) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSPasteboardPasteboardType(_ input: String) -> NSPasteboard.PasteboardType {
+	return NSPasteboard.PasteboardType(rawValue: input)
 }
