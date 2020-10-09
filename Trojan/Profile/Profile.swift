@@ -117,8 +117,17 @@ class Profile {
 
 class Profiles {
     static let shared = Profiles()
-    
-    var profiles = [Profile]()
+    private var p = [Profile]()
+    var profiles: [Profile] {
+        get {
+            return self.p.sorted { (p1, p2) -> Bool in
+                return p1.name < p2.name
+            }
+        }
+        set(newValue) {
+            self.p = newValue
+        }
+    }
     
     var speeds = [String: String]()
     
