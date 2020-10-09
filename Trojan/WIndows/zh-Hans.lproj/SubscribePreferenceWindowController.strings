@@ -1,0 +1,42 @@
+
+/* Class = "NSTextFieldCell"; placeholderString = "Optional"; ObjectID = "3kt-n3-uTF"; */
+"3kt-n3-uTF.placeholderString" = "可选";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Optional"; ObjectID = "ASh-mc-Uyt"; */
+"ASh-mc-Uyt.placeholderString" = "可选";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "CfK-8Y-YNP"; */
+"CfK-8Y-YNP.title" = "确定";
+
+/* Class = "NSWindow"; title = "Subscribe Preference"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "订阅设置";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Optional"; ObjectID = "H5J-cK-8xj"; */
+"H5J-cK-8xj.placeholderString" = "可选";
+
+/* Class = "NSTextFieldCell"; title = "Token"; ObjectID = "IrJ-D8-tlX"; */
+"IrJ-D8-tlX.title" = "Token";
+
+/* Class = "NSTextFieldCell"; title = "Filter"; ObjectID = "VWC-h6-dyf"; */
+"VWC-h6-dyf.title" = "过滤";
+
+/* Class = "NSTextFieldCell"; title = "Group"; ObjectID = "f2p-qb-uuE"; */
+"f2p-qb-uuE.title" = "组名";
+
+/* Class = "NSTextFieldCell"; title = "Text"; ObjectID = "ik7-wS-gok"; */
+"ik7-wS-gok.title" = "Text";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "mdP-Aw-g2g"; */
+"mdP-Aw-g2g.title" = "取消";
+
+/* Class = "NSButtonCell"; title = "AutoUpdate"; ObjectID = "wAH-F1-KhY"; */
+"wAH-F1-KhY.title" = "自动更新";
+
+/* Class = "NSTextFieldCell"; title = "Count"; ObjectID = "wbG-HT-bdN"; */
+"wbG-HT-bdN.title" = "最大数";
+
+/* Class = "NSButtonCell"; title = "Active"; ObjectID = "xDA-ea-y72"; */
+"xDA-ea-y72.title" = "激活";
+
+/* Class = "NSTextFieldCell"; title = "URL"; ObjectID = "yBp-oB-gbL"; */
+"yBp-oB-gbL.title" = "订阅";

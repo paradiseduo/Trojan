@@ -51,7 +51,7 @@ class SubscribeManager:NSObject{
     func reload() {
         subscribes.removeAll()
         
-        if let subscribesDefault = defaults.array(forKey: "Subscribes") {
+        if let subscribesDefault = defaults.array(forKey: USERDEFAULTS_SUBSCRIBES) {
             for value in subscribesDefault{
                 subscribes.append(Subscribe.fromDictionary(value as! [String : AnyObject]))
             }

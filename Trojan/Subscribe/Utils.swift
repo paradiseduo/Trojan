@@ -41,8 +41,10 @@ func ParseTrojanURL(url: String) -> Profile? {
     let domain = p2.components(separatedBy: ":")[0]
     let p3 = url.components(separatedBy: "trojan://"+password+"@"+domain+":")[1]
     let port = p3.components(separatedBy: "?")[0]
-    let name = url.components(separatedBy: "?peer=")[1]
-    
+    var name = url.components(separatedBy: "?peer=")[1]
+    if name.contains("#") {
+        name = name.components(separatedBy: "#")[1]
+    }
     let p = Profile()
     p.loadDefaultProfile()
     p.client.remote_addr = String(domain)

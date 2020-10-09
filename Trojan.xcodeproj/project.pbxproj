@@ -41,11 +41,11 @@
 		BE524E0E245F00E6003F3E80 /* ProxyConfHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */; };
 		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
 		BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59998C24792E06002177A2 /* LoginServiceKit.swift */; };
+		BEA246B9253031EB00F7B080 /* SubscribePreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA246BB253031EB00F7B080 /* SubscribePreferenceWindowController.xib */; };
 		BEAB090F252FFE8C00B0BD3E /* Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB090E252FFE8C00B0BD3E /* Subscribe.swift */; };
 		BEAB0913252FFEEA00B0BD3E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB0912252FFEEA00B0BD3E /* Network.swift */; };
 		BEAB09172530006000B0BD3E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB09162530006000B0BD3E /* Utils.swift */; };
 		BEAB091B25300F5E00B0BD3E /* SubscribeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB091A25300F5E00B0BD3E /* SubscribeManager.swift */; };
-		BEAB09222530104700B0BD3E /* SubscribePreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAB09202530104700B0BD3E /* SubscribePreferenceWindowController.xib */; };
 		BEAB09232530104700B0BD3E /* SubscribePreferenceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB09212530104700B0BD3E /* SubscribePreferenceWindowController.swift */; };
 		BEC48A01245FC79000891EAC /* PAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48A00245FC79000891EAC /* PAC.swift */; };
 		BEC48A0B245FC8C600891EAC /* backchn.acl in Resources */ = {isa = PBXBuildFile; fileRef = BEC48A03245FC8C500891EAC /* backchn.acl */; };
@@ -135,11 +135,12 @@
 		BE524E0F245F0142003F3E80 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		BE599988247923C5002177A2 /* SettingsWIndowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWIndowController.swift; sourceTree = "<group>"; };
 		BE59998C24792E06002177A2 /* LoginServiceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServiceKit.swift; sourceTree = "<group>"; };
+		BEA246BA253031EB00F7B080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SubscribePreferenceWindowController.xib; sourceTree = "<group>"; };
+		BEA246BF253031F000F7B080 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SubscribePreferenceWindowController.strings"; sourceTree = "<group>"; };
 		BEAB090E252FFE8C00B0BD3E /* Subscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribe.swift; sourceTree = "<group>"; };
 		BEAB0912252FFEEA00B0BD3E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BEAB09162530006000B0BD3E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BEAB091A25300F5E00B0BD3E /* SubscribeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribeManager.swift; sourceTree = "<group>"; };
-		BEAB09202530104700B0BD3E /* SubscribePreferenceWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscribePreferenceWindowController.xib; sourceTree = "<group>"; };
 		BEAB09212530104700B0BD3E /* SubscribePreferenceWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribePreferenceWindowController.swift; sourceTree = "<group>"; };
 		BEC48A00245FC79000891EAC /* PAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAC.swift; sourceTree = "<group>"; };
 		BEC48A03245FC8C500891EAC /* backchn.acl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = backchn.acl; sourceTree = "<group>"; };
@@ -289,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				BEAB09212530104700B0BD3E /* SubscribePreferenceWindowController.swift */,
-				BEAB09202530104700B0BD3E /* SubscribePreferenceWindowController.xib */,
+				BEA246BB253031EB00F7B080 /* SubscribePreferenceWindowController.xib */,
 				BE464A24243C2ABC00BE8336 /* LogWindowController.swift */,
 				BE464A22243C2ABC00BE8336 /* LogWindowController.xib */,
 				BE464A25243C2ABC00BE8336 /* SettingWindowController.swift */,
@@ -465,7 +466,7 @@
 				BE464A05243C29CE00BE8336 /* Assets.xcassets in Resources */,
 				BEC48A0F245FC8C600891EAC /* whiteiplist.pac in Resources */,
 				BE11D0B32461243600075E25 /* install_privoxy.sh in Resources */,
-				BEAB09222530104700B0BD3E /* SubscribePreferenceWindowController.xib in Resources */,
+				BEA246B9253031EB00F7B080 /* SubscribePreferenceWindowController.xib in Resources */,
 				BE11D0B52461246A00075E25 /* privoxy in Resources */,
 				E8BA62A7247CD3EE00557A6E /* install_trojan.sh in Resources */,
 				E82CD55F249C781000EA38FD /* SettingWindowController.xib in Resources */,
@@ -603,6 +604,15 @@
 				E82CD55E249C736500EA38FD /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		BEA246BB253031EB00F7B080 /* SubscribePreferenceWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEA246BA253031EB00F7B080 /* Base */,
+				BEA246BF253031F000F7B080 /* zh-Hans */,
+			);
+			name = SubscribePreferenceWindowController.xib;
 			sourceTree = "<group>";
 		};
 		E82CD561249C781000EA38FD /* SettingWindowController.xib */ = {
