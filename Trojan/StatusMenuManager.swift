@@ -198,10 +198,32 @@ class StatusMenuManager: NSObject {
         serversMenuItem.title = Profile.shared.name
         serversMenuItem.submenu?.removeAllItems()
         var i = 0
+        var fastTime = ""
+        if let t = UserDefaults.standard.object(forKey: USERDEFAULTS_FASTEST_NODE) as? String {
+            fastTime = t
+        }
         for p in Profiles.shared.profiles {
             let item = NSMenuItem(title: p.name, action: #selector(StatusMenuManager.selectServer), keyEquivalent: "")
             item.tag = i
             item.target = self
+            
+            let nf = NumberFormatter.three(p.latency)
+            if p.latency.doubleValue != Double.infinity {
+                item.title += "  - \(nf)ms"
+                if nf == fastTime {
+                    let dic = [NSAttributedString.Key.foregroundColor : NSColor.green]
+                    let attStr = NSAttributedString(string: item.title, attributes: dic)
+                    item.attributedTitle = attStr
+                }
+            } else {
+                if !nerverTestBefore {
+                    item.title += "  - failed"
+                    let dic = [NSAttributedString.Key.foregroundColor : NSColor.red]
+                    let attStr = NSAttributedString(string: item.title, attributes: dic)
+                    item.attributedTitle = attStr
+                }
+            }
+            
             if p.equal(profile: Profile.shared) {
                 item.state = NSControl.StateValue(rawValue: 1)
             }
@@ -281,6 +303,10 @@ class StatusMenuManager: NSObject {
         c.window?.center()
         c.window?.makeKeyAndOrderFront(self)
         NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @IBAction func testConnectionDelay(_ sender: NSMenuItem) {
+        ConnectTestigManager.shared.start()
     }
     
     @IBAction func checkUpdate(_ sender: NSMenuItem) {

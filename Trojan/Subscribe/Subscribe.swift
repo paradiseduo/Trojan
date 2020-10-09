@@ -264,7 +264,7 @@ import Alamofire
                     message += " 过滤:\(filterCount)"
                 }
                 self.pushNotification(title: "成功更新订阅", subtitle: message, info: "更新来自\(self.subscribeFeed)的订阅")
-                NotificationCenter.default.post(name: NOTIFY_REFRESH_SERVERS, object: nil)
+                NotificationCenter.default.post(name: NOTIFY_SERVER_PROFILES_CHANGED, object: nil)
                 handle()
             }
         }

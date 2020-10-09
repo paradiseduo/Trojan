@@ -14,6 +14,7 @@ class Profile {
     
     var client: Client!
     var name = "Default"
+    var latency = NSNumber(value: Double.infinity)
     
     var json: [String: AnyObject] {
         get {

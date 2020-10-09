@@ -42,6 +42,9 @@
 		BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599988247923C5002177A2 /* SettingsWIndowController.swift */; };
 		BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59998C24792E06002177A2 /* LoginServiceKit.swift */; };
 		BEA246B9253031EB00F7B080 /* SubscribePreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA246BB253031EB00F7B080 /* SubscribePreferenceWindowController.xib */; };
+		BEA246E825303F4200F7B080 /* ConnectTestigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA246E725303F4200F7B080 /* ConnectTestigManager.swift */; };
+		BEA246EF25303F9500F7B080 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA246ED25303F9500F7B080 /* GCDAsyncSocket.m */; };
+		BEA246F025303F9500F7B080 /* tcping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA246EE25303F9500F7B080 /* tcping.swift */; };
 		BEAB090F252FFE8C00B0BD3E /* Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB090E252FFE8C00B0BD3E /* Subscribe.swift */; };
 		BEAB0913252FFEEA00B0BD3E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB0912252FFEEA00B0BD3E /* Network.swift */; };
 		BEAB09172530006000B0BD3E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB09162530006000B0BD3E /* Utils.swift */; };
@@ -137,6 +140,10 @@
 		BE59998C24792E06002177A2 /* LoginServiceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginServiceKit.swift; sourceTree = "<group>"; };
 		BEA246BA253031EB00F7B080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SubscribePreferenceWindowController.xib; sourceTree = "<group>"; };
 		BEA246BF253031F000F7B080 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SubscribePreferenceWindowController.strings"; sourceTree = "<group>"; };
+		BEA246E725303F4200F7B080 /* ConnectTestigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTestigManager.swift; sourceTree = "<group>"; };
+		BEA246EC25303F9500F7B080 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		BEA246ED25303F9500F7B080 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		BEA246EE25303F9500F7B080 /* tcping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tcping.swift; sourceTree = "<group>"; };
 		BEAB090E252FFE8C00B0BD3E /* Subscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscribe.swift; sourceTree = "<group>"; };
 		BEAB0912252FFEEA00B0BD3E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		BEAB09162530006000B0BD3E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -271,6 +278,7 @@
 				E8BA62B1247CEBA500557A6E /* ModeSwitcher.swift */,
 				BE524E0D245F00E6003F3E80 /* ProxyConfHelper.h */,
 				BE524E0C245F00E6003F3E80 /* ProxyConfHelper.m */,
+				BEA246EB25303F8200F7B080 /* tcping */,
 				BEAB090B252FFD9700B0BD3E /* Profile */,
 				BEAB090A252FFD6700B0BD3E /* NetworkMonitor */,
 				BEAB0909252FFD5500B0BD3E /* Subscribe */,
@@ -311,6 +319,17 @@
 				BE524E0F245F0142003F3E80 /* version.h */,
 			);
 			path = ProxyConfHelper;
+			sourceTree = "<group>";
+		};
+		BEA246EB25303F8200F7B080 /* tcping */ = {
+			isa = PBXGroup;
+			children = (
+				BEA246E725303F4200F7B080 /* ConnectTestigManager.swift */,
+				BEA246EC25303F9500F7B080 /* GCDAsyncSocket.h */,
+				BEA246ED25303F9500F7B080 /* GCDAsyncSocket.m */,
+				BEA246EE25303F9500F7B080 /* tcping.swift */,
+			);
+			path = tcping;
 			sourceTree = "<group>";
 		};
 		BEAB0909252FFD5500B0BD3E /* Subscribe */ = {
@@ -556,6 +575,7 @@
 				BE464A2B243C2ABC00BE8336 /* SettingWindowController.swift in Sources */,
 				BE464A13243C2A7E00BE8336 /* StatusMenuManager.swift in Sources */,
 				BE464A1F243C2AA900BE8336 /* VersionChecker.swift in Sources */,
+				BEA246F025303F9500F7B080 /* tcping.swift in Sources */,
 				BE464A1D243C2AA500BE8336 /* Configuration.swift in Sources */,
 				E8BA62B2247CEBA500557A6E /* ModeSwitcher.swift in Sources */,
 				BE59998A247923C5002177A2 /* SettingsWIndowController.swift in Sources */,
@@ -565,6 +585,7 @@
 				BE464A29243C2ABC00BE8336 /* ToastWindowController.swift in Sources */,
 				BE47162F25209534001F8B18 /* SpeedTools.swift in Sources */,
 				BE464A1B243C2AA100BE8336 /* CommandLine.swift in Sources */,
+				BEA246EF25303F9500F7B080 /* GCDAsyncSocket.m in Sources */,
 				BE11D0B12461232E00075E25 /* LaunchAgentHelper.swift in Sources */,
 				BEAB091B25300F5E00B0BD3E /* SubscribeManager.swift in Sources */,
 				BE464A03243C29CE00BE8336 /* AppDelegate.swift in Sources */,
@@ -572,6 +593,7 @@
 				BEAB090F252FFE8C00B0BD3E /* Subscribe.swift in Sources */,
 				BEAB0913252FFEEA00B0BD3E /* Network.swift in Sources */,
 				BE59998D24792E06002177A2 /* LoginServiceKit.swift in Sources */,
+				BEA246E825303F4200F7B080 /* ConnectTestigManager.swift in Sources */,
 				BEFBF63E243CC1D0006972DF /* EditableNSTextView.swift in Sources */,
 				BEC48A01245FC79000891EAC /* PAC.swift in Sources */,
 				BE464A17243C2A8900BE8336 /* Json.swift in Sources */,

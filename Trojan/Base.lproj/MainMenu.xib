@@ -124,6 +124,12 @@
                         <action selector="serversSetting:" target="Voe-Tx-rLC" id="gH9-Ln-nTS"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Test Connection Delay" id="CpR-44-ZNN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="testConnectionDelay:" target="Voe-Tx-rLC" id="M3b-dM-dsj"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Export Command Line To Pasteboard" id="Bea-Hp-fhg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
