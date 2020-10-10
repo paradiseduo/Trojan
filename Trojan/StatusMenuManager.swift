@@ -155,6 +155,7 @@ class StatusMenuManager: NSObject {
             statusItem.menu = statusMenu
             copyCommandItem.isHidden = true
         }
+        statusItem.image?.isTemplate = true
     }
     
     func showSpeed() {

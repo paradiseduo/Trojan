@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1火箭 (8).png",
+      "filename" : "rocket.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "1火箭 (7).png",
+      "filename" : "rocket (1).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "1火箭 (6).png",
+      "filename" : "rocket (2).png",
       "idiom" : "universal",
       "scale" : "3x"
     }
