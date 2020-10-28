@@ -55,3 +55,6 @@ rm -rf ~/Library/Application\ Scripts/MacOS.Trojan.StartAtLoginLauncher
 <h1 align="center">
   <img src="https://github.com/paradiseduo/Trojan/blob/master/img/setting.png">
 </h1>
+
+## Star Trend
+[![Stargazers over time](https://starchart.cc/paradiseduo/Trojan.svg)](https://starchart.cc/paradiseduo/Trojan)
